@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 08:04:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 08:43:16 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 07:54:28 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ int	ft_strlen(char *str)
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)
+	{
+		printf("No argument argv specified.");
 		return (1);
+	}
+	printf("strlen    = %lu\n", strlen(""));
+	printf("ft_strlen = %d\n", ft_strlen(""));
 	printf("strlen    = %lu\n", strlen(argv[1]));
 	printf("ft_strlen = %d\n", ft_strlen(argv[1]));
 }
