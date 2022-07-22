@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:44:28 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 11:16:55 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:44:30 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int	main(int argc, char *argv[])
 		write(1, argv[0] + i, 1);
 		i++;
 	}
+	write(1, '\n', 1);
 }

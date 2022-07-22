@@ -6,16 +6,16 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 10:19:27 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/22 07:03:26 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 08:51:29 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <string.h>
 // #include <stdio.h>
-unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	j = 0;
@@ -40,40 +40,48 @@ int main(void)
 	{
 		char a[] = "This is a test.";
 		char b[] = "a";
-		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		printf("   strlcat('%s', '%s', %d)", a, b, i);
+		printf(" => %lu  -  %s\n", strlcat(a, b, i), a);
 		char c[] = "This is a test.";
 		char d[] = "a";
-		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("ft_strlcat('%s', '%s', %d)", c, d, i);
+		printf(" => %d  -  %s\n", ft_strlcat(c, d, i), a);
 		printf("\n");
 	}
 	for (int i = 0; i < 3; i++)
 	{
 		char a[] = "a";
 		char b[] = "This is a test.";
-		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		printf("   strlcat('%s', '%s', %d)", a, b, i);
+		printf(" => %lu  -  %s\n", strlcat(a, b, i), a);
 		char c[] = "a";
 		char d[] = "This is a test.";
-		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("ft_strlcat('%s', '%s', %d)", c, d, i);
+		printf(" => %d  -  %s\n", ft_strlcat(c, d, i), a);
 		printf("\n");
 	}
 	for (int i = 0; i < 17; i++)
 	{
 		char a[] = "This is a test.";
 		char b[] = "";
-		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		printf("   strlcat('%s', '%s', %d)", a, b, i);
+		printf(" => %lu  -  %s\n", strlcat(a, b, i), a);
 		char c[] = "This is a test.";
 		char d[] = "";
-		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("ft_strlcat('%s', '%s', %d)", c, d, i);
+		printf(" => %d  -  %s\n", ft_strlcat(c, d, i), a);
 		printf("\n");
 	}
 	for (int i = 0; i < 2; i++)
 	{
 		char a[] = "";
 		char b[] = "";
-		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		printf("   strlcat('%s', '%s', %d)", a, b, i);
+		printf(" => %lu  -  %s\n", strlcat(a, b, i), a);
 		char c[] = "";
 		char d[] = "";
-		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("ft_strlcat('%s', '%s', %d)", c, d, i);
+		printf(" => %d  -  %s\n", ft_strlcat(c, d, i), a);
 		printf("\n");
 	}
 }

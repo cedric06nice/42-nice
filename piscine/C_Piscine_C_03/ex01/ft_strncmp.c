@@ -6,25 +6,24 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:51:55 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/22 06:28:14 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:42:27 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <string.h>
 // #include <stdio.h>
-int ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && n > 0)
+	{
+		i++;
+		n--;
+	}
 	if (n == 0)
 		return (0);
-	while (s1[i] && s1[i] == s2[i] && n > 0)
-	{
-		if (s1[i] == 0 || s2[i] == 0)
-			return (0);
-		i++;
-	}
 	return (s1[i] - s2[i]);
 }
 /*
@@ -48,7 +47,7 @@ int main(void)
 	}
 	for (int i = -2; i < 7; i++)
 	{
-		char a[] = "salut";
+		char a[] = "s0lut";
 		char b[] = "a";
 		printf("   strncmp(%s, %s, %d) = %d\n", a, b, i, strncmp(a, b, i));
 		printf("ft_strncmp(%s, %s, %d) = %d\n", a, b, i, ft_strncmp(a, b, i));
