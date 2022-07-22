@@ -6,69 +6,75 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 10:19:27 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 15:11:22 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 07:03:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
-unsigned int	ft_strlen(char *str)
+// #include <string.h>
+// #include <stdio.h>
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	i;
+	unsigned int i;
+	unsigned int j;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	src_size;
-	unsigned int	dest_size;
-
-	i = 0;
-	src_size = ft_strlen(src);
-	dest_size = ft_strlen(dest);
-	if (size == 0 || dest_size >= size)
-		return (size + src_size);
-	else if (i <= (size - dest_size - 1) && src[i])
+	j = 0;
+	while (dest[j] && j < size)
+		j++;
+	while (src[i] && size && j + i < size - 1)
 	{
-		dest[dest_size + i] = *src;
+		dest[j + i] = src[i];
 		i++;
 	}
-	dest[dest_size + i] = '\0';
-	return (src_size + dest_size);
+	if (j < size)
+		dest[j + i] = 0;
+	i = 0;
+	while (src[i])
+		i++;
+	return (j + i);
 }
-
-int	main(void)
+/*
+int main(void)
 {
-	char	s1[40] = "This is a test to look into.";
-	char	s2[40] = "not";
-	printf("strlcat    %lu\n", strlcat(s1, s2, 40));
-	printf("strlcat    %s\n", s1);
-	char	f1[40] = "This is a test to look into.";
-	char	f2[40] = "not";
-	printf("ft_strlcat %u\n", ft_strlcat(f1, f2, 40));
-	printf("ft_strlcat %s\n", f1);
-	
-	char	s3[40] = "This is a test to look into.";
-	char	s4[40] = "a test ";
-	printf("strlcat    %lu\n", strlcat(s3, s4, 5));
-	printf("strlcat    %s\n", s3);
-	char	f3[40] = "This is a test to look into.";
-	char	f4[40] = "a test ";
-	printf("ft_strlcat %u\n", ft_strlcat(f3, f4, 5));
-	printf("ft_strlcat %s\n", f3);
-	
-	char	s5[40] = "This is a test to look into.";
-	char	s6[40] = "";
-	printf("strlcat    %lu\n", strlcat(s5, s6, 5));
-	printf("strlcat    %s\n", s5);
-	char	f5[40] = "This is a test to look into.";
-	char	f6[40] = "";
-	printf("ft_strlcat %u\n", ft_strlcat(f5, f6, 5));
-	printf("ft_strlcat %s\n", f5);
+	for (int i = 0; i < 5; i++)
+	{
+		char a[] = "This is a test.";
+		char b[] = "a";
+		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		char c[] = "This is a test.";
+		char d[] = "a";
+		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("\n");
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		char a[] = "a";
+		char b[] = "This is a test.";
+		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		char c[] = "a";
+		char d[] = "This is a test.";
+		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("\n");
+	}
+	for (int i = 0; i < 17; i++)
+	{
+		char a[] = "This is a test.";
+		char b[] = "";
+		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		char c[] = "This is a test.";
+		char d[] = "";
+		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("\n");
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		char a[] = "";
+		char b[] = "";
+		printf("   strlcat('%s', '%s', %d) => %lu  -  %s\n", a, b, i, strlcat(a, b, i), a);
+		char c[] = "";
+		char d[] = "";
+		printf("ft_strlcat('%s', '%s', %d) => %d  -  %s\n", c, d, i, ft_strlcat(c, d, i), a);
+		printf("\n");
+	}
 }
+*/

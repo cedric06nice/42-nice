@@ -6,57 +6,61 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:02:01 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 15:08:00 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 06:38:46 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
+// #include <string.h>
+// #include <stdio.h>
 char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
 	int	j;
-	int	size;
 
 	i = 0;
 	j = 0;
-	size = 0;
-	while (to_find[size])
-		size++;
-	if (size == 0)
+	if (*to_find == 0)
 		return (str);
 	while (str[i])
 	{
-		while (str[i] == to_find[j])
+		if (str[i] == to_find[0])
 		{
-			j++;
-			if (j == size)
-				return (&str[i - j + 1]);
+			j = 0;
+			while (str[i + j] == to_find[j] && to_find[j])
+				j++;
+			if (to_find[j] == 0)
+				return (&str[i]);
 		}
 		i++;
 	}
 	return (0);
 }
-
+/*
 int	main(void)
 {
-	char	s1[40] = "This is a test to look into.";
-	char	s2[40] = "not";
-	printf("strstr    %s\n", strstr(s1, s2));
-	char	f1[40] = "This is a test to look into.";
-	char	f2[40] = "not";
-	printf("ft_strstr %s\n", ft_strstr(f1, f2));
-	char	s3[40] = "This is a test to look into.";
-	char	s4[40] = "a test ";
-	printf("strstr    %s\n", strstr(s3, s4));
-	char	f3[40] = "This is a test to look into.";
-	char	f4[40] = "a test ";
-	printf("ft_strstr %s\n", ft_strstr(f3, f4));
-	char	s5[40] = "This is a test to look into.";
-	char	s6[40] = "";
-	printf("strstr    %s\n", strstr(s5, s6));
-	char	f5[40] = "This is a test to look into.";
-	char	f6[40] = "";
-	printf("ft_strstr %s\n", ft_strstr(f5, f6));
+	char	a[] = "This is a test to look into.";
+	char	b[] = "not";
+	printf("strstr    %s\n", strstr(a, b));
+	printf("ft_strstr %s\n", ft_strstr(a, b));
+	char	c[] = "This is a test to look into.";
+	char	d[] = "look";
+	printf("strstr    %s\n", strstr(c, d));
+	printf("ft_strstr %s\n", ft_strstr(c, d));
+	char	e[] = "This is a test to look into.";
+	char	f[] = "a test ";
+	printf("strstr    %s\n", strstr(e, f));
+	printf("ft_strstr %s\n", ft_strstr(e, f));
+	char g[] = "This is a test to look into.";
+	char h[] = "";
+	printf("strstr    %s\n", strstr(g, h));
+	printf("ft_strstr %s\n", ft_strstr(g, h));
+	char i[] = "";
+	char j[] = "This is a test to look into.";
+	printf("trstr     %s\n", strstr(i, j));
+	printf("ft_strstr %s\n", ft_strstr(i, j));
+	char k[] = "";
+	char l[] = "";
+	printf("strstr    %s\n", strstr(k, l));
+	printf("ft_strstr %s\n", ft_strstr(k, l));
 }
+*/
