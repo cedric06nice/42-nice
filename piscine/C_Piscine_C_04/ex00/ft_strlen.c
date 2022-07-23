@@ -6,12 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 08:04:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/22 07:54:28 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:00:01 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <string.h>
-// #include <stdio.h>
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -22,6 +20,9 @@ int	ft_strlen(char *str)
 	return (i);
 }
 /*
+#include <string.h>
+#include <stdio.h>
+
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)

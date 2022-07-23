@@ -6,12 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 08:45:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/22 07:59:45 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:00:22 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-// #include <stdio.h>
 
 void	ft_putstr(char *str)
 {
@@ -25,6 +24,8 @@ void	ft_putstr(char *str)
 	}
 }
 /*
+#include <stdio.h>
+
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)
