@@ -6,12 +6,12 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:48:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 14:33:28 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:18:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 unsigned int	ft_strlen(char *str)
 {
 	unsigned int	i;
@@ -40,7 +40,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	dest[i] = '\0';
 	return (ft_strlen(src));
 }
-
+/*
 int	main(void)
 {
 	char t0a[5] = "dddd";
@@ -71,3 +71,4 @@ int	main(void)
 	printf("moi = %s\n", t1f);
 	printf("***********\n");
 }
+*/
