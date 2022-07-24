@@ -6,12 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:31:49 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 10:27:05 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/23 09:42:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <math.h>
 int	ft_is_prime(int nb)
 {
 	int	i;
@@ -19,9 +17,7 @@ int	ft_is_prime(int nb)
 
 	i = 2;
 	a = 0;
-	if (nb < 1)
-		return (0);
-	while (i <= nb / 2)
+	while (i <= nb / i)
 	{
 		if (nb % i == 0)
 			a++;
@@ -32,46 +28,16 @@ int	ft_is_prime(int nb)
 	else
 		return (0);
 }
-/*
+
+#include <stdio.h>
+#include <math.h>
 int	main(void)
 {
-	int	a;
+	int	a = -20;
 
-	a = -1;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 0;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 1;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 2;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 3;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 4;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 5;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 6;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 7;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 8;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 9;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
-	a = 10;
-	printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
-	printf("\n");
+	for (int i = 0; i < 60; i++)
+	{
+		printf("ISPRIME %d = %d\n", a, ft_is_prime(a));
+		a++;
+	}
 }
-*/

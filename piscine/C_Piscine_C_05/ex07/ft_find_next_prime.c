@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:01:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/23 06:47:44 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/23 09:27:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_is_prime(int nb)
 	a = 0;
 	if (nb < 1)
 		return (0);
-	while (i <= nb / 2)
+	while (i <= nb / i)
 	{
 		if (nb % i == 0)
 			a++;
@@ -35,23 +35,19 @@ int ft_is_prime(int nb)
 
 int ft_find_next_prime(int nb)
 {
-	int	i;
 	int	a;
+	int	i;
 
-	i = ft_is_prime(nb);
 	a = 0;
-	while (ft_is_prime(a))
-	{
-		if (ft_is_prime(i))
-			return (i);
+	i = 0;
+	while (!ft_is_prime(nb + i))
 		i++;
-	}
-	return (0);
+	return (i + nb);
 }
 
 int	main(void)
 {
-	int	a = -1;
+	int	a = -10;
 
 	for (int i = 0; i < 30; i++)
 	{
