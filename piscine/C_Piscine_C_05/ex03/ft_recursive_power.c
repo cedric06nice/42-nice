@@ -6,11 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:50:11 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 18:13:16 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:40:49 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 int	ft_recursive_power(int nb, int power)
 {
 	if (power < 0)
@@ -21,6 +20,8 @@ int	ft_recursive_power(int nb, int power)
 		return (1);
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	printf("10 ^ 0 = 1\n");

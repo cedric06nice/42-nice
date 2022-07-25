@@ -6,12 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:53:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 09:30:46 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:26:05 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <math.h>
 int	ft_sqrt(int nb)
 {
 	int	i;
@@ -24,6 +22,9 @@ int	ft_sqrt(int nb)
 	return (i);
 }
 /*
+#include <stdio.h>
+#include <math.h>
+
 int	main(void)
 {
 	int	a;

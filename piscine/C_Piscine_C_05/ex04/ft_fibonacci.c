@@ -6,11 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:15:37 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 18:45:58 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:41:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 int	ft_fibonacci(int index)
 {
 	if (index < 0)
@@ -23,6 +22,8 @@ int	ft_fibonacci(int index)
 		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	printf("F-5 = -1\n");

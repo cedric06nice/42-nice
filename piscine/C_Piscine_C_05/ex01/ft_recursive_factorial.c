@@ -6,11 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:12:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/24 15:56:52 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:40:22 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 int	ft_recursive_factorial(int nb)
 {
 	if (nb == 0)
@@ -18,6 +17,8 @@ int	ft_recursive_factorial(int nb)
 	return (nb * ft_recursive_factorial(nb - 1));
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	printf("Factorielle 0 = 1\n");

@@ -6,11 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:25:46 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 18:13:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:40:36 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 int	ft_iterative_power(int nb, int power)
 {
 	int	i;
@@ -28,6 +27,8 @@ int	ft_iterative_power(int nb, int power)
 	return (nb);
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	printf("10 ^ 0 = 1\n");

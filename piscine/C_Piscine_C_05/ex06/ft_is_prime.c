@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:31:49 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/23 09:42:09 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:30:41 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	ft_is_prime(int nb)
 	else
 		return (0);
 }
-
+/*
 #include <stdio.h>
 #include <math.h>
+
 int	main(void)
 {
 	int	a = -20;
@@ -41,3 +42,4 @@ int	main(void)
 		a++;
 	}
 }
+*/

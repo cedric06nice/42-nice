@@ -6,11 +6,10 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:34:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/20 17:35:21 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 08:40:13 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 int	ft_iterative_factorial(int nb)
 {
 	int	i;
@@ -26,6 +25,8 @@ int	ft_iterative_factorial(int nb)
 	return (nb);
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	printf("Factorielle 0 = 1\n");
