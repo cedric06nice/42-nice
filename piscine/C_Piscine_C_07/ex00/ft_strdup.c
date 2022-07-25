@@ -6,27 +6,44 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:55:48 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 17:23:09 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:16:53 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdio.h>
 
 char	*ft_strdup(char *src)
 {
-	char	*a = malloc(sizeof(src));
+	int		i;
+	char	*a;
+
+	i = 0;
+	a = malloc(sizeof(src));
+	while (src[i])
+	{
+		a[i] = src[i];
+		i++;
+	}
 	return (a);
 }
+/*
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
 int	main(void)
 {
 	char	test[] = "Testing some string";
+	char	*p_strdup;
+	char	*p_ft_strdup;
 	
-	printf("   strdup = %p\n", strdup(test));
-	free(test);
-	printf("ft_strdup = %p\n", ft_strdup(test));
-	free(test);
+	p_strdup = strdup(test);
+	p_ft_strdup = ft_strdup(test);
+	printf("   strdup = %p\n", p_strdup);
+	printf("   strdup = %s\n", p_strdup);
+	printf("ft_strdup = %p\n", p_ft_strdup);
+	printf("ft_strdup = %s\n", p_ft_strdup);
+	free(p_strdup);
+	free(p_ft_strdup);
 }
+*/
