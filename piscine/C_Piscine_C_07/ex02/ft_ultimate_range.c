@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 18:04:00 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 09:19:13 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:00:25 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_ultimate_range(int **range, int min, int max)
 	if (min < -2147483648 || max > 2147483647 || (max - min) > 2147483647)
 		return (-1);
 	*range = malloc(sizeof(int) * (max - min));
+	if (*range == NULL)
+		return (-1);
 	while (i < max - min)
 	{
 		*range[i] = min + i;
