@@ -6,12 +6,12 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 08:57:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/25 09:15:07 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:57:57 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-// #include <stdio.h>
+#include <stdio.h>
 
 void	ft_putchar(char c)
 {
@@ -65,7 +65,7 @@ void	ft_putnbr(int nb)
 	}
 	ft_putnbr_display(nb, tab, num_digits, is_negative);
 }
-/*
+
 int	main(void)
 {
 	for (int i = -10; i < 20; i++)
@@ -81,4 +81,3 @@ int	main(void)
 	ft_putnbr(2147483647);
 	printf("\n");
 }
-*/
