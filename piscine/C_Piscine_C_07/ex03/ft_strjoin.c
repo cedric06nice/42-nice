@@ -6,65 +6,33 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 06:51:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 13:37:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:41:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+char *ft_strjoin(int size, char **strs, char *sep)
 {
-	int	i;
+	char *str;
+	int x;
+	int i;
+	int j;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	j;
-
+	str = malloc(sizeof(strs));
+	x = 0;
 	i = 0;
 	j = 0;
-	while (dest[j])
-		j++;
-	while (src[i])
-	{
-		dest[j + i] = src[i];
-		i++;
-	}
-	dest[j + i] = '\0';
-	return (dest);
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
-	int		i;
-	char	res_size;
-	char	*res;
-
-	i = 0;
-	res_size = 0;
-	if (size == 0)
-		return ("");
 	while (i < size)
 	{
-		res_size += ft_strlen(strs[i]);
+		j = 0;
+		while (strs[i][j])
+			str[x++] = strs[i][j++];
+		j = 0;
+		while (sep[j] && i != size - 1)
+			str[x++] = sep[j++];
 		i++;
 	}
-	res_size += ft_strlen(sep) * (size - 1);
-	res = malloc(sizeof(char) * res_size + 1);
-	i = 0;
-	while (i < size)
-	{
-		ft_strcat(res, strs[i]);
-		if (i != size - 1)
-			ft_strcat(res, sep);
-		i++;
-	}
-	res[ft_strlen(res)] = 0;
-	return (res);
+	str[x] = '\0';
+	return (str);
 }
