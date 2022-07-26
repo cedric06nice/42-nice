@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:54:28 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/21 15:44:05 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:09:33 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,44 +25,59 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	ft_strlen(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s1[i] == s2[i] && s1[i])
+	{
+		if (s1[i] == 0 || s2[i] == 0)
+			return (0);
 		i++;
-	return (i);
+	}
+	return (s1[i] - s2[i]);
 }
 
-void	ft_swap(char *a, char *b)
+void	ft_swap(char **a, char **b)
 {
-	char	temp[] = *a;
-	
+	char	*temp;
+
+	temp = *a;
 	*a = *b;
 	*b = temp;
+}
+
+void	ft_sort_str_tab(char **tab, int size)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (i < size - 1)
+	{
+		while (j < size - i - 1)
+		{
+			if (ft_strcmp(tab[j], tab[j + 1]) > 0)
+				ft_swap(&tab[j], &tab[j + 1]);
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char *argv[])
 {
 	int	i;
-	char	temp[] = { "" };
 
-	if (argc < 2)
-		return (1);
-	i = argc;
-	while (i > 1)
+	ft_sort_str_tab(argv + 1, argc - 1);
+	i = 0;
+	while (i < argc - 1)
 	{
-		i--;
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
-	}
-	i = argc;
-	while (i > 1)
-	{
-		i--;
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
+		ft_putstr((char *) argv[i + 1]);
+		ft_putstr("\n");
+		i++;
 	}
 	return (0);
 }

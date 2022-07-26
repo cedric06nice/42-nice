@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 08:57:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/23 04:53:42 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 09:15:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_putnbr_display(int nb, char *c, int num_dig, int is_neg)
 
 void	ft_putnbr(int nb)
 {
-	int	num_digits;
-	int	is_negative;
+	int		num_digits;
+	int		is_negative;
 	char	tab[11];
 
 	num_digits = 0;

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:20:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/23 06:27:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 09:14:44 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_is_sign(char c)
 	return (0);
 }
 
-int ft_is_minus(char c)
+int	ft_is_minus(char c)
 {
 	if (c == '-')
 		return (1);

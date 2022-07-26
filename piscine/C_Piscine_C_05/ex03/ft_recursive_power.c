@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:50:11 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/25 08:40:49 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 12:12:56 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,19 @@ int	ft_recursive_power(int nb, int power)
 }
 /*
 #include <stdio.h>
+#include <math.h>
 
 int	main(void)
 {
-	printf("10 ^ 0 = 1\n");
-	printf("10 ^ 0 = %d\n", ft_recursive_power(10, 0));
-	printf("-\n");
-	printf("6 ^ 1 = 6\n");
-	printf("6 ^ 1 = %d\n", ft_recursive_power(6, 1));
-	printf("-\n");
-	printf("4 ^ 3 = 64\n");
-	printf("4 ^ 3 = %d\n", ft_recursive_power(4, 3));
-	printf("-\n");
-	printf("3 ^ 6 = 729\n");
-	printf("3 ^ 6 = %d\n", ft_recursive_power(3, 6));
-	printf("-\n");
-	printf("4 ^ 4 = 256\n");
-	printf("4 ^ 4 = %d\n", ft_recursive_power(4, 4));
-	printf("-\n");
-	printf("0 ^ 0 = 1\n");
-	printf("0 ^ 0 = %d\n", ft_recursive_power(0, 0));
-	printf("-\n");
-	printf("5 ^ -5 = 0\n");
-	printf("5 ^ -5 = %d\n", ft_recursive_power(5, -5));
+	for (int i = -10; i < 10; i++)
+	{
+		for (int j = -10; j < 10; j++)
+		{
+			printf("POW  : %d ^ %d = %d\n", i, j, (int)pow(i, j));
+			printf("MINE : %d ^ %d = %d\n", i, j, ft_recursive_power(i, j));
+			printf("-\n");
+		}
+		printf("--------------------------\n");
+	}
 }
 */

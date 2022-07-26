@@ -6,48 +6,38 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:34:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/25 08:40:13 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:35:22 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_iterative_factorial(int nb)
 {
 	int	i;
+	int	fact;
 
-	i = nb - 1;
+	i = 1;
+	fact = 1;
+	if (nb < 0)
+		return (0);
 	if (nb == 0)
 		return (1);
-	while (i > 0)
+	while (i <= nb)
 	{
-		nb *= i;
-		i--;
+		fact *= i;
+		i++;
 	}
-	return (nb);
+	return (fact);
 }
 /*
 #include <stdio.h>
+#include <math.h>
 
 int	main(void)
 {
-	printf("Factorielle 0 = 1\n");
-	printf("Factorielle 0 = %d\n", ft_iterative_factorial(0));
-	printf("-\n");
-	printf("Factorielle 1 = 1\n");
-	printf("Factorielle 1 = %d\n", ft_iterative_factorial(1));
-	printf("-\n");
-	printf("Factorielle 2 = 2\n");
-	printf("Factorielle 2 = %d\n", ft_iterative_factorial(2));
-	printf("-\n");
-	printf("Factorielle 3 = 6\n");
-	printf("Factorielle 3 = %d\n", ft_iterative_factorial(3));
-	printf("-\n");
-	printf("Factorielle 4 = 24\n");
-	printf("Factorielle 4 = %d\n", ft_iterative_factorial(4));
-	printf("-\n");
-	printf("Factorielle 5 = 120\n");
-	printf("Factorielle 5 = %d\n", ft_iterative_factorial(5));
-	printf("-\n");
-	printf("Factorielle 6 = 720\n");
-	printf("Factorielle 6 = %d\n", ft_iterative_factorial(6));
+	for (int i = -2; i < 10; i++)
+	{
+		printf("Factorielle %d = %d\n", i, ft_iterative_factorial(i));
+		printf("-\n");
+	}
 }
 */
