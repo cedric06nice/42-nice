@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:55:48 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 10:27:48 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:52:30 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ char	*ft_strdup(char *src)
 	char	*a;
 
 	i = 0;
-	a = malloc(sizeof(char) * ft_strlen(src));
-	while (src[i] != '\0')
+	a = malloc(sizeof(char) * (ft_strlen(src)));
+	while (src[i])
 	{
 		a[i] = src[i];
 		i++;
 	}
+	a[i] = '\0';
 	return (a);
 }
