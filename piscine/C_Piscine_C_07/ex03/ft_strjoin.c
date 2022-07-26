@@ -6,15 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 06:51:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 09:46:07 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:37:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -22,10 +22,10 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-char *ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -42,13 +42,12 @@ char *ft_strcat(char *dest, char *src)
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int i;
+	int		i;
 	char	res_size;
 	char	*res;
 
 	i = 0;
 	res_size = 0;
-	res = NULL;
 	if (size == 0)
 		return ("");
 	while (i < size)
