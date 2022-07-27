@@ -6,20 +6,20 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:37:04 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 15:06:42 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:27:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_BOOLEAN_H
 # define FT_BOOLEAN_H
-# define EVEN_MSG "I have an even number of arguments."
-# define ODD_MSG "I have an odd number of arguments."
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
 # define SUCCESS 0
-# define EVEN(x) x % 2 ? 0 : 1
+# define EVEN(x) x % 2 == 0
 
 # include <unistd.h>
 
-typedef enum t_bool {
+typedef enum e_bool {
 	FALSE = 0,
 	TRUE = 1
 }	t_bool;

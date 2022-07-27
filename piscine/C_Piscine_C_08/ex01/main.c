@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:37:27 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 15:08:14 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/27 09:33:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putstr(char *str)
 {
 	while (*str)
-        write(1, str++, 1);
+		write(1, str++, 1);
 }
 
 t_bool	ft_is_even(int nbr)

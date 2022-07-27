@@ -6,13 +6,12 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:12:02 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 15:53:53 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:02:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS
-# define FT_ABS
-
-#define ABS(Value) (Value < 0) ? -Value : Value
+#ifndef FT_ABS_H
+# define FT_ABS_H
+# define ABS(Value) (Value < 0) ? -Value : Value
 
 #endif
