@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:01:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/25 16:13:39 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/25 14:16:32 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_find_next_prime(int nb)
 		i++;
 	return (i + nb);
 }
-
+/*
 #include <stdio.h>
 #include <math.h>
 
@@ -60,3 +60,4 @@ int	main(void)
 		a++;
 	}
 }
+*/

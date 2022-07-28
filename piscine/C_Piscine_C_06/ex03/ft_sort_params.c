@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:54:28 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/25 14:09:33 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/28 09:52:51 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i])
+	while (s1[i] && s1[i] == s2[i])
 	{
 		if (s1[i] == 0 || s2[i] == 0)
 			return (0);
@@ -48,34 +48,27 @@ void	ft_swap(char **a, char **b)
 	*b = temp;
 }
 
-void	ft_sort_str_tab(char **tab, int size)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i < size - 1)
-	{
-		while (j < size - i - 1)
-		{
-			if (ft_strcmp(tab[j], tab[j + 1]) > 0)
-				ft_swap(&tab[j], &tab[j + 1]);
-			j++;
-		}
-		i++;
-	}
-}
-
 int	main(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 
-	ft_sort_str_tab(argv + 1, argc - 1);
-	i = 0;
-	while (i < argc - 1)
+	j = 0;
+	while (j < argc)
 	{
-		ft_putstr((char *) argv[i + 1]);
+		i = 0;
+		while (i < argc - 1)
+		{
+			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
+				ft_swap(&argv[i], &argv[i + 1]);
+			i++;
+		}
+		j++;
+	}
+	i = 1;
+	while (i < argc)
+	{
+		ft_putstr(argv[i]);
 		ft_putstr("\n");
 		i++;
 	}
