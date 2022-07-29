@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:30:19 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/28 17:28:21 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/29 06:34:51 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,24 @@ char	**ft_split(char *str, char *charset)
 {
 	int		i;
 	int		j;
-	char	*ret;
+	int		k;
+	char	**ret;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	while (str[i])
 	{
 		if (!check_charset(str[i], charset))
-			ret[j] = str[i];
-		else
-			j++;
+		{
+			ret[j][k] = str[i];
+			k++;
+		}
+		else if (check_charset(str[i], charset))
+		{
+			i++;
+			
+		}
 		i++;
 	}
 	return (str[0]);
@@ -46,7 +54,6 @@ char	**ft_split(char *str, char *charset)
 int	main(int argc, char *argv)
 {
 	int	i;
-	char	
 	(void)argc;
 	(void)argv;
 
