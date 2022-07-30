@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 12:01:55 by acanavat          #+#    #+#             */
-/*   Updated: 2022/07/30 15:10:02 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:07:12 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,16 @@ unsigned int	parse_number(char *str)
 		i++;
 	}
 	return (nb);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
