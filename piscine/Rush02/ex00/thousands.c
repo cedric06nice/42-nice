@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   thousands.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 11:53:51 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/30 18:01:09 by cpugnair         ###   ########.fr       */
+/*   Created: 2022/07/31 16:05:17 by cpugnair          #+#    #+#             */
+/*   Updated: 2022/07/31 18:08:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-char	*read_file(char *filename)
+char	*thousands(char **numbers, t_dict **struct_dict)
 {
-	int		input_file;
-	char	*str;
+	int	i;
 
-	input_file = open(filename, O_RDONLY);
-	if (input_file == -1)
-		print_dict_error();
-	str = malloc(sizeof(input_file));
-	close(input_file);
-	return (str);
-}
-
-// "17      :        seventeen   to test    \n"
-void	line_parsing(char *str)
-{
-	int		id;
-	char	*word;
-
-	printf("  ID = %d", id);
-	printf("WORD = %s", word);
+	i = 0;
+	while (numbers[i])
+	{
+		// numberprint(numbers[i], *struct_dict);
+		printf("i = %d\n", i);
+		printf("numbers[i] = %s\n", numbers[i]);
+		printf("POW  = %d\n", ft_pow(1000, i));
+		printf("STR  = %s\n", struct_dict[i]->id);
+		printf("Word = %s\n", struct_dict[i]->word);
+		i++;
+	}
+	return ("");
 }

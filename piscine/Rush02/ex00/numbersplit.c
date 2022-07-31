@@ -6,45 +6,30 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:21:59 by pfaria-d          #+#    #+#             */
-/*   Updated: 2022/07/30 17:02:49 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 18:01:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-unsigned int	intlen(unsigned int number)
+char	**execute(char *number, char **t)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (number / 10 != 0)
-	{
-		number /= 10;
-		i++;
-	}
-	i++;
-	return (i);
-}
-
-unsigned int	**execute(unsigned int number, unsigned int **t)
-{
-	unsigned int	x;
-	int				i;
-	int				count;
+	int	x;
+	int	i;
+	int	count;
 
 	i = 2;
 	x = 0;
-	count = intlen(number);
+	count = ft_str_len(number);
 	while (count > 0)
 	{
 		if (count > 2)
-			t[x] = (unsigned int *) malloc(sizeof(unsigned int) * 3);
+			t[x] = (char *) malloc(sizeof(char) * 3);
 		else
-			t[x] = (unsigned int *) malloc(sizeof(unsigned int) * count);
+			t[x] = (char *) malloc(sizeof(char) * count);
 		while (i != -1)
 		{
-			t[x][i] = number % 10;
-			number /= 10;
+			t[x][i] = number[count];
 			count--;
 			i--;
 		}
@@ -55,14 +40,38 @@ unsigned int	**execute(unsigned int number, unsigned int **t)
 	return (t);
 }
 
-unsigned int	**numbersplit(unsigned int number)
+char	**numbersplit(char *number)
 {
-	unsigned int	**t;
+	char	**t;
 
-	if (!number || number < 1)
+	if (!number)
 		return (0);
-	t = (unsigned int **) malloc(sizeof(unsigned int *)
-			* ((intlen(number) / 3) + 2));
+	t = (char **) malloc(sizeof(char *)
+			* ((ft_str_len(number) / 3) + 2));
 	t = execute(number, t);
 	return (t);
 }
+/*
+int	main(void)
+{
+	char	*number = "73642801293";
+	char	**f;
+	int		x;
+	int		y;
+
+	y = 0;
+	x = 0;
+	f = numbersplit(number);
+	while (f[x])
+	{
+		while (y < 2)
+		{
+			printf("%c", f[x][y]);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+	return (0);
+}
+*/

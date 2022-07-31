@@ -6,42 +6,26 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 12:01:55 by acanavat          #+#    #+#             */
-/*   Updated: 2022/07/30 18:07:12 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:30:06 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	parse_number(char *str)
-{
-	int	i;
-	int	nb;
+#include "rush02.h"
 
-	nb = 0;
+char	*parse_number(char *str)
+{
+	int		i;
+	char	*nb;
+
 	i = 0;
+	nb = malloc(sizeof(char) * ft_str_len(str));
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
-		{
-			nb = nb * 10 + str[i] - 48;
-		}
-		else
-		{
-			return (-1);
-		}
+			nb[i] = str[i];
 		i++;
 	}
 	return (nb);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
 }

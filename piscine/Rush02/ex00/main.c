@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 11:36:44 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/30 17:40:23 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 17:37:52 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,33 @@
 
 int	main(int argc, char **argv)
 {
-	// ./rush-02 42
+	int		i;
+	char	*file_content;
+	char	**dict;
+	t_dict	*struct_dict;
+	char	**split_numbers;
+
+	i = 0;
 	if (argc == 2)
 	{
-		read_file("numbers.dict");
-		// [1] Check is number
+		file_content = read_file("numbers.dict");
+		dict = lines_split(file_content, "\n");
+		struct_dict = malloc(sizeof(struct_dict) * ft_str_len(file_content));
+		while (dict[i])
+		{
+			struct_dict[i] = dict_line_parsing(dict[i]);
+			i++;
+		}
+		split_numbers = numbersplit(parse_number(argv[1]));
+		i = 0;
+		while (thousands(split_numbers, &struct_dict)[i])
+		{
+			i++;
+		}
 	}
-	// ./rush-02 francais.dict 42
 	else if (argc == 3)
 	{
-		input_file = open(argv[1], O_RDONLY);
-		// [2] Check is number		
+		file_content = read_file(argv[1]);
 	}
 	else
 		print_error();
