@@ -6,14 +6,14 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:37:52 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/26 16:23:01 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/01 10:08:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_POINT_H
 # define FT_POINT_H
 
-typedef struct point {
+typedef struct s_point {
 	int	x;
 	int	y;
 }	t_point;
