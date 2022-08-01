@@ -6,15 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 16:05:17 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/08/01 07:37:26 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:31:25 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-char	*thousands(char **numbers, t_dict **struct_dict)
+char *thousands(char **numbers, t_dict **struct_dict)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (numbers[i])

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:21:59 by pfaria-d          #+#    #+#             */
-/*   Updated: 2022/07/31 18:01:37 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 18:14:48 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ char	**execute(char *number, char **t)
 	count = ft_str_len(number);
 	while (count > 0)
 	{
-		if (count > 2)
-			t[x] = (char *) malloc(sizeof(char) * 3);
-		else
-			t[x] = (char *) malloc(sizeof(char) * count);
-		while (i != -1)
+		i = 2;
+		t[x] = (char *) malloc(sizeof(char) * 3);
+		while (i >= 0)
 		{
-			t[x][i] = number[count];
-			count--;
-			i--;
+			if (count < 1)
+				t[x][i--] = '0';
+			else
+			{
+				t[x][i] = number[--count];
+				i--;
+			}
 		}
 		i = 2;
 		x++;
@@ -64,11 +66,12 @@ int	main(void)
 	f = numbersplit(number);
 	while (f[x])
 	{
-		while (y < 2)
+		while (y <= 2)
 		{
 			printf("%c", f[x][y]);
 			y++;
 		}
+		printf("\n");
 		y = 0;
 		x++;
 	}
