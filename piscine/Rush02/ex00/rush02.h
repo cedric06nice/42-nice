@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 11:50:17 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/31 17:41:24 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 22:37:55 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void			ft_putstr(char *str);
 int				ft_pow(int nb, int power);
 int				ft_strcmp(char *s1, char *s2);
 
-void			print_error(void);
-void			print_dict_error(void);
+int				print_error(void);
+int				print_dict_error(void);
 
 char			*parse_number(char *str);
 char			*read_file(char *filename);

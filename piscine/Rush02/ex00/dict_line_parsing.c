@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:04:25 by acanavat          #+#    #+#             */
-/*   Updated: 2022/07/31 12:34:53 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 22:35:04 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ t_dict	dict_line_parsing(char *str)
 	}
 	while (dict.word[w - 1] == ' ' || dict.word[w - 1] == '\n'
 		|| dict.word[w - 1] == '\0')
-		dict.word[w-- - 1] = '\0';
+			dict.word[w-- - 1] = '\0';
 	return (dict);
 }

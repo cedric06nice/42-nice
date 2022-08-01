@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:47:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2022/07/31 17:41:06 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/07/31 18:26:04 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ void	exception(char str, t_dict *number)
 
 void	numberprint(char *str, t_dict *struct_dict)
 {
-	int	i;
-	int	cas;
+	// int	i;
+	// int	cas;
 
-	i = 0;
-	cas = 0;
+	// i = 0;
+	// cas = 0;
 	if (str[0] > 48)
 		premierchiffre(str[0], struct_dict);
 	if (str[1] > 48)
