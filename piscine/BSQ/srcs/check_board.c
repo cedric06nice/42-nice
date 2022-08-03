@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:10:29 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/01 16:24:55 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:13:47 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,27 @@
 */
 int	check_board(char **board, t_board_info *info)
 {
-	printf("check_board......\n");
 	if (!check_first_line(board, info))
 		return (0);
-	printf("check_first_line ok\n");
 	if (!check_x(board, info))
 		return (0);
-	printf("check_x ok\n");
+	if (!check_y(board, info))
+		return (0);
 	if (!valid_chars(board, info))
 		return (0);
-	printf("valid_chars ok\n");
 	if (!check_info_chars(info))
 		return (0);
-	printf("check_info_chars ok\n");
 	return (1);
+}
+
+int	has_board(char **board)
+{
+	int	i;
+
+	i = 0;
+	while (board[i] != 0)
+		i++;
+	return (i > 1);
 }
 
 /*
@@ -43,7 +50,7 @@ int	check_x(char **board, t_board_info *info)
 
 	i = 1;
 	while (board[i] != 0)
-	{
+	{	
 		if (i == 1)
 			info->x = ft_strlen(board[i]);
 		else if (info->x != ft_strlen(board[i]))
@@ -51,6 +58,21 @@ int	check_x(char **board, t_board_info *info)
 		i++;
 	}
 	return (1);
+}
+
+/*
+**	Check if the initial number is equal to the number of the board's lines
+*/
+int	check_y(char **board, t_board_info *info)
+{
+	unsigned int	i;
+
+	i = 1;
+	while (board[i] != 0)
+		i++;
+	if (info->y == i - 1)
+		return (1);
+	return (0);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 11:06:04 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/01 16:24:53 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:13:51 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_str_is_numeric(char *str)
 int	check_first_line(char **board, t_board_info *board_info)
 {
 	char			c;
-	int				i;
+	unsigned int	i;
 	unsigned int	size;
 
 	size = ft_strlen(board[0]);
@@ -43,16 +43,15 @@ int	check_first_line(char **board, t_board_info *board_info)
 	board_info->full = board[0][i--];
 	board_info->obstacle = board[0][i--];
 	board_info->empty = board[0][i--];
-	while (i >= 0)
+	board_info->y = 0;
+	i = 0;
+	while (i < size - 3)
 	{
 		c = board[0][i];
 		if (c < '0' || c > '9')
 			return (0);
-		if (((unsigned int) i) == (size - 3))
-			board_info->y = c - '0';
-		else
-			board_info->y = board_info->y * 10 + (c - '0');
-		i--;
+		board_info->y = board_info->y * 10 + (c - '0');
+		i++;
 	}
 	return (1);
 }

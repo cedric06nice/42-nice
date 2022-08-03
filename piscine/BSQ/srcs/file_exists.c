@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:50:34 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/01 17:38:40 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 09:10:43 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@
 */
 int	file_exists(char *filename)
 {
-	int	file;
+	int	fd;
 
-	file = open(filename, 0);
-	if (file == -1)
+	fd = open(filename, O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
 		return (0);
-	close(file);
+	}
+	fd = open(filename, 0);
+	if (fd == -1)
+	{
+		close(fd);
+		return (0);
+	}
+	close(fd);
 	return (1);
 }

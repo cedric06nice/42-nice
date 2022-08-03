@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 11:43:26 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/08/01 17:38:40 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 08:54:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ char	**lines_split(char *str, char *charset)
 	t = (char **) malloc(sizeof(char *) * (count(str, charset) + 1));
 	if (t == 0)
 		return (0);
+	free(t);
 	t = split2(str, charset);
 	t[count(str, charset)] = 0;
 	return (t);
