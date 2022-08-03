@@ -1,18 +1,18 @@
-NAME	= ft_display_file
-SRCS	= ft_putchar.c
-HEADERS	= 
+NAME	= 	ft_display_file
 
-OBJS	= ${SRCS:.c=.o}
+SRCS	= 	main.c
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-RMF		= rm -f
+OBJS	= 	${SRCS:.c=.o}
+
+CC		= 	gcc
+CFLAGS	= 	-Wall -Wextra -Werror
+RMF		= 	rm -f
 
 .c.o:
-			${CC} ${CFLAGS} -I${HEADERS} -c $< -o ${<:.c=.o}
+			$(CC) $(CFLAGS) -c $< -o $@
 
 ${NAME}:	${OBJS}
-			ar rc ${NAME} ${HEADERS} ${OBJS}
+			${CC} -o ${NAME} ${OBJS}
 
 all:		${NAME}
 
