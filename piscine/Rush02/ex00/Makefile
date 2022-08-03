@@ -1,18 +1,18 @@
 NAME	= rush-02
-SRCS	= ./*.c
-HEADERS	= ./*.h
+SRCS	= *.c
+HEADERS	= *.h
 
 OBJS	= ${SRCS:.c=.o}
 
 CC		= gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 RMF		= rm -f
 
 .c.o:
 			${CC} ${CFLAGS} -I${HEADERS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-			${CC} ${NAME} ${HEADERS} ${OBJS}
+			${CC} ${CFLAGS} -o ${NAME} -I ${HEADERS} ${OBJS}
 
 all:		${NAME}
 
