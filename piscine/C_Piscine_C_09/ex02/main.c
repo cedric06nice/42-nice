@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 07:51:19 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/07/29 12:05:06 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:56:17 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*c_strautojoin(char **strs, char *sep)
 	return (str);
 }
 
-int	main(int argc, char *argv)
+int	main(void)
 {
 	char	**tab;
 

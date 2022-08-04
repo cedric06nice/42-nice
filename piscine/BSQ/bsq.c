@@ -6,7 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:40:55 by elombard          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/03 19:40:19 by cpugnair         ###   ########.fr       */
+=======
+/*   Updated: 2022/08/03 18:13:31 by cpugnair         ###   ########.fr       */
+>>>>>>> bfaa20a52b4efd1df866847e2f6d10959b42ac28
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +19,19 @@
 /*
 **	Main function
 */
+<<<<<<< HEAD
 int main(int argc, char **argv)
 {
 	char *str;
 	char c;
 	int i;
+=======
+int	main(int argc, char **argv)
+{
+	char	*str;
+	char	c;
+	int		i;
+>>>>>>> bfaa20a52b4efd1df866847e2f6d10959b42ac28
 
 	if (argc == 1)
 	{
@@ -46,10 +58,17 @@ int main(int argc, char **argv)
 /*
 **	Check if the content of the file is valid and if it is, resolve it.
 */
+<<<<<<< HEAD
 void check_and_resolve(char *str)
 {
 	t_board_info info;
 	char **board;
+=======
+void	check_and_resolve(char *str)
+{
+	t_board_info	info;
+	char			**board;
+>>>>>>> bfaa20a52b4efd1df866847e2f6d10959b42ac28
 
 	board = lines_split(str, "\n");
 	if (!check_line_breaks(str, board))
@@ -69,12 +88,20 @@ void check_and_resolve(char *str)
 	}
 	free(str);
 	free_board(board);
+<<<<<<< HEAD
 	while (42);
 }
 
 void free_board(char **board)
 {
 	int i;
+=======
+}
+
+void	free_board(char **board)
+{
+	int	i;
+>>>>>>> bfaa20a52b4efd1df866847e2f6d10959b42ac28
 
 	i = 0;
 	while (board[i])
