@@ -6,15 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:40:55 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/03 09:48:29 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:13:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	check_and_resolve(char *str);
-void	free_board(char **board);
-
+/*
+**	Main function
+*/
 int	main(int argc, char **argv)
 {
 	char	*str;
@@ -43,6 +43,9 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/*
+**	Check if the content of the file is valid and if it is, resolve it.
+*/
 void	check_and_resolve(char *str)
 {
 	t_board_info	info;

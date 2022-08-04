@@ -6,12 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 11:06:04 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/03 10:13:51 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:13:17 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
+/*
+**	Check if the string is numeric
+*/
 int	ft_str_is_numeric(char *str)
 {
 	int	i;
@@ -56,8 +59,12 @@ int	check_first_line(char **board, t_board_info *board_info)
 	return (1);
 }
 
+/*
+** Check if all characters are different
+*/
 int	check_info_chars(t_board_info *info)
 {
-	return ((info->empty != info->obstacle && info->empty != info->full)
-		&& (info->obstacle != info->full));
+	return (info->empty != info->obstacle
+		&& info->empty != info->full
+		&& info->obstacle != info->full);
 }

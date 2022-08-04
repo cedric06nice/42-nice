@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:34:59 by cpugnair          #+#    #+#             */
-/*   Updated: 2022/08/03 09:47:48 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:14:46 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,19 @@
 # include "structs.h"
 
 /*
+** bsq.c
+*/
+void			check_and_resolve(char *str);
+void			free_board(char **board);
+
+/*
 ** check_board.c
 */
 int				check_board(char **board, t_board_info *info);
+int				has_board(char **board);
 int				check_x(char **board, t_board_info *info);
 int				check_y(char **board, t_board_info *info);
 int				valid_chars(char **board, t_board_info *info);
-int				has_board(char **board);
 
 /*
 ** check_first_line.c
@@ -60,6 +66,7 @@ int				file_size(char *file);
 void			find_square(char **board, t_board_info info);
 void			init_squares(t_square *square, t_square *best_square);
 int				is_obstacle(char **board, t_square square, t_board_info info);
+int				out_of_bounds(t_square square, t_board_info info);
 t_square		find_best_square(t_square square, t_square best_square);
 
 /*

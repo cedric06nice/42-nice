@@ -6,12 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 09:03:53 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/03 10:13:41 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:13:32 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
+/*
+**	Check if there is as many '\n' as lines in the file.
+*/
 int	check_line_breaks(char *str, char **board)
 {
 	unsigned int	i;

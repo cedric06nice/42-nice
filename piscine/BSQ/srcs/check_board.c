@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:10:29 by elombard          #+#    #+#             */
-/*   Updated: 2022/08/03 10:13:47 by cpugnair         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:14:44 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int	check_board(char **board, t_board_info *info)
 	return (1);
 }
 
+/*
+** Check if there is a board after the first line
+*/
 int	has_board(char **board)
 {
 	int	i;
