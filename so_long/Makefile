@@ -1,7 +1,11 @@
 NAME		= 	so_long
 
 SRCS_DIR	=	./srcs/
-SRCS		=	./srcs/main.c
+SRCS		=	./srcs/main.c		\
+				./srcs/errors.c		\
+				./srcs/map_set.c	\
+				./srcs/map_check.c	\
+				./srcs/map.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
 
@@ -16,8 +20,8 @@ RM			=	rm -f
 LIBFT_PATH	=	./libft
 LIBFT		=	./libft/libft.a
 
-LIBMLX_PATH	=	./minilibx
-LIBMLX		=	./minilibx/libmlx.a $(LIBMLX_FLAGS)
+LIBMLX_PATH	=	./libmlx
+LIBMLX		=	./libmlx/libmlx.a $(LIBMLX_FLAGS)
 
 INCLUDES	=	-I $(HEADERS) -I $(LIBFT_PATH) -I $(LIBMLX_PATH)
 
@@ -27,6 +31,7 @@ YELLOW		=	"\033[1;33m"
 WHITE		=	"\033[1;37m"
 GREEN		=	"\033[1;32m"
 PURPLE		=	"\033[1;35m"
+CYAN		=	"\033[1;36m"
 GRAY		=	"\033[1;30m"
 END			=	"\033[0m"
 
