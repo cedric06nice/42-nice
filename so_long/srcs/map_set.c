@@ -6,70 +6,48 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:28:46 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/21 08:56:41 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:16:50 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-static void		set_nb_rows(t_mlx *mlx, char *file)
+static void 	set_player_position(t_mlx *mlx, int pos_x, int pos_y)
 {
-	int		fd;
-	int		rows;
-	char	*line;
-
-	rows = 0;
-	fd = open(file, O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			mlx->nb_rows = rows;
-			break ;
-		}
-		rows++;
-		free(line);
-	}
+	mlx->player.position_x = pos_x;
+	mlx->player.position_y = pos_y;
 }
 
-static void 	set_nb_cols(t_mlx *mlx, char *file)
+static void 	set_exit_position(t_mlx *mlx, int pos_x, int pos_y)
 {
-	int		fd;
-	char	*line;
-
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	mlx->nb_cols = ft_strlen(line) - 1;
-	free(line);
-}
-
-void 			set_map_size(t_mlx *mlx, char *file)
-{
-	set_nb_rows(mlx, file);
-	set_nb_cols(mlx, file);
-	mlx->win_width = mlx->nb_cols * TILE_SIZE;
-	mlx->win_height = mlx->nb_rows * TILE_SIZE;
+	mlx->exit_pos_x = pos_x;
+	mlx->exit_pos_y = pos_y;
 }
 
 static int		count_map_items(t_mlx *mlx, char c)
 {
-	int		i;
-	int		j;
+	int		row;
+	int		col;
 	int		count;
 
-	i = 0;
+	row = 0;
 	count = 0;
-	while (i < mlx->nb_rows)
+	while (row < mlx->nb_rows)
 	{
-		j = 0;
-		while (j < mlx->nb_cols)
+		col = 0;
+		while (col < mlx->nb_cols)
 		{
-			if (mlx->map[i][j] == c)
+			if (mlx->map[row][col] == c)
+			{
+				if (c == PLAYER)
+					set_player_position(mlx, col, row);
+				else if (c == EXIT)
+					set_exit_position(mlx, col, row);
 				count++;
-			j++;
+			}
+			col++;
 		}
-		i++;
+		row++;
 	}
 	return (count);
 }
@@ -77,11 +55,10 @@ static int		count_map_items(t_mlx *mlx, char c)
 int				set_map_items(t_mlx *mlx)
 {
 	if (!mlx->map)
-		return (print_errors("Map must be set before setting items."));
-	
-	mlx->nb_players = count_map_items(mlx, PLAYER);
-	mlx->nb_exits = count_map_items(mlx, EXIT);
+		exit_program_error("Map must be set before setting items.");
 	mlx->nb_collectibles = count_map_items(mlx, COLLECTIBLE);
-	mlx->nb_moves = 0;
+	mlx->nb_exits = count_map_items(mlx, EXIT);
+	mlx->nb_players = count_map_items(mlx, PLAYER);
+	mlx->player.nb_moves = 0;
 	return (0);
 }

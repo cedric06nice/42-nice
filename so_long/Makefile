@@ -3,9 +3,13 @@ NAME		= 	so_long
 SRCS_DIR	=	./srcs/
 SRCS		=	./srcs/main.c		\
 				./srcs/errors.c		\
+				./srcs/graphics.c	\
+				./srcs/hooks.c		\
 				./srcs/map_set.c	\
 				./srcs/map_check.c	\
-				./srcs/map.c
+				./srcs/map.c		\
+				./srcs/player.c		\
+				./srcs/print.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
 
