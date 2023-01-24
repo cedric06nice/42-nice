@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:38:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/22 20:13:27 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:20:35 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		check_map_size(t_mlx *mlx)
 {
 	if (mlx->nb_rows < 3 || mlx->nb_cols < 3)
 		exit_program_error("The map is too small.");
-	if (mlx->nb_rows > 30 || mlx->nb_cols > 30)
+	if (mlx->nb_rows > 27 || mlx->nb_cols > 47)
 		exit_program_error("The map is too big.");
 	return (0);
 }

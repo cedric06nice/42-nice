@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:14:51 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/22 20:17:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:00:05 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ void			load_map(t_mlx *mlx, char *file)
 	check_map_surroundings(mlx);
 	set_map_items(mlx);
 	check_map_items(mlx);
+	bactracking(mlx);
+	set_map(mlx, file);
 }

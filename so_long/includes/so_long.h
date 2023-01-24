@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 00:55:36 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/23 10:52:37 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:34:48 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 # define TILE_SIZE 32
 # define NB_IMG 6
 # define COLLECTIBLE_IMG "./assets/collectible.xpm"
-# define EMPTY_IMG "./assets/empty.xpm"
-# define EXIT_CLOSE_IMG "./assets/exit_close.xpm"
-# define EXIT_OPEN_IMG "./assets/exit_open.xpm"
-# define PLAYER_IMG "./assets/player.xpm"
+# define EMPTY_IMG "./assets/floor.xpm"
+# define EXIT_CLOSE_IMG "./assets/door_close.xpm"
+# define EXIT_OPEN_IMG "./assets/door_open.xpm"
+# define PLAYER_IMG "./assets/player_down.xpm"
 # define WALL_IMG "./assets/wall.xpm"
 
 /* Keys */
@@ -43,6 +43,10 @@
 # define DOWN 1
 # define RIGHT 2
 # define UP 13
+# define ARROW_LEFT 123
+# define ARROW_DOWN 125
+# define ARROW_RIGHT 124
+# define ARROW_UP 126
 # define ESC 53
 
 typedef struct s_img
@@ -77,6 +81,9 @@ typedef struct s_mlx
 	t_img		img;
 	t_player	player;
 }				t_mlx;
+
+/* backtracking.c */
+int 			bactracking(t_mlx *mlx_original);
 
 /* errors.c */
 void			exit_program_error(char *error);
