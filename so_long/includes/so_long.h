@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 00:55:36 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/23 23:34:48 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/24 20:50:17 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@
 # define WALL '1'
 
 /* Graphics */
-# define HEADER_SIZE 50
+// # define HEADER_SIZE 0
 # define TILE_SIZE 32
-# define NB_IMG 6
+# define NB_IMG 5
 # define COLLECTIBLE_IMG "./assets/collectible.xpm"
 # define EMPTY_IMG "./assets/floor.xpm"
 # define EXIT_CLOSE_IMG "./assets/door_close.xpm"
-# define EXIT_OPEN_IMG "./assets/door_open.xpm"
 # define PLAYER_IMG "./assets/player_down.xpm"
 # define WALL_IMG "./assets/wall.xpm"
 
@@ -43,10 +42,6 @@
 # define DOWN 1
 # define RIGHT 2
 # define UP 13
-# define ARROW_LEFT 123
-# define ARROW_DOWN 125
-# define ARROW_RIGHT 124
-# define ARROW_UP 126
 # define ESC 53
 
 typedef struct s_img
@@ -94,9 +89,6 @@ int				close_window(t_mlx *mlx);
 void			load_graphics(t_mlx *mlx);
 int 			draw_graphics(t_mlx *mlx);
 
-/* hooks.c */
-int				keyboard_key_pressed(int keycode, t_mlx *mlx);
-
 /* map_check.c */
 int				check_arguments(int argc, char **argv);
 int				check_map_size(t_mlx *mlx);
@@ -110,6 +102,7 @@ int				set_map_items(t_mlx *mlx);
 void			load_map(t_mlx *mlx, char *file);
 
 /* player.c */
+int				keyboard_key_pressed(int keycode, t_mlx *mlx);
 void			player_direction(t_mlx *mlx, int keycode);
 void			player_move(t_mlx *mlx, int to_x, int to_y);
 

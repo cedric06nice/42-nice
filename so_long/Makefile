@@ -1,18 +1,27 @@
 NAME		= 	so_long
 
-SRCS_DIR	=	./srcs/
-SRCS		=	./srcs/main.c			\
-				./srcs/backtracking.c	\
-				./srcs/errors.c			\
-				./srcs/graphics.c		\
-				./srcs/hooks.c			\
-				./srcs/map_set.c		\
-				./srcs/map_check.c		\
-				./srcs/map.c			\
-				./srcs/player.c			\
-				./srcs/print.c
+SRCS		=	./srcs/mandatory/main.c				\
+				./srcs/mandatory/backtracking.c		\
+				./srcs/mandatory/errors.c			\
+				./srcs/mandatory/graphics.c			\
+				./srcs/mandatory/map_check.c		\
+				./srcs/mandatory/map_set.c			\
+				./srcs/mandatory/map.c				\
+				./srcs/mandatory/player.c			\
+				./srcs/mandatory/print.c
+
+SRCS_BONUS	=	./srcs/bonus/main_bonus.c			\
+				./srcs/bonus/backtracking_bonus.c	\
+				./srcs/bonus/errors_bonus.c			\
+				./srcs/bonus/graphics_bonus.c		\
+				./srcs/bonus/map_bonus.c			\
+				./srcs/bonus/map_check_bonus.c		\
+				./srcs/bonus/map_set_bonus.c		\
+				./srcs/bonus/player_bonus.c			\
+				./srcs/bonus/print_bonus.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
+OBJS_BONUS 	=	$(SRCS_BONUS:%.c=%.o)
 
 HEADERS		= 	./includes
 
@@ -40,7 +49,7 @@ CYAN		=	"\033[1;36m"
 GRAY		=	"\033[1;30m"
 END			=	"\033[0m"
 
-.PHONY		:	all clean fclean re
+.PHONY		:	all clean fclean re bonus
 
 %.o 		:	%.c
 				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(INCLUDES) -c $< -o $@
@@ -53,10 +62,16 @@ $(NAME)		: 	$(OBJS)
 				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(OBJS) $(LIBFT) $(LIBMLX) -o $(NAME)
 				@echo ${BLUE} "> 📚 Compilation finished - $(NAME)" ${END}
 
+bonus		: 	$(OBJS_BONUS)
+				@$(MAKE) -C $(LIBFT_PATH)
+				@$(MAKE) -C $(LIBMLX_PATH)
+				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(OBJS_BONUS) $(LIBFT) $(LIBMLX) -o $(NAME)
+				@echo ${BLUE} "> 📚 Compilation finished - $(NAME)" ${END}
+
 clean		:
 				@$(MAKE) clean -C $(LIBFT_PATH)
 				@$(MAKE) clean -C $(LIBMLX_PATH)
-				@$(RM) $(OBJS)
+				@$(RM) $(OBJS) $(OBJS_BONUS)
 				@echo ${PURPLE} "> 🧹 *.o files removed - $(NAME)" ${END}
 
 fclean		:	clean
