@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 08:43:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/25 10:03:03 by cpugnair         ###   ########.fr       */
+/*   Created: 2023/01/26 22:32:58 by cpugnair          #+#    #+#             */
+/*   Updated: 2023/01/29 11:35:45 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minitalk.h"
+#include "minitalk.h"
 
-int		main(void)
+int	print_error(char *error)
 {
-	t_data	data;
-
-	data.pid = getpid();
-	data.str = NULL;
-	data.i = 0;
-	data.j = 0;
-	ft_printf("Server PID: %d\n", data.pid);
+	write(2, error, ft_strlen(error));
+	exit (0);
 }
