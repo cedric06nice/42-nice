@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:05:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/16 19:38:01 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:48:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** The ft_atoi() function converts the initial portion
 ** of the string pointed to by nptr to int.
 */
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int			i;
 	int			sign;

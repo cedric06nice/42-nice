@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:47:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/16 21:26:30 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:44:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ static void	ft_print_hex(t_flags *list, va_list ap, char flag)
 		list->lenght += ft_hex_len(n);
 	}
 }
-
 
 static void	ft_print_c(t_flags *list, va_list ap)
 {

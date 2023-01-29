@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:21:18 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/16 20:08:00 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:46:57 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		}
 	}
 }
+
 static long	is_neg(long nbr, char *base)
 {
 	if (nbr == 0)

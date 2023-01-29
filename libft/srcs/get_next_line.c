@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:56:27 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/21 10:34:36 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:46:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char		*ft_read_to_left_str(int fd, char *left_str);
 ** Return value Read line: correct behavior
 ** NULL: there is nothing else to read, or an error occurred
 */
-char			*get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*buffer[4096];
@@ -40,7 +40,7 @@ char			*get_next_line(int fd)
 	return (line);
 }
 
-static char		*ft_get_line(char *left_str)
+static char	*ft_get_line(char *left_str)
 {
 	int		i;
 	char	*str;
@@ -68,7 +68,7 @@ static char		*ft_get_line(char *left_str)
 	return (str);
 }
 
-static char		*ft_new_left_str(char *left_str)
+static char	*ft_new_left_str(char *left_str)
 {
 	int		i;
 	int		j;
@@ -90,7 +90,7 @@ static char		*ft_new_left_str(char *left_str)
 	return (free(left_str), str);
 }
 
-static char		*ft_read_to_left_str(int fd, char *left_str)
+static char	*ft_read_to_left_str(int fd, char *left_str)
 {
 	char	*buffer;
 	int		read_bytes;
@@ -122,7 +122,7 @@ static size_t	gnl_strlen(char *s)
 	return (i);
 }
 
-static char		*gnl_strchr(char *s, int c)
+static char	*gnl_strchr(char *s, int c)
 {
 	int	i;
 
@@ -140,7 +140,7 @@ static char		*gnl_strchr(char *s, int c)
 	return (0);
 }
 
-static char		*gnl_strjoin(char *left_str, char *buff)
+static char	*gnl_strjoin(char *left_str, char *buff)
 {
 	size_t	i;
 	size_t	j;
