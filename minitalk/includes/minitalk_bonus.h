@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:44:44 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/29 10:09:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/30 00:52:53 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@
 # include <stdio.h>
 # include "../libft/includes/libft.h"
 
-typedef struct s_data
-{
-	pid_t				pid;
-	struct sigaction	action;
-	char				*str;
-}						t_data;
-
-int						print_error(char *error);
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define END "\033[0m"
 
 #endif

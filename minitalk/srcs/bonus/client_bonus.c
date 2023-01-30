@@ -6,75 +6,75 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 22:05:34 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/29 11:40:25 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/30 01:17:20 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-int	g_data_recieved;
-
-int	send_string(t_data data)
+void	signal_error(void)
 {
-	int		i;
-	int		j;
+	ft_printf("\n%sClient: Unexpected error.%s\n", RED, END);
+	exit (-1);
+}
 
-	i = -1;
-	while (data.str[++i])
+void	char_to_bin(unsigned char c, int pid)
+{
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
 	{
-		j = 128;
-		while (j >= 1)
+		if (c & 128)
 		{
-			if (g_data_recieved == 1)
-			{
-				if (j & data.str[i])
-				{
-					if (kill(data.pid, SIGUSR1) == -1)
-						print_error("Error in sending signal!\n");
-				}
-				else
-				{
-					if (kill(data.pid, SIGUSR2) == -1)
-						print_error("Error in sending signal!\n");
-				}
-				j /= 2;
-				g_data_recieved = 0;
-			}
-			usleep(10000);
+			if (kill(pid, SIGUSR2) == -1)
+				signal_error();
 		}
+		else
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				signal_error();
+		}
+		c <<= 1;
+		bit++;
+		pause();
+		usleep(100);
 	}
-	return (0);
 }
 
-void	client_handler(int signum, siginfo_t *siginfo, void *uap)
+void	sent_text(char *str, int pid)
 {
-	(void)uap;
-	(void)siginfo;
-	(void)signum;
-	g_data_recieved = 1;
-	write(1, "Signal received from server\n", 28);
-	return ;
+	int	i;
+
+	i = 0;
+	while (str[i])
+		char_to_bin(str[i++], pid);
+	char_to_bin('\0', pid);
 }
 
-int	main(int argc, char **argv)
+void	recieved(int sig)
 {
-	t_data	data;
+	static int	sent;
 
-	g_data_recieved = 1;
-	if (argc != 3)
-		print_error("Wrong amount of arguments.");
-	data.pid = ft_atoi(argv[1]);
-	if (kill(data.pid, 0))
-		print_error("Wrong PID!\n");
-	data.str = argv[2];
-	data.action.sa_flags = SA_SIGINFO;
-	data.action.sa_sigaction = client_handler;
-	sigemptyset(&data.action.sa_mask);
-	sigaddset(&data.action.sa_mask, SIGUSR1);
-	sigaddset(&data.action.sa_mask, SIGINT);
-	sigaddset(&data.action.sa_mask, SIGQUIT);
-	if (sigaction(SIGUSR2, &data.action, NULL) == -1)
-		print_error("Error in client sigaction.\n");
-	send_string(data);
+	if (sig == SIGUSR1)
+	{
+		ft_printf("%s%d signals sent successfully!%s\n", GREEN, ++sent, END);
+		exit (0);
+	}
+	if (sig == SIGUSR2)
+		++sent;
+}
+
+int	main(int ac, char **av)
+{
+	if (ac != 3)
+	{
+		ft_printf("%sUsage: ./client <server_pid> <text>%s\n", RED, END);
+		return (-1);
+	}
+	ft_printf("%sClient's PID: %d%s\n", RED, getpid(), END);
+	signal(SIGUSR1, recieved);
+	signal(SIGUSR2, recieved);
+	sent_text(av[2], ft_atoi(av[1]));
 	return (0);
 }

@@ -6,44 +6,76 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:43:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/29 11:40:41 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/01/30 01:52:27 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	server_handler(int signum, siginfo_t *siginfo, void *uap)
+void	signal_error(void)
 {
-	static int	ascii_num = 0;
-	static int	byte = 0;
+	ft_printf("\n%sServer: Unexpected error.%s\n", RED, END);
+	exit (-1);
+}
 
-	(void)uap;
-	if (signum == SIGUSR1)
-		ascii_num += (128 >> byte);
-	byte += 1;
-	if (byte == 8)
+void	extended_action(char *c, int *received, int *client_pid, int *bit)
+{
+	ft_printf("%c", *c);
+	if (*c == '\0')
 	{
-		ft_putchar_fd(ascii_num, 1);
-		byte = 0;
-		ascii_num = 0;
+		ft_printf("\n%s%d signals recieved from client PID: %d%s\n",
+			GREEN, *received, *client_pid, END);
+		*received = 0;
+		*c = 0;
+		if (kill(*client_pid, SIGUSR1) == -1)
+			signal_error();
+		return ;
 	}
-	if (kill(siginfo->si_pid, SIGUSR2) == -1)
-		print_error("Error in returning signal!\n");
+	*bit = 0;
+}
+
+void	action(int sig, siginfo_t *info, void *context)
+{
+	static int	client_pid;
+	static int	bit;
+	static char	c;
+	static int	received;
+	static int	current_pid;
+
+	(void)context;
+	if (!client_pid)
+		client_pid = info->si_pid;
+	current_pid = info->si_pid;
+	if (client_pid != current_pid)
+	{
+		client_pid = current_pid;
+		bit = 0;
+		c = 0;
+		received = 0;
+	}
+	c |= (sig == SIGUSR2);
+	received++;
+	bit++;
+	if (bit == 8)
+		extended_action(&c, &received, &client_pid, &bit);
+	c <<= 1;
+	usleep(100);
+	kill(client_pid, SIGUSR2);
 }
 
 int	main(void)
 {
-	t_data	data;
+	struct sigaction	sa;
 
-	write(1, "Server started!\nPID: ", 21);
-	ft_putnbr_fd(getpid(), 1);
-	write(1, "\n", 1);
-	sigemptyset(&data.action.sa_mask);
-	data.action.sa_flags = SA_SIGINFO;
-	data.action.sa_sigaction = server_handler;
-	sigaction(SIGUSR1, &data.action, 0);
-	sigaction(SIGUSR2, &data.action, 0);
-	while (1)
+	ft_printf("%sServer's PID: %d%s\n", RED, getpid(), END);
+	sa.sa_sigaction = action;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_SIGINFO;
+	while (6)
+	{
+		sigaction(SIGUSR1, &sa, 0);
+		sigaction(SIGUSR2, &sa, 0);
 		pause();
-	return (0);
+	}
+	return (-1);
 }

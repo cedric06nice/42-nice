@@ -2,20 +2,16 @@ NAME_SERVER			= 	server
 
 NAME_CLIENT			= 	client
 
-SRCS_SERVER			=	./srcs/mandatory/server.c	\
-						./srcs/errors.c
+SRCS_SERVER			=	./srcs/mandatory/server.c
 OBJS_SERVER 		=	$(SRCS_SERVER:%.c=%.o)
 
-SRCS_CLIENT			=	./srcs/mandatory/client.c	\
-						./srcs/errors.c
+SRCS_CLIENT			=	./srcs/mandatory/client.c
 OBJS_CLIENT 		=	$(SRCS_CLIENT:%.c=%.o)
 
-SRCS_SERVER_BONUS	=	./srcs/bonus/server_bonus.c	\
-						./srcs/errors_bonus.c
+SRCS_SERVER_BONUS	=	./srcs/bonus/server_bonus.c
 OBJS_SERVER_BONUS 	=	$(SRCS_SERVER_BONUS:%.c=%.o)
 
-SRCS_CLIENT_BONUS	=	./srcs/bonus/client_bonus.c	\
-						./srcs/errors_bonus.c
+SRCS_CLIENT_BONUS	=	./srcs/bonus/client_bonus.c
 OBJS_CLIENT_BONUS 	=	$(SRCS_CLIENT_BONUS:%.c=%.o)
 
 HEADERS				= 	./includes
