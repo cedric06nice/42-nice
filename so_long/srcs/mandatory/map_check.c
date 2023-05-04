@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:38:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:43:34 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:37:13 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		check_arguments(int argc, char **argv)
+int	check_arguments(int argc, char **argv)
 {
 	int		fd;
 
@@ -31,7 +31,7 @@ int		check_arguments(int argc, char **argv)
 	return (0);
 }
 
-int		check_map_size(t_mlx *mlx)
+int	check_map_size(t_mlx *mlx)
 {
 	if (mlx->nb_rows < 3 || mlx->nb_cols < 3)
 		exit_program_error("The map is too small.");
@@ -40,7 +40,7 @@ int		check_map_size(t_mlx *mlx)
 	return (0);
 }
 
-int		check_map_surroundings(t_mlx *mlx)
+int	check_map_surroundings(t_mlx *mlx)
 {
 	int		row;
 	int		col;
@@ -64,7 +64,7 @@ int		check_map_surroundings(t_mlx *mlx)
 	return (0);
 }
 
-int		check_map_items(t_mlx *mlx)
+int	check_map_items(t_mlx *mlx)
 {
 	if (mlx->nb_players != 1)
 		exit_program_error("The map must contain exactly one player.");

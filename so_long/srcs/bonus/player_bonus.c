@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:31:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 21:39:29 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:35:16 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int		keyboard_key_pressed(int keycode, t_mlx *mlx)
+int	keyboard_key_pressed(int keycode, t_mlx *mlx)
 {
 	if (keycode == LEFT || keycode == ARROW_LEFT
 		|| keycode == RIGHT || keycode == ARROW_RIGHT

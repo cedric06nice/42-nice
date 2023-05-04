@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:35:04 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:41:39 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:33:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	exit_program_peacefully(t_mlx *mlx, char *msg)
 	exit (EXIT_SUCCESS);
 }
 
-int		close_window(t_mlx *mlx)
+int	close_window(t_mlx *mlx)
 {
 	exit_program_peacefully(mlx, "Window closed.");
 	exit (EXIT_SUCCESS);

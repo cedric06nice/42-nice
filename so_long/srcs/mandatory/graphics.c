@@ -6,30 +6,30 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:21:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:43:18 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:36:16 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void		load_graphics(t_mlx *mlx)
+void	load_graphics(t_mlx *mlx)
 {
 	mlx->img.img[0] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		COLLECTIBLE_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			COLLECTIBLE_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[1] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		EMPTY_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			EMPTY_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[2] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		EXIT_CLOSE_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			EXIT_CLOSE_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[3] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		PLAYER_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			PLAYER_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[4] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		WALL_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			WALL_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	if (!mlx->img.img[0] || !mlx->img.img[1] || !mlx->img.img[2]
 		|| !mlx->img.img[3] || !mlx->img.img[4])
 		exit_program_error("Failed to load graphics.");
 }
 
-int 		draw_graphics(t_mlx *mlx)
+int draw_graphics(t_mlx *mlx)
 {
 	int		i;
 	int		j;

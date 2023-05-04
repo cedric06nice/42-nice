@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:45:55 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:54:02 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:36:58 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 
@@ -26,7 +26,8 @@ int main(int argc, char **argv)
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 		return (free(mlx), EXIT_FAILURE);
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->win_width, mlx->win_height, mlx->win_name);
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->win_width,
+			mlx->win_height, mlx->win_name);
 	if (mlx->win_ptr == NULL)
 		return (free(mlx), EXIT_FAILURE);
 	load_graphics(mlx);

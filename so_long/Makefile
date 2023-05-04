@@ -49,7 +49,7 @@ CYAN		=	"\033[1;36m"
 GRAY		=	"\033[1;30m"
 END			=	"\033[0m"
 
-.PHONY		:	all clean fclean re bonus
+.PHONY		:	all clean fclean re bonus norm
 
 %.o 		:	%.c
 				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(INCLUDES) -c $< -o $@
@@ -81,3 +81,7 @@ fclean		:	clean
 
 re			:	fclean all
 				@echo ${YELLOW} "> 📚 Remake done - $(NAME)" ${END}
+
+norm		:
+				@norminette $(SRCS) $(SRCS_BONUS) $(HEADERS) $(LIBFT_PATH)
+				@echo ${GREEN} "> ✅ Norminette done - $(NAME)" ${END}

@@ -6,39 +6,39 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:21:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 21:35:48 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:33:59 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void		load_graphics(t_mlx *mlx)
+void	load_graphics(t_mlx *mlx)
 {
 	mlx->img.img[0] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		COLLECTIBLE_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			COLLECTIBLE_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[1] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		EMPTY_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			EMPTY_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[2] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		EXIT_CLOSE_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			EXIT_CLOSE_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[3] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		PLAYER_DOWN_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			PLAYER_DOWN_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[4] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		WALL_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			WALL_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[5] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		EXIT_OPEN_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			EXIT_OPEN_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[6] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		PLAYER_UP_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			PLAYER_UP_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[7] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		PLAYER_LEFT_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			PLAYER_LEFT_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	mlx->img.img[8] = mlx_xpm_file_to_image(mlx->mlx_ptr,
-		PLAYER_RIGHT_IMG, &mlx->img.img_width, &mlx->img.img_height);
+			PLAYER_RIGHT_IMG, &mlx->img.img_width, &mlx->img.img_height);
 	if (!mlx->img.img[0] || !mlx->img.img[1] || !mlx->img.img[2]
 		|| !mlx->img.img[3] || !mlx->img.img[4] || !mlx->img.img[5]
 		|| !mlx->img.img[6] || !mlx->img.img[7] || !mlx->img.img[8])
 		exit_program_error("Failed to load graphics.");
 }
 
-int 		draw_graphics(t_mlx *mlx)
+int	draw_graphics(t_mlx *mlx)
 {
 	int		i;
 	int		j;

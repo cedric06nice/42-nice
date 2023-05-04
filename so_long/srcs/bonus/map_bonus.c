@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:14:51 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:55:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:34:40 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void		set_nb_rows(t_mlx *mlx, char *file)
+static void	set_nb_rows(t_mlx *mlx, char *file)
 {
 	int		fd;
 	int		rows;
@@ -33,7 +33,7 @@ static void		set_nb_rows(t_mlx *mlx, char *file)
 	}
 }
 
-static void 	set_nb_cols(t_mlx *mlx, char *file)
+static void	set_nb_cols(t_mlx *mlx, char *file)
 {
 	int		fd;
 	char	*line;
@@ -44,7 +44,7 @@ static void 	set_nb_cols(t_mlx *mlx, char *file)
 	free(line);
 }
 
-static void 	set_map_size(t_mlx *mlx, char *file)
+static void	set_map_size(t_mlx *mlx, char *file)
 {
 	set_nb_rows(mlx, file);
 	set_nb_cols(mlx, file);
@@ -52,7 +52,7 @@ static void 	set_map_size(t_mlx *mlx, char *file)
 	mlx->win_height = mlx->nb_rows * TILE_SIZE + HEADER_SIZE;
 }
 
-static int		set_map(t_mlx *mlx, char *file)
+static int	set_map(t_mlx *mlx, char *file)
 {
 	int		fd;
 	int		row;
@@ -82,7 +82,7 @@ static int		set_map(t_mlx *mlx, char *file)
 	return (0);
 }
 
-void			load_map(t_mlx *mlx, char *file)
+void	load_map(t_mlx *mlx, char *file)
 {
 	set_map_size(mlx, file);
 	check_map_size(mlx);

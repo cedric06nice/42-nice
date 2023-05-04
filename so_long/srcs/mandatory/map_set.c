@@ -6,25 +6,25 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:28:46 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:43:38 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:37:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void 	set_player_position(t_mlx *mlx, int pos_x, int pos_y)
+static void	set_player_position(t_mlx *mlx, int pos_x, int pos_y)
 {
 	mlx->player.position_x = pos_x;
 	mlx->player.position_y = pos_y;
 }
 
-static void 	set_exit_position(t_mlx *mlx, int pos_x, int pos_y)
+static void	set_exit_position(t_mlx *mlx, int pos_x, int pos_y)
 {
 	mlx->exit_pos_x = pos_x;
 	mlx->exit_pos_y = pos_y;
 }
 
-static int		count_map_items(t_mlx *mlx, char c)
+static int	count_map_items(t_mlx *mlx, char c)
 {
 	int		row;
 	int		col;
@@ -52,7 +52,7 @@ static int		count_map_items(t_mlx *mlx, char c)
 	return (count);
 }
 
-int				set_map_items(t_mlx *mlx)
+int	set_map_items(t_mlx *mlx)
 {
 	if (!mlx->map)
 		exit_program_error("Map must be set before setting items.");

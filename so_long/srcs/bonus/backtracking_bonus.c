@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:04:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:41:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:33:16 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int		explore(t_mlx *mlx, int x, int y)
+int	explore(t_mlx *mlx, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= mlx->nb_cols || y >= mlx->nb_rows)
 		return (0);
@@ -42,7 +42,7 @@ int		explore(t_mlx *mlx, int x, int y)
 	return (0);
 }
 
-int 	bactracking(t_mlx *mlx_original)
+int	bactracking(t_mlx *mlx_original)
 {
 	t_mlx	*mlx;
 	int		valid;

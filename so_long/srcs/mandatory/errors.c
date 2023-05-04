@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:35:04 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:43:04 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:36:00 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	exit_program_error(char *error)
 {
-	ft_putendl_fd(ft_strjoin(ft_strjoin("Error\n\033[1;31m", error), "\033[0m") , 2);
+	ft_putendl_fd(ft_strjoin(ft_strjoin("Error\n\033[1;31m", error),
+			"\033[0m") , 2);
 	exit (EXIT_FAILURE);
 }
 
@@ -25,7 +26,7 @@ void	exit_program_peacefully(t_mlx *mlx, char *msg)
 	exit (EXIT_SUCCESS);
 }
 
-int		close_window(t_mlx *mlx)
+int	close_window(t_mlx *mlx)
 {
 	exit_program_peacefully(mlx, "Window closed.");
 	exit (EXIT_SUCCESS);
