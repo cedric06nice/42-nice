@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 23:32:41 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 07:27:43 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:16:18 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ char	*read_to_left_str(int fd, char *left_str)
 	if (!buffer)
 		return (NULL);
 	read_bytes = 1;
-	while (!ft_strchr(left_str, '\n') && read_bytes != 0)
+	while (!gnl_strchr(left_str, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 			return (free(buffer), NULL);
 		buffer[read_bytes] = '\0';
-		left_str = ft_strjoin(left_str, buffer);
+		left_str = gnl_strjoin(left_str, buffer);
 	}
 	return (free(buffer), left_str);
 }
@@ -92,7 +92,7 @@ char	*new_left_str(char *left_str)
 		i++;
 	if (!left_str[i])
 		return (free(left_str), NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(left_str) - i + 1));
+	str = (char *)malloc(sizeof(char) * (gnl_strlen(left_str) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
