@@ -1,68 +1,70 @@
 NAME		=	libft.a
 
-LDIR		=	srcs
-
-SRCS		=	${LDIR}/ft_abs.c				\
-				${LDIR}/ft_atoi.c				\
-				${LDIR}/ft_bzero.c				\
-				${LDIR}/ft_calloc.c				\
-				${LDIR}/ft_factorial.c			\
-				${LDIR}/ft_fibonacci.c			\
-				${LDIR}/ft_free.c				\
-				${LDIR}/ft_intlen.c				\
-				${LDIR}/ft_is_prime.c			\
-				${LDIR}/ft_isalnum.c			\
-				${LDIR}/ft_isalpha.c			\
-				${LDIR}/ft_isascii.c			\
-				${LDIR}/ft_isdigit.c			\
-				${LDIR}/ft_isprint.c			\
-				${LDIR}/ft_itoa.c				\
-				${LDIR}/ft_lstadd_back.c		\
-				${LDIR}/ft_lstadd_front.c		\
-				${LDIR}/ft_lstclear.c			\
-				${LDIR}/ft_lstdelone.c			\
-				${LDIR}/ft_lstiter.c			\
-				${LDIR}/ft_lstlast.c			\
-				${LDIR}/ft_lstmap.c				\
-				${LDIR}/ft_lstnew.c				\
-				${LDIR}/ft_lstsize.c			\
-				${LDIR}/ft_malloc.c				\
-				${LDIR}/ft_memchr.c				\
-				${LDIR}/ft_memcmp.c				\
-				${LDIR}/ft_memcpy.c				\
-				${LDIR}/ft_memmove.c			\
-				${LDIR}/ft_memset.c				\
-				${LDIR}/ft_pow.c				\
-				$(LDIR)/ft_printf.c				\
-				${LDIR}/ft_putchar_fd.c			\
-				${LDIR}/ft_putendl_fd.c			\
-				${LDIR}/ft_putnbr_base.c		\
-				${LDIR}/ft_putnbr_fd.c			\
-				${LDIR}/ft_putstr_fd.c			\
-				${LDIR}/ft_sort_int_tab.c		\
-				${LDIR}/ft_split.c				\
-				${LDIR}/ft_sqrt.c				\
-				${LDIR}/ft_strchr.c				\
-				${LDIR}/ft_strcmp.c				\
-				${LDIR}/ft_strdup.c				\
-				${LDIR}/ft_striteri.c			\
-				${LDIR}/ft_strjoin.c			\
-				${LDIR}/ft_strlcat.c			\
-				${LDIR}/ft_strlcpy.c			\
-				${LDIR}/ft_strlen.c				\
-				${LDIR}/ft_strmapi.c			\
-				${LDIR}/ft_strncmp.c			\
-				${LDIR}/ft_strnstr.c			\
-				${LDIR}/ft_strrchr.c			\
-				${LDIR}/ft_strrev.c				\
-				${LDIR}/ft_strtrim.c			\
-				${LDIR}/ft_substr.c				\
-				$(LDIR)/ft_swap.c				\
-				${LDIR}/ft_tolower.c			\
-				${LDIR}/ft_toupper.c			\
-				$(LDIR)/ft_uitoa.c				\
-				${LDIR}/ft_wordcount.c			\
-				${LDIR}/get_next_line.c
+SRCS		=	srcs/ft_gnl/get_next_line.c			\
+				srcs/ft_is/ft_isalnum.c				\
+				srcs/ft_is/ft_isalpha.c				\
+				srcs/ft_is/ft_isascii.c				\
+				srcs/ft_is/ft_isdigit.c				\
+				srcs/ft_is/ft_isprint.c				\
+				srcs/ft_lst/ft_lstadd_back.c		\
+				srcs/ft_lst/ft_lstadd_front.c		\
+				srcs/ft_lst/ft_lstclear.c			\
+				srcs/ft_lst/ft_lstdelone.c			\
+				srcs/ft_lst/ft_lstiter.c			\
+				srcs/ft_lst/ft_lstlast.c			\
+				srcs/ft_lst/ft_lstmap.c				\
+				srcs/ft_lst/ft_lstnew.c				\
+				srcs/ft_lst/ft_lstsize.c			\
+				srcs/ft_mat/ft_abs.c				\
+				srcs/ft_mat/ft_factorial.c			\
+				srcs/ft_mat/ft_fibonacci.c			\
+				srcs/ft_mat/ft_is_prime.c			\
+				srcs/ft_mat/ft_pow.c				\
+				srcs/ft_mat/ft_sqrt.c				\
+				srcs/ft_mem/ft_bzero.c				\
+				srcs/ft_mem/ft_calloc.c				\
+				srcs/ft_mem/ft_free.c				\
+				srcs/ft_mem/ft_malloc.c				\
+				srcs/ft_mem/ft_memchr.c				\
+				srcs/ft_mem/ft_memcmp.c				\
+				srcs/ft_mem/ft_memcpy.c				\
+				srcs/ft_mem/ft_memmove.c			\
+				srcs/ft_mem/ft_memset.c				\
+				srcs/ft_oth/ft_intlen.c				\
+				srcs/ft_oth/ft_sort_int_tab.c		\
+				srcs/ft_oth/ft_swap.c				\
+				srcs/ft_oth/ft_wordcount.c			\
+				srcs/ft_prf/ft_printf.c				\
+				srcs/ft_prf/print_csdi.c			\
+				srcs/ft_prf/print_hex.c				\
+				srcs/ft_prf/print_p.c				\
+				srcs/ft_prf/print_uper.c			\
+				srcs/ft_put/ft_putchar_fd.c			\
+				srcs/ft_put/ft_putendl_fd.c			\
+				srcs/ft_put/ft_putnbr_base.c		\
+				srcs/ft_put/ft_putnbr_fd.c			\
+				srcs/ft_put/ft_putstr_fd.c			\
+				srcs/ft_to/ft_atoi.c				\
+				srcs/ft_to/ft_itoa.c				\
+				srcs/ft_to/ft_tolower.c				\
+				srcs/ft_to/ft_toupper.c				\
+				srcs/ft_to/ft_uitoa.c				\
+				srcs/ft_str/ft_strchr.c				\
+				srcs/ft_str/ft_strcmp.c				\
+				srcs/ft_str/ft_strdup.c				\
+				srcs/ft_str/ft_striteri.c			\
+				srcs/ft_str/ft_strjoin.c			\
+				srcs/ft_str/ft_strlcat.c			\
+				srcs/ft_str/ft_strlcpy.c			\
+				srcs/ft_str/ft_strlen.c				\
+				srcs/ft_str/ft_strmapi.c			\
+				srcs/ft_str/ft_strncmp.c			\
+				srcs/ft_str/ft_strnstr.c			\
+				srcs/ft_str/ft_strrchr.c			\
+				srcs/ft_str/ft_strrev.c				\
+				srcs/ft_str/ft_strtrim.c			\
+				srcs/ft_sub/ft_split.c				\
+				srcs/ft_sub/ft_substr.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
 
@@ -70,7 +72,6 @@ HEADERS		=	./includes/
 
 CC 			=	gcc
 CFLAGS 		=	-Wall -Wextra -Werror
-ARCH_FLAG 	=	-arch x86_64
 AR			=	ar
 ARFLAGS		=	rcs
 # compile for M1 Mac
@@ -86,10 +87,10 @@ CYAN		=	"\033[1;36m"
 GRAY		=	"\033[1;30m"
 END			=	"\033[0m"
 
-.PHONY		:	all clean fclean re
+.PHONY		:	all clean fclean re norm
 
 %.o 		:	%.c
-				@$(CC) $(CFLAGS) $(ARCH_FLAG) -I $(HEADERS) -c $< -o $@
+				@$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
 
 all			:	$(NAME)
 
@@ -107,3 +108,7 @@ fclean		:	clean
 
 re 			:	fclean all
 				@echo ${YELLOW} "> 📚 Remake done - $(NAME)" ${END}
+
+norm		:
+				@norminette $(SRCS) $(HEADERS)
+				@echo ${GREEN} "> ✅ Norminette done - $(NAME)" ${END}
