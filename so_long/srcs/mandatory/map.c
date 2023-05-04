@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:14:51 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:37:45 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:20:36 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	set_nb_rows(t_mlx *mlx, char *file)
 	fd = open(file, O_RDONLY);
 	while (1)
 	{
-		line = get_next_line(fd);
+		line = ft_get_next_line(fd);
 		if (!line)
 		{
 			mlx->nb_rows = rows;
@@ -39,7 +39,7 @@ static void	set_nb_cols(t_mlx *mlx, char *file)
 	char	*line;
 
 	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
+	line = ft_get_next_line(fd);
 	mlx->nb_cols = ft_strlen(line) - 1;
 	free(line);
 }
@@ -50,7 +50,6 @@ static void	set_map_size(t_mlx *mlx, char *file)
 	set_nb_cols(mlx, file);
 	mlx->win_width = mlx->nb_cols * TILE_SIZE;
 	mlx->win_height = mlx->nb_rows * TILE_SIZE;
-	ft_printf("Window size: %d x %d\n", mlx->win_width, mlx->win_height);
 }
 
 static int	set_map(t_mlx *mlx, char *file)
@@ -70,13 +69,10 @@ static int	set_map(t_mlx *mlx, char *file)
 		mlx->map[row] = malloc(sizeof(char) * mlx->nb_cols);
 		if (!mlx->map[row])
 			exit_program_error("Malloc failed");
-		col = 0;
-		line = get_next_line(fd);
-		while (col < mlx->nb_cols)
-		{
+		col = -1;
+		line = ft_get_next_line(fd);
+		while (col++ < mlx->nb_cols)
 			mlx->map[row][col] = line[col];
-			col++;
-		}
 		free(line);
 		row++;
 	}

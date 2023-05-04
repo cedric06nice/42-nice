@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:31:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:35:16 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:27:22 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ void	player_direction(t_mlx *mlx, int keycode)
 	}
 }
 
+void	move_player(t_mlx *mlx, int to_x, int to_y)
+{
+	mlx->player.position_x = to_x;
+	mlx->player.position_y = to_y;
+	mlx->player.nb_moves++;
+}
+
 void	player_move(t_mlx *mlx, int to_x, int to_y)
 {
 	int		x;
@@ -59,18 +66,14 @@ void	player_move(t_mlx *mlx, int to_x, int to_y)
 	{
 		mlx->map[y][x] = EMPTY;
 		mlx->map[to_y][to_x] = PLAYER;
-		mlx->player.position_x = to_x;
-		mlx->player.position_y = to_y;
-		mlx->player.nb_moves++;
+		move_player(mlx, to_x, to_y);
 	}
 	else if (mlx->map[to_y][to_x] == COLLECTIBLE)
 	{
 		mlx->map[y][x] = EMPTY;
 		mlx->map[to_y][to_x] = PLAYER;
-		mlx->player.position_x = to_x;
-		mlx->player.position_y = to_y;
+		move_player(mlx, to_x, to_y);
 		mlx->nb_collectibles--;
-		mlx->player.nb_moves++;
 	}
 	else if (mlx->map[to_y][to_x] == EXIT && mlx->nb_collectibles == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:21:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:36:16 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:54:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,36 @@ void	load_graphics(t_mlx *mlx)
 		exit_program_error("Failed to load graphics.");
 }
 
-int draw_graphics(t_mlx *mlx)
+void	put_image_c(t_mlx *mlx, int x, int y)
+{
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[0], x, y);
+}
+
+void	put_image_p(t_mlx *mlx, int x, int y)
+{
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[3], x, y);
+}
+
+void	put_image(t_mlx *mlx, char map, int x, int y)
+{
+	if (map == 'C')
+		put_image_c(mlx, x, y);
+	if (map == '0')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+			mlx->img.img[1], x, y);
+	else if (map == 'E')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+			mlx->img.img[2], x, y);
+	else if (map == 'P')
+		put_image_p(mlx, x, y);
+	else if (map == '1')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+			mlx->img.img[4], x, y);
+}
+
+int	draw_graphics(t_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -45,22 +74,7 @@ int draw_graphics(t_mlx *mlx)
 		x = 0;
 		while (j < mlx->nb_cols)
 		{
-			if (mlx->map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[0], x, y);
-			}
-			if (mlx->map[i][j] == '0')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-			else if (mlx->map[i][j] == 'E')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[2], x, y);
-			else if (mlx->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[3], x, y);
-			}
-			else if (mlx->map[i][j] == '1')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[4], x, y);
+			put_image(mlx, mlx->map[i][j], x, y);
 			x += mlx->img.img_width;
 			j++;
 		}

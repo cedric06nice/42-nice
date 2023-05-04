@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 00:55:36 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/24 20:50:17 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 09:06:44 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,36 +78,36 @@ typedef struct s_mlx
 }				t_mlx;
 
 /* backtracking.c */
-int 			bactracking(t_mlx *mlx_original);
+int		bactracking(t_mlx *mlx_original);
 
 /* errors.c */
-void			exit_program_error(char *error);
-void			exit_program_peacefully(t_mlx *mlx, char *error);
-int				close_window(t_mlx *mlx);
+void	exit_program_error(char *error);
+void	exit_program_peacefully(t_mlx *mlx, char *error);
+int		close_window(t_mlx *mlx);
 
 /* graphics.c */
-void			load_graphics(t_mlx *mlx);
-int 			draw_graphics(t_mlx *mlx);
+void	load_graphics(t_mlx *mlx);
+int		draw_graphics(t_mlx *mlx);
 
 /* map_check.c */
-int				check_arguments(int argc, char **argv);
-int				check_map_size(t_mlx *mlx);
-int				check_map_surroundings(t_mlx *mlx);
-int				check_map_items(t_mlx *mlx);
+int		check_arguments(int argc, char **argv);
+int		check_map_size(t_mlx *mlx);
+int		check_map_surroundings(t_mlx *mlx);
+int		check_map_items(t_mlx *mlx);
 
 /* map_set.c */
-int				set_map_items(t_mlx *mlx);
+int		set_map_items(t_mlx *mlx);
 
 /* map.c */
-void			load_map(t_mlx *mlx, char *file);
+void	load_map(t_mlx *mlx, char *file);
 
 /* player.c */
-int				keyboard_key_pressed(int keycode, t_mlx *mlx);
-void			player_direction(t_mlx *mlx, int keycode);
-void			player_move(t_mlx *mlx, int to_x, int to_y);
+int		keyboard_key_pressed(int keycode, t_mlx *mlx);
+void	player_direction(t_mlx *mlx, int keycode);
+void	player_move(t_mlx *mlx, int to_x, int to_y);
 
 /* print.c */
-void			print_details(t_mlx *mlx);
-void			print_map(t_mlx *mlx);
+void	print_details(t_mlx *mlx);
+void	print_map(t_mlx *mlx);
 
 #endif

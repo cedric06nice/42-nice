@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:28:46 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:35:09 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 08:53:54 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void set_player_position(t_mlx *mlx, int pos_x, int pos_y)
+static void	set_player_position(t_mlx *mlx, int pos_x, int pos_y)
 {
 	mlx->player.position_x = pos_x;
 	mlx->player.position_y = pos_y;

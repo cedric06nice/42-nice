@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:31:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:37:49 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:24:51 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,28 @@ void	player_direction(t_mlx *mlx, int keycode)
 		player_move(mlx, mlx->player.position_x + 1, mlx->player.position_y);
 }
 
+void	position(t_mlx *mlx, int to_x, int to_y)
+{
+	mlx->map[to_y][to_x] = PLAYER;
+	mlx->player.position_x = to_x;
+	mlx->player.position_y = to_y;
+	mlx->player.nb_moves++;
+	ft_printf("Number of moves: %d\n", mlx->player.nb_moves);
+}
+
+void	exit_game(t_mlx *mlx)
+{
+	if (mlx->nb_collectibles > 0)
+		ft_printf("You still have %d collectible(s) to collect.\n",
+			mlx->nb_collectibles);
+	else
+	{
+		mlx->player.nb_moves++;
+		ft_printf("Number of moves: %d\n", mlx->player.nb_moves);
+		close_window(mlx);
+	}
+}
+
 void	player_move(t_mlx *mlx, int to_x, int to_y)
 {
 	int		x;
@@ -44,32 +66,14 @@ void	player_move(t_mlx *mlx, int to_x, int to_y)
 	if (mlx->map[to_y][to_x] == EMPTY)
 	{
 		mlx->map[y][x] = EMPTY;
-		mlx->map[to_y][to_x] = PLAYER;
-		mlx->player.position_x = to_x;
-		mlx->player.position_y = to_y;
-		mlx->player.nb_moves++;
-		ft_printf("Number of moves: %d\n", mlx->player.nb_moves);
+		position(mlx, to_x, to_y);
 	}
 	else if (mlx->map[to_y][to_x] == COLLECTIBLE)
 	{
 		mlx->map[y][x] = EMPTY;
-		mlx->map[to_y][to_x] = PLAYER;
-		mlx->player.position_x = to_x;
-		mlx->player.position_y = to_y;
+		position(mlx, to_x, to_y);
 		mlx->nb_collectibles--;
-		mlx->player.nb_moves++;
-		ft_printf("Number of moves: %d\n", mlx->player.nb_moves);
 	}
 	else if (mlx->map[to_y][to_x] == EXIT)
-	{
-		if (mlx->nb_collectibles > 0)
-			ft_printf("You still have %d collectible(s) to collect.\n",
-				mlx->nb_collectibles);
-		else
-		{
-			mlx->player.nb_moves++;
-			ft_printf("Number of moves: %d\n", mlx->player.nb_moves);
-			close_window(mlx);
-		}
-	}
+		exit_game(mlx);
 }

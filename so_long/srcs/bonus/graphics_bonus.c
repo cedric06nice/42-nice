@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:21:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:33:59 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:15:45 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,47 @@ void	load_graphics(t_mlx *mlx)
 		exit_program_error("Failed to load graphics.");
 }
 
+void	put_image_to_window(t_mlx *mlx, int img, int x, int y)
+{
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+		mlx->img.img[img], x, y);
+}
+
+void	put_image_direction(t_mlx *mlx, char direction, int x, int y)
+{
+	put_image_to_window(mlx, 1, x, y);
+	if (direction == 'U')
+		put_image_to_window(mlx, 6, x, y);
+	else if (direction == 'L')
+		put_image_to_window(mlx, 7, x, y);
+	else if (direction == 'R')
+		put_image_to_window(mlx, 8, x, y);
+	else
+		put_image_to_window(mlx, 3, x, y);
+}
+
+void	put_image(t_mlx *mlx, char map, int x, int y)
+{
+	if (map == 'C')
+	{
+		put_image_to_window(mlx, 1, x, y);
+		put_image_to_window(mlx, 0, x, y);
+	}
+	if (map == '0')
+		put_image_to_window(mlx, 1, x, y);
+	else if (map == 'E')
+	{
+		if (mlx->nb_collectibles > 0)
+			put_image_to_window(mlx, 2, x, y);
+		else
+			put_image_to_window(mlx, 5, x, y);
+	}
+	else if (map == 'P')
+		put_image_direction(mlx, mlx->player.direction, x, y);
+	else if (map == '1')
+		put_image_to_window(mlx, 4, x, y);
+}
+
 int	draw_graphics(t_mlx *mlx)
 {
 	int		i;
@@ -48,44 +89,14 @@ int	draw_graphics(t_mlx *mlx)
 	i = 0;
 	y = HEADER_SIZE;
 	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 30, 20, 0x00FFFFFF,
-		ft_strjoin("Moves: ", ft_itoa(mlx->player.nb_moves)));
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 30, 40, 0x00FFFFFF,
-		ft_strjoin("Items: ", ft_itoa(mlx->nb_collectibles)));
+	string_mlx(mlx);
 	while (i < mlx->nb_rows)
 	{
 		j = 0;
 		x = 0;
 		while (j < mlx->nb_cols)
 		{
-			if (mlx->map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[0], x, y);
-			}
-			if (mlx->map[i][j] == '0')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-			else if (mlx->map[i][j] == 'E')
-			{
-				if (mlx->nb_collectibles > 0)
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[2], x, y);
-				else
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[5], x, y);
-			}
-			else if (mlx->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[1], x, y);
-				if (mlx->player.direction == 'U')
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[6], x, y);
-				else if (mlx->player.direction == 'L')
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[7], x, y);
-				else if (mlx->player.direction == 'R')
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[8], x, y);
-				else
-					mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[3], x, y);
-			}
-			else if (mlx->map[i][j] == '1')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img[4], x, y);
+			put_image(mlx, mlx->map[i][j], x, y);
 			x += mlx->img.img_width;
 			j++;
 		}

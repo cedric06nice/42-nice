@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:04:15 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:35:39 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:15:28 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,8 @@ int	explore(t_mlx *mlx, int x, int y)
 			|| mlx->map[y][x] == COLLECTIBLE)
 		{
 			mlx->map[y][x] = '.';
-			if (explore(mlx, x + 1, y))
-				return (1);
-			if (explore(mlx, x - 1, y))
-				return (1);
-			if (explore(mlx, x, y + 1))
-				return (1);
-			if (explore(mlx, x, y - 1))
+			if ((explore(mlx, x + 1, y)) || (explore(mlx, x - 1, y))
+				|| (explore(mlx, x, y + 1)) || (explore(mlx, x, y - 1)))
 				return (1);
 			mlx->map[y][x] = '0';
 		}
@@ -42,7 +37,7 @@ int	explore(t_mlx *mlx, int x, int y)
 	return (0);
 }
 
-int bactracking(t_mlx *mlx_original)
+int	bactracking(t_mlx *mlx_original)
 {
 	t_mlx	*mlx;
 	int		valid;

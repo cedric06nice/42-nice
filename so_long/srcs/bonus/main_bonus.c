@@ -6,11 +6,19 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:45:55 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/04 08:36:58 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:16:20 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	string_mlx(t_mlx *mlx)
+{
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 30, 20, 0x00FFFFFF,
+		ft_strjoin("Moves: ", ft_itoa(mlx->player.nb_moves)));
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 30, 40, 0x00FFFFFF,
+		ft_strjoin("Items: ", ft_itoa(mlx->nb_collectibles)));
+}
 
 int	main(int argc, char **argv)
 {
