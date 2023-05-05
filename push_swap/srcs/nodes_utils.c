@@ -6,20 +6,20 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:31:40 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/13 00:35:24 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 08:28:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		nodes_count(t_node *root)
+int	nodes_count(t_node *root)
 {
 	if (root == NULL)
 		return (0);
 	return (1 + nodes_count(root->next));
 }
 
-int		nodes_check_duplicate(t_node *root)
+int	nodes_check_duplicate(t_node *root)
 {
 	t_node	*tmp;
 	t_node	*tmp2;
@@ -56,7 +56,7 @@ t_node	*nodes_get_nth_element(t_node *root, int index)
 	return (NULL);
 }
 
-int		nodes_get_nth_value(t_node *root, int index)
+int	nodes_get_nth_value(t_node *root, int index)
 {
 	int		count;
 	t_node	*current;
@@ -73,7 +73,7 @@ int		nodes_get_nth_value(t_node *root, int index)
 	return (INT_MIN);
 }
 
-int		get_nth_flag(t_node *root, int index)
+int	get_nth_flag(t_node *root, int index)
 {
 	int		count;
 	t_node	*current;
@@ -90,7 +90,7 @@ int		get_nth_flag(t_node *root, int index)
 	return (INT_MIN);
 }
 
-int		nodes_has_loops(t_node *root)
+int	nodes_has_loops(t_node *root)
 {
 	t_node	*slow;
 	t_node	*fast;

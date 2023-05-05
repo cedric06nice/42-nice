@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:37:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/14 17:34:04 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 08:40:40 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void sort_three(t_stack *stack)
+static void	sort_three(t_stack *stack)
 {
 	int		min;
 	int		max;
@@ -54,7 +54,7 @@ int	find_shortest_route(int min, t_node *node)
 	return (0);
 }
 
-static void sort_six(t_stack *stack)
+static void	sort_six(t_stack *stack)
 {
 	while (stack->size_a > 3)
 	{

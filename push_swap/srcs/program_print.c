@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 23:34:34 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/14 23:32:29 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 08:49:37 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	print_commands(t_stack stack)
 
 void	print_extra_info(t_stack stack)
 {
+	t_cmd	*cmd;
+
 	ft_printf("\tMin       : %d\n", stack.min);
 	ft_printf("\tMax       : %d\n", stack.max);
 	ft_printf("\tAverage   : %d\n", stack.average);
@@ -35,15 +37,19 @@ void	print_extra_info(t_stack stack)
 	ft_printf("\tHas loops : %d\n", nodes_has_loops(stack.list_a));
 	ft_printf("\tError     : %d\n", stack.error);
 	ft_printf("\tCommands  : \t");
-	for (t_cmd *cmd = stack.commands; cmd; cmd = cmd->next)
+	cmd = stack.commands;
+	while (cmd)
+	{
 		ft_printf("%s ", cmd->cmd);
+		cmd = cmd->next;
+	}
 	ft_printf("\n");
 }
 
 void	print_lists(t_stack stack, int extra)
 {
-	t_node *a;
-	t_node *b;
+	t_node	*a;
+	t_node	*b;
 
 	a = stack.list_a;
 	b = stack.list_b;
@@ -72,8 +78,8 @@ void	print_lists(t_stack stack, int extra)
 
 void	print_linear(t_stack stack, int extra)
 {
-	t_node *a;
-	t_node *b;
+	t_node	*a;
+	t_node	*b;
 
 	a = stack.list_a;
 	b = stack.list_b;
@@ -96,9 +102,9 @@ void	print_linear(t_stack stack, int extra)
 		print_extra_info(stack);
 }
 
-void 	print_test(char *str)
+void	print_test(char *str)
 {
-	int 	i;
+	int	i;
 
 	i = ft_strlen(str);
 	ft_printf("\n\033[1;34m*-----");

@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:37:06 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/15 11:19:21 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:24:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		nodes_is_sorted(t_node **list, char sort)
+int	nodes_is_sorted(t_node **list, char sort)
 {
 	t_node	*lst;
 
@@ -43,7 +43,7 @@ int		nodes_is_sorted(t_node **list, char sort)
 /*
 ** Split list_a to list_b to the middle
 */
-void 	split_list(t_stack *stack)
+void	split_list(t_stack *stack)
 {
 	while (stack->size_a > stack->size / 2)
 	{
@@ -57,10 +57,32 @@ void 	split_list(t_stack *stack)
 /*
 ** Merge list_b to list_a
 */
-void 	merge_list(t_stack *stack)
+void	merge_list(t_stack *stack)
 {
 	while (stack->size_b > 0)
 		pa(stack);
+}
+
+void	reducer(t_cmd *prev, t_cmd *tmp)
+{
+	if ((!ft_strcmp(prev->cmd, "sa") && !ft_strcmp(tmp->cmd, "sb"))
+		|| (!ft_strcmp(prev->cmd, "sb") && !ft_strcmp(tmp->cmd, "sa")))
+	{
+		prev->cmd = "ss";
+		prev->next = tmp->next;
+	}
+	if ((!ft_strcmp(prev->cmd, "ra") && !ft_strcmp(tmp->cmd, "rb"))
+		|| (!ft_strcmp(prev->cmd, "rb") && !ft_strcmp(tmp->cmd, "ra")))
+	{
+		prev->cmd = "rr";
+		prev->next = tmp->next;
+	}
+	if ((!ft_strcmp(prev->cmd, "rra") && !ft_strcmp(tmp->cmd, "rrb"))
+		|| (!ft_strcmp(prev->cmd, "rrb") && !ft_strcmp(tmp->cmd, "rra")))
+	{
+		prev->cmd = "rrr";
+		prev->next = tmp->next;
+	}
 }
 
 /*
@@ -78,28 +100,11 @@ void	reduce_commands(t_stack *stack)
 			return ;
 		prev = tmp;
 		tmp = tmp->next;
-		if ((!ft_strcmp(prev->cmd, "sa") && !ft_strcmp(tmp->cmd, "sb"))
-			|| (!ft_strcmp(prev->cmd, "sb") && !ft_strcmp(tmp->cmd, "sa")))
-		{
-			prev->cmd = "ss";
-			prev->next = tmp->next;
-		}
-		if ((!ft_strcmp(prev->cmd, "ra") && !ft_strcmp(tmp->cmd, "rb"))
-			|| (!ft_strcmp(prev->cmd, "rb") && !ft_strcmp(tmp->cmd, "ra")))
-		{
-			prev->cmd = "rr";
-			prev->next = tmp->next;
-		}
-		if ((!ft_strcmp(prev->cmd, "rra") && !ft_strcmp(tmp->cmd, "rrb"))
-			|| (!ft_strcmp(prev->cmd, "rrb") && !ft_strcmp(tmp->cmd, "rra")))
-		{
-			prev->cmd = "rrr";
-			prev->next = tmp->next;
-		}
+		reducer(prev, tmp);
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 

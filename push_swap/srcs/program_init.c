@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/16 22:02:29 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 08:51:36 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Count number of arguments
 */
-static int 	count_args(char **args)
+static int	count_args(char **args)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ static int	*transform(char **arguments, int i, int count_args)
 		{
 			if (j == 0
 				&& (ft_isdigit(arguments[i][j])
-					|| ((arguments[i][j] == '-' || arguments[i][j] == '+')
+				|| ((arguments[i][j] == '-' || arguments[i][j] == '+')
 						&& ft_isdigit(arguments[i][j + 1]))))
 				j++;
 			else if (ft_isdigit(arguments[i][j]))
@@ -70,7 +70,6 @@ static int	*transform(char **arguments, int i, int count_args)
 				return (NULL);
 		}
 		num = ft_atoi(arguments[i]);
-		// ft_putendl_fd(ft_itoa(num), 1);
 		if (num > 2147483647 || num < -2147483648)
 			return (NULL);
 		list_num[k++] = num;
@@ -83,7 +82,7 @@ static int	*transform(char **arguments, int i, int count_args)
 /*
 ** Load arguments into stack->list_a and assign index number to each node
 */
-static void load_arguments(t_stack *stack, int	*list_num)
+static void	load_arguments(t_stack *stack, int	*list_num)
 {
 	int		i;
 	int		j;
@@ -138,7 +137,7 @@ static void	first_init(t_stack *stack)
 ** and load arguments into stack->list_a
 ** and assign index number to each node in stack->list_a
 */
-t_stack		*init(int argc, char **argv)
+t_stack	*init(int argc, char **argv)
 {
 	int		i;
 	char	**arguments;
@@ -151,16 +150,15 @@ t_stack		*init(int argc, char **argv)
 		return (NULL);
 	first_init(stack);
 	if (argc < 2)
-		// return (stack->error = 1, stack);
 		return (NULL);
 	else
-	if (argc == 2)
-	{
-		if (argv[1][0] == '\0')
-			return (stack->error = 1, stack);
-		arguments = ft_split(argv[1], ' ');
-		stack->size = count_args(arguments) + 1;
-	}
+		if (argc == 2)
+		{
+			if (argv[1][0] == '\0')
+				return (stack->error = 1, stack);
+			arguments = ft_split(argv[1], ' ');
+			stack->size = count_args(arguments) + 1;
+		}
 	else
 	{
 		i = 1;
