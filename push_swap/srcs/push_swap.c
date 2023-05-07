@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:37:06 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 09:24:09 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:53:44 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	merge_list(t_stack *stack)
 		pa(stack);
 }
 
-void	reducer(t_cmd *prev, t_cmd *tmp)
+static void	reducer(t_cmd *prev, t_cmd *tmp)
 {
 	if ((!ft_strcmp(prev->cmd, "sa") && !ft_strcmp(tmp->cmd, "sb"))
 		|| (!ft_strcmp(prev->cmd, "sb") && !ft_strcmp(tmp->cmd, "sa")))

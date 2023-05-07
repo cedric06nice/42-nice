@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:02:13 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/01/15 00:28:49 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 06:28:32 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void	nodes_insert_command(t_stack **stack, char *command)
 
 	if (stack == NULL || command == NULL)
 		return ;
-
 	if (ft_strcmp(command, "pa") != 0 && ft_strcmp(command, "pb") != 0
 		&& ft_strcmp(command, "rra") != 0 && ft_strcmp(command, "rrb") != 0 && ft_strcmp(command, "rrr") != 0
 		&& ft_strcmp(command, "ra") != 0 && ft_strcmp(command, "rb") != 0 && ft_strcmp(command, "rr") != 0

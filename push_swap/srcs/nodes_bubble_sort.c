@@ -6,26 +6,17 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 09:20:41 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/05 10:21:27 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubble_sort(t_stack *stack)
+static void	sort_swap(int n, int *arr)
 {
-	int	arr[nodes_count(stack->list_a)];
-	int	n;
 	int	i;
 	int	j;
 
-	n = 0;
-	while (stack->list_a)
-	{
-		arr[n] = stack->list_a->x;
-		stack->list_a = stack->list_a->next;
-		n++;
-	}
 	i = 1;
 	while (i <= n - 1)
 	{
@@ -38,12 +29,23 @@ void	bubble_sort(t_stack *stack)
 		}
 		i++;
 	}
-	// ft_printf("sorted array: ");
-	// i = 0;
-	// while (i < n)
-	// {
-	// 	ft_printf("%d ", arr[i]);
-	// 	i++;
-	// }
-	// ft_printf("\n");
+}
+
+void	bubble_sort(t_stack *stack)
+{
+	int	*arr;
+	int	n;
+
+	n = 0;
+	arr = (int *)malloc(sizeof(int) * nodes_count(stack->list_a));
+	if (!arr)
+		return ;
+	while (stack->list_a)
+	{
+		arr[n] = stack->list_a->x;
+		stack->list_a = stack->list_a->next;
+		n++;
+	}
+	sort_swap(n, arr);
+	free(arr);
 }

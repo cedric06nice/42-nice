@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 09:15:08 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 07:34:13 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ typedef struct s_stack
 	t_node			*list_b;
 	int				size;
 	int				size_a;
+	int				min_a;
+	int				max_a;
 	int				size_b;
+	int				min_b;
+	int				max_b;
 	int				average;
 	int				min;
 	int				max;
@@ -71,7 +75,7 @@ void	bubble_sort(t_stack *stack);
 int		get_mid_a(t_stack *stack);
 int		get_mid_b(t_stack *stack);
 void	set_average_values(t_stack *stack);
-int		nodes_median_values(t_node *list);
+// int		nodes_median_values(t_node *list);
 
 /* nodes_get_max */
 int		get_max_a(t_stack *stack);
@@ -108,9 +112,9 @@ t_stack	*init(int argc, char **argv);
 
 /* program_print */
 void	print_commands(t_stack stack);
-void	print_lists(t_stack stack, int extra);
-void	print_linear(t_stack stack, int extra);
-void	print_test(char *str);
+// void	print_lists(t_stack stack, int extra);
+// void	print_linear(t_stack stack, int extra);
+// void	print_test(char *str);
 
 /* program_sort_large_utils */
 void	push_a(t_stack *all);
@@ -125,6 +129,7 @@ int		maxi_flag(t_node *stack, int size);
 
 /* program_sort */
 void	sort(t_stack *stack);
+int		find_shortest_route(int min, t_node *node);
 
 /* push_swap */
 int		nodes_is_sorted(t_node **list, char c);

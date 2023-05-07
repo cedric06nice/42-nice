@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 09:14:35 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:00:14 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,102 @@ void	start_sort(t_stack *all, int i)
 	finish_sort(all);
 }
 
-void	sort_large(t_stack *stack)
-{
-	int	max_flag;
+// void	sort_large(t_stack *stack)
+// {
+// 	int	max_flag;
 
-	set_average_values(stack);
-	start_sort(stack, stack->size_a);
-	while (stack->index <= stack->size)
+// 	set_average_values(stack);
+// 	start_sort(stack, stack->size_a);
+// 	while (stack->index <= stack->size)
+// 	{
+// 		push_a(stack);
+// 		max_flag = maxi_flag(stack->list_a, stack->size_a);
+// 		while (stack->list_a->flag == max_flag)
+// 		{
+// 			if (extra_sorting(stack))
+// 				continue ;
+// 			pb(stack);
+// 		}
+// 	}
+// }
+
+int	find_element(t_node *node, int value)
+{
+	t_node	*tmp;
+	int		i;
+
+	tmp = node;
+	i = 0;
+	while (tmp)
 	{
-		push_a(stack);
-		max_flag = maxi_flag(stack->list_a, stack->size_a);
-		while (stack->list_a->flag == max_flag)
+		if (tmp->order == value)
+			return (i);
+		tmp = tmp->next;
+		i++;
+	}
+	return (0);
+}
+
+void	index_bottom_list_a(t_stack *stack)
+{
+	ra(stack);
+	stack->index++;
+}
+
+void	find_first_index_a(t_stack *stack)
+{
+	while (stack->index != 2)
+	{
+		if (find_shortest_route(stack->index, stack->list_a) < stack->size_a / 2)
+			{
+				while (stack->list_a->order != stack->index)
+					ra(stack);
+				index_bottom_list_a(stack);
+			}
+		else
+			{
+				while (stack->list_a->order != stack->index)
+					rra(stack);
+				index_bottom_list_a(stack);
+			}
+	}
+}
+
+void	sort_list_a(t_stack *stack)
+{
+	while (stack->index <= stack->size)// && nodes_is_sorted(&stack->list_a, '<') != 0)
+	{
+		if (stack->list_a->order == stack->index)
+			index_bottom_list_a(stack);
+		else if (stack->list_b != NULL && stack->list_b->order == stack->index)
 		{
-			if (extra_sorting(stack))
-				continue ;
+			pa(stack);
+			index_bottom_list_a(stack);
+		}
+		else if (find_element(stack->list_b, stack->index) != 0)
+		{
+			if (find_shortest_route(stack->index, stack->list_b) < stack->size_b / 2)
+				{
+					while (stack->list_b->order != stack->index)
+						rb(stack);
+				}
+			else
+				{
+					while (stack->list_b->order != stack->index)
+						rrb(stack);
+				}
+			pa(stack);
+			index_bottom_list_a(stack);
+		}
+		else if (find_element(stack->list_b, stack->index) == 0)
+		{
 			pb(stack);
 		}
 	}
+}
+
+void	sort_large(t_stack *stack)
+{
+	find_first_index_a(stack);
+	sort_list_a(stack);
 }

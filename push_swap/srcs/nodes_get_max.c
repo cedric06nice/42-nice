@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 09:00:06 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:58:04 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	get_max_a(t_stack *stack)
 	t_node	*tmp;
 	int		max;
 
+	if (stack->list_a == NULL)
+		return (0);
 	tmp = stack->list_a;
 	max = tmp->order;
 	while (tmp != NULL)
@@ -25,6 +27,7 @@ int	get_max_a(t_stack *stack)
 			max = tmp->order;
 		tmp = tmp->next;
 	}
+	stack->max_a = max;
 	return (max);
 }
 
@@ -33,6 +36,8 @@ int	get_max_b(t_stack *stack)
 	t_node	*tmp;
 	int		max;
 
+	if (stack->list_b == NULL)
+		return (0);
 	tmp = stack->list_b;
 	max = tmp->order;
 	while (tmp != NULL)
@@ -41,6 +46,7 @@ int	get_max_b(t_stack *stack)
 			max = tmp->order;
 		tmp = tmp->next;
 	}
+	stack->max_b = max;
 	return (max);
 }
 

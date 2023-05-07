@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 08:51:36 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:07:25 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,11 @@ static void	first_init(t_stack *stack)
 	stack->list_a = NULL;
 	stack->list_b = NULL;
 	stack->size_a = 0;
+	stack->min_a = 0;
+	stack->max_a = 0;
 	stack->size_b = 0;
+	stack->min_b = 0;
+	stack->max_b = 0;
 	stack->size = 0;
 	stack->min = 1;
 	stack->max = 0;
