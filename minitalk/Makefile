@@ -36,7 +36,7 @@ CYAN				=	"\033[1;36m"
 GRAY				=	"\033[1;30m"
 END					=	"\033[0m"
 
-.PHONY				:	all clean fclean re bonus
+.PHONY				:	all clean fclean re bonus norm
 
 %.o 				:	%.c
 						@$(CC) $(CFLAGS) $(ARCH_FLAG) $(INCLUDES) -c $< -o $@
@@ -76,3 +76,7 @@ fclean				:	clean
 						@echo ${PURPLE} "> 🧹 Binaries removed - $(NAME_SERVER) & $(NAME_CLIENT)" ${END}
 
 re					:	fclean all
+
+norm				:
+						@norminette $(SRCS_SERVER) $(SRCS_CLIENT) $(HEADERS) $(LIBFT_PATH)
+						@echo ${GREEN} "> ✅ Norminette check finished" ${END}
