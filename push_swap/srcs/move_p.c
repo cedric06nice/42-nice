@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_push.c                                        :+:      :+:    :+:   */
+/*   move_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 14:38:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/11 12:54:22 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:48:47 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	pa(t_stack *stack)
 {
 	if (!stack->list_b)
 		return ;
-	nodes_insert_beginning(&stack->list_a, stack->list_b);
-	nodes_remove_first(&stack->list_b);
+	node_insert_beg(&stack->list_a, stack->list_b);
+	node_remove_fst(&stack->list_b);
 	stack->size_a++;
 	get_min_a(stack);
 	get_max_a(stack);
 	stack->size_b--;
 	get_min_b(stack);
 	get_max_b(stack);
-	nodes_insert_command(&stack, "pa");
+	insert_command(&stack, "pa");
 }
 
 /*
@@ -41,13 +41,13 @@ void	pb(t_stack *stack)
 {
 	if (!stack->list_a)
 		return ;
-	nodes_insert_beginning(&stack->list_b, stack->list_a);
-	nodes_remove_first(&stack->list_a);
+	node_insert_beg(&stack->list_b, stack->list_a);
+	node_remove_fst(&stack->list_a);
 	stack->size_a--;
 	get_min_a(stack);
 	get_max_a(stack);
 	stack->size_b++;
 	get_min_b(stack);
 	get_max_b(stack);
-	nodes_insert_command(&stack, "pb");
+	insert_command(&stack, "pb");
 }

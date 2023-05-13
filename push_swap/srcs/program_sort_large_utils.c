@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 11:08:52 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:56:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	push_a(t_stack *all)
 void	finish_sort(t_stack *all)
 {
 	while (all->size_b >= 2
-		&& nodes_get_nth_element(all->list_b, all->size_b)->flag == -2)
+		&& node_get_nth_elmt(all->list_b, all->size_b)->flag == -2)
 		rrr(all);
 	while (all->list_b->flag == -2)
 	{
@@ -310,61 +310,61 @@ void	sort_list_a(t_stack *stack)
 	}
 }
 
-// static void	set_order_arguments(t_stack *stack)
-// {
-// 	t_node	*node;
-// 	int		prev_val;
-// 	int		before;
+void	set_order_arguments(t_stack *stack)
+{
+	t_node	*node;
+	int		prev_val;
+	int		before;
 
-// 	node = stack->list_a;
-// 	node->flag = 1;
-// 	prev_val = 0;
-// 	before = 1;
-// 	while (node != NULL)
-// 	{
-// 		if (before == 1)
-// 		{
-// 			if (node->order == 1)
-// 			{
-// 				before = 0;
-// 				prev_val = node->order;
-// 				node->keep = 1;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (node->order == prev_val + 1)
-// 			{
-// 				prev_val = node->order;
-// 				node->keep = 1;
-// 			}
-// 		}
-// 		node = node->next;
-// 	}
-// 	node = stack->list_a;
-// 	while (node != NULL)
-// 	{
-// 		if (node->order == 1)
-// 			break ;
-// 		if (node->order == prev_val + 1)
-// 		{
-// 			prev_val = node->order;
-// 			node->keep = 1;
-// 		}
-// 		node = node->next;
-// 	}
-// }
+	node = stack->list_a;
+	node->flag = 1;
+	prev_val = 0;
+	before = 1;
+	while (node != NULL)
+	{
+		if (before == 1)
+		{
+			if (node->order == 1)
+			{
+				before = 0;
+				prev_val = node->order;
+				node->keep = 1;
+			}
+		}
+		else
+		{
+			if (node->order == prev_val + 1)
+			{
+				prev_val = node->order;
+				node->keep = 1;
+			}
+		}
+		node = node->next;
+	}
+	node = stack->list_a;
+	while (node != NULL)
+	{
+		if (node->order == 1)
+			break ;
+		if (node->order == prev_val + 1)
+		{
+			prev_val = node->order;
+			node->keep = 1;
+		}
+		node = node->next;
+	}
+}
 
-// void	split_stack_a_to_b(t_stack *stack)
-// {
-// 	while (stack->list_a)
-// 	{
-// 		if (stack->list_a->keep == 1)
-// 			ra(stack);
-// 		else
-// 			pb(stack);
-// 	}
-// }
+void	split_stack_a_to_b(t_stack *stack)
+{
+	while (stack->list_a)
+	{
+		if (stack->list_a->keep == 1)
+			ra(stack);
+		else
+			pb(stack);
+	}
+}
 
 void	sort_large(t_stack *stack)
 {

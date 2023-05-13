@@ -6,11 +6,21 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 07:22:56 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:42:18 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// t_node	*find_element_by_order(t_stack *stack, int order)
+// {
+// 	while (stack->list_a)
+// 	{
+// 		if (stack->list_a->order == order)
+// 			return (stack->list_a);
+// 	}
+// 	return (NULL);
+// }
 
 /*
 ** Count number of arguments
@@ -25,141 +35,27 @@ static int	count_args(char **args)
 	return (i - 1);
 }
 
-/*
-** Check if there are duplicates in the list of numbers
-*/
-static int	check_duplicates(int *arr, int num)
+static char	**argc_argv(int argc, char **argv, t_stack *stack)
 {
-	int	i;
+	char	**arguments;
 
-	i = 0;
-	while (arr[i])
+	if (argc < 2)
+		return (NULL);
+	else if (argc == 2)
 	{
-		if (arr[i] == num)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-/*
-** Transform arguments into list of numbers
-*/
-static int	*transform(char **arguments, int i, int count_args)
-{
-	int		*list_num;
-	int		j;
-	int		k;
-	int		num;
-
-	list_num = malloc(sizeof(int) * count_args);
-	k = 0;
-	while (arguments[i])
-	{
-		j = 0;
-		while (arguments[i][j])
-		{
-			if (j == 0
-				&& (ft_isdigit(arguments[i][j])
-				|| ((arguments[i][j] == '-' || arguments[i][j] == '+')
-						&& ft_isdigit(arguments[i][j + 1]))))
-				j++;
-			else if (ft_isdigit(arguments[i][j]))
-				j++;
-			else
-				return (NULL);
-		}
-		num = ft_atoi(arguments[i]);
-		if (num > 2147483647 || num < -2147483648)
+		if (argv[1][0] == '\0')
 			return (NULL);
-		list_num[k++] = num;
-		i++;
+		arguments = ft_split(argv[1], ' ');
+		stack->size = count_args(arguments) + 1;
+		return (arguments);
 	}
-	check_duplicates(list_num, 1);
-	return (list_num);
-}
-
-int	spliter(int size, int nb)
-{
-	if (size > 400)
-		return (nb / 20);
-	if (size > 80)
-		return (nb / 5);
-	if (size > 50)
-		return (nb / 3);
-	return (size);
-}
-
-/*
-** Load arguments into stack->list_a and assign index number to each node
-*/
-static void	load_arguments(t_stack *stack, int	*list_num)
-{
-	int		i;
-	int		j;
-	int		index_num;
-	t_node	*new_node;
-
-	i = 0;
-	while (stack->size > i)
+	else
 	{
-		j = 0;
-		index_num = 1;
-		while (stack->size > j)
-		{
-			if (list_num[i] > list_num[j])
-				++index_num;
-			j++;
-		}
-		new_node = malloc(sizeof(t_node));
-		if (new_node == NULL)
-			return ;
-		new_node->x = list_num[i];
-		new_node->order = index_num;
-		new_node->flag = 0;
-		// new_node->group = 0;
-		new_node->group = spliter(stack->size, list_num[i]);
-		new_node->keep = 0;
-		new_node->next = NULL;
-		nodes_insert_end(&stack->list_a, new_node);
-		free(new_node);
-		stack->size_a++;
-		i++;
+		arguments = argv;
+		stack->size = count_args(arguments);
+		return (arguments);
 	}
 }
-
-/*
-** First initialization of stack structure
-*/
-static void	first_init(t_stack *stack)
-{
-	stack->list_a = NULL;
-	stack->list_b = NULL;
-	stack->size_a = 0;
-	stack->min_a = 0;
-	stack->max_a = 0;
-	stack->size_b = 0;
-	stack->min_b = 0;
-	stack->max_b = 0;
-	stack->size = 0;
-	stack->min = 1;
-	stack->max = 0;
-	stack->average = 0;
-	stack->index = 1;
-	stack->flag = 0;
-	stack->commands = NULL;
-	stack->error = 0;
-}
-
-// t_node	*find_element_by_order(t_stack *stack, int order)
-// {
-// 	while (stack->list_a)
-// 	{
-// 		if (stack->list_a->order == order)
-// 			return (stack->list_a);
-// 	}
-// 	return (NULL);
-// }
 
 /*
 ** Initialization of stack structure
@@ -177,30 +73,20 @@ t_stack	*init(int argc, char **argv)
 	stack = malloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	first_init(stack);
-	if (argc < 2)
-		return (NULL);
-	else if (argc == 2)
-	{
-		if (argv[1][0] == '\0')
-			return (stack->error = 1, stack);
-		arguments = ft_split(argv[1], ' ');
-		stack->size = count_args(arguments) + 1;
-	}
-	else
-	{
+	init_stack(stack);
+	arguments = argc_argv(argc, argv, stack);
+	if (arguments == NULL)
+		return (stack->error = 1, stack);
+	if (argc > 2)
 		i = 1;
-		arguments = argv;
-		stack->size = count_args(arguments);
-	}
-	list_num = transform(arguments, i, stack->size);
+	list_num = transform_args(arguments, i, stack->size);
 	if (list_num == NULL)
 		return (stack->error = 1, stack);
 	load_arguments(stack, list_num);
 	set_average_values(stack);
 	if (argc == 2)
 		free(arguments);
-	if (nodes_check_duplicate(stack->list_a) == 1)
+	if (node_check_dup(stack->list_a) == 1)
 		return (stack->error = 1, stack);
 	return (stack);
 }

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/11 12:55:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:08:12 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_sort(t_stack *all)
 
 static int	pre_last(t_stack *all)
 {
-	if (all->size_b >= 2 && nodes_get_nth_element(all->list_b,
+	if (all->size_b >= 2 && node_get_nth_elmt(all->list_b,
 			all->size_b - 1)->order == all->index)
 	{
 		rrb(all);
@@ -32,7 +32,7 @@ static int	pre_last(t_stack *all)
 	}
 	if (all->size_b > 5)
 	{
-		if (all->size_b >= 3 && nodes_get_nth_element(all->list_b,
+		if (all->size_b >= 3 && node_get_nth_elmt(all->list_b,
 				all->size_b - 2)->order == all->index)
 		{
 			rrb(all);
@@ -49,7 +49,7 @@ static int	down_num_b(t_stack *all)
 {
 	if (all->size_b > 3)
 	{
-		if (nodes_get_nth_element(all->list_b,
+		if (node_get_nth_elmt(all->list_b,
 				all->size_b)->order == all->index)
 		{
 			rrb(all);

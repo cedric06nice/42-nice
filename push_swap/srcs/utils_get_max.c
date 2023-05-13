@@ -1,69 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nodes_get_min.c                                    :+:      :+:    :+:   */
+/*   utils_get_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/11 12:54:44 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:41:18 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_min_a(t_stack *stack)
+int	get_max_a(t_stack *stack)
 {
 	t_node	*tmp;
-	int		min;
+	int		max;
 
 	if (stack->list_a == NULL)
 		return (0);
 	tmp = stack->list_a;
-	min = tmp->order;
+	max = tmp->order;
 	while (tmp != NULL)
 	{
-		if (min > tmp->order)
-			min = tmp->order;
+		if (max < tmp->order)
+			max = tmp->order;
 		tmp = tmp->next;
 	}
-	stack->min_a = min;
-	return (min);
+	stack->max_a = max;
+	return (max);
 }
 
-int	get_min_b(t_stack *stack)
+int	get_max_b(t_stack *stack)
 {
 	t_node	*tmp;
-	int		min;
+	int		max;
 
 	if (stack->list_b == NULL)
 		return (0);
 	tmp = stack->list_b;
-	min = tmp->order;
+	max = tmp->order;
 	while (tmp != NULL)
 	{
-		if (min > tmp->order)
-			min = tmp->order;
+		if (max < tmp->order)
+			max = tmp->order;
 		tmp = tmp->next;
 	}
-	stack->min_b = min;
-	return (min);
+	stack->max_b = max;
+	return (max);
 }
 
-void	get_min_values(t_stack *stack, t_node *node, int size)
+void	get_max_values(t_stack *stack, t_node *node, int size)
 {
 	t_node	*tmp;
-	int		min;
+	int		max;
 	int		i;
 
 	tmp = node;
-	min = tmp->order;
+	max = tmp->order;
 	i = -1;
 	while (++i != size)
 	{
-		if (min > tmp->order)
-			min = tmp->order;
+		if (max < tmp->order)
+			max = tmp->order;
 		tmp = tmp->next;
 	}
-	stack->min = min;
+	stack->max = max;
 }

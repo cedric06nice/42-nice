@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 07:07:28 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:45:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,88 +51,73 @@ typedef struct s_stack
 	int				error;
 }					t_stack;
 
-/* move_push */
+/* bubble_sort */
+void	bubble_sort(t_stack *stack);
+
+/* commands_print */
+void	print_commands(t_stack stack);
+
+/* commands */
+void	insert_command(t_stack **stack, char *command);
+void	reduce_commands(t_stack *stack);
+
+/* init_stack */
+void	init_stack(t_stack *stack);
+
+/* move_p */
 void	pa(t_stack *stack);
 void	pb(t_stack *stack);
 
-/* move_rev_rotate */
-void	rra(t_stack *stack);
-void	rrb(t_stack *stack);
-void	rrr(t_stack *stack);
-
-/* move_rotate */
+/* move_r */
 void	ra(t_stack *stack);
 void	rb(t_stack *stack);
 void	rr(t_stack *stack);
 
-/* move_swap */
+/* move_rr */
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
+void	rrr(t_stack *stack);
+
+/* move_s */
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *stack);
 
-/* nodes_bubble_sort */
-void	bubble_sort(t_stack *stack);
+/* node_get */
+t_node	*node_get_nth_elmt(t_node *root, int index);
+int		node_get_nth_val(t_node *root, int index);
+int		node_get_nth_flag(t_node *root, int index);
 
-/* nodes_get_average */
-int		get_mid_a(t_stack *stack);
-int		get_mid_b(t_stack *stack);
+/* node_insert */
+void	node_insert_end(t_node **root, t_node *node);
+void	node_insert_beg(t_node **root, t_node *node);
+void	node_insert_aft(t_node *prev_node, int value, int order);
+
+/* node_set_average */
 void	set_average_values(t_stack *stack);
-// int		nodes_median_values(t_node *list);
 
-/* nodes_get_max */
-int		get_max_a(t_stack *stack);
-int		get_max_b(t_stack *stack);
-void	get_max_values(t_stack *stack, t_node *node, int size);
+/* node_remove */
+void	node_remove_fst(t_node **root);
+void	node_remove_lst(t_node **root);
+void	node_remove_elmt(t_node **root, int value);
+void	node_delete(t_node **root);
 
-/* nodes_get_min */
-int		get_min_a(t_stack *stack);
-int		get_min_b(t_stack *stack);
-void	get_min_values(t_stack *stack, t_node *node, int size);
+/* node_sort */
+int		node_is_sorted(t_node **list, char c);
 
-/* nodes_insert */
-void	nodes_insert_end(t_node **root, t_node *node);
-void	nodes_insert_beginning(t_node **root, t_node *node);
-void	nodes_insert_after(t_node *prev_node, int value, int order);
-void	nodes_insert_command(t_stack **stack, char *command);
+/* node_utils */
+int		node_count(t_node *root);
+int		node_check_dup(t_node *root);
+int		node_has_loops(t_node *root);
 
-/* nodes_remove */
-void	nodes_remove_first(t_node **root);
-void	nodes_remove_last(t_node **root);
-void	nodes_remove_element(t_node **root, int value);
-void	nodes_delete(t_node **root);
+/* parse_load */
+void	load_arguments(t_stack *stack, int	*list_num);
 
-/* nodes_utils */
-int		nodes_count(t_node *root);
-int		nodes_check_duplicate(t_node *root);
-t_node	*nodes_get_nth_element(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		nodes_get_nth_x_value(t_node *root, int index);
-int		nodes_get_nth_order_value(t_node *root, int index);
-int		get_nth_flag(t_node *root, int index);
-int		nodes_has_loops(t_node *root);
+/* parse_transform */
+int		*transform_args(char **arguments, int i, int count_args);
 
 /* program_init */
 t_stack	*init(int argc, char **argv);
-
-/* program_print */
-void	print_commands(t_stack stack);
-void	print_lists(t_stack stack, int extra);
-void	print_linear(t_stack stack, int extra);
-void	print_test(char *str);
 
 /* program_sort_large_utils */
 void	push_a(t_stack *all);
@@ -144,15 +129,33 @@ void	sort_large(t_stack *stack);
 void	push_sort(t_stack *all);
 int		extra_sorting(t_stack *all);
 int		maxi_flag(t_node *stack, int size);
+void	set_order_arguments(t_stack *stack);
 
 /* program_sort */
 void	sort(t_stack *stack);
 int		find_shortest_route_by_value(int min, t_node *node);
 
 /* push_swap */
-int		node_is_sorted(t_node **list, char c);
 void	split_list(t_stack *stack);
 void	merge_list(t_stack *stack);
-void	reduce_commands(t_stack *stack);
+
+/* utils_get_max */
+int		get_max_a(t_stack *stack);
+int		get_max_b(t_stack *stack);
+void	get_max_values(t_stack *stack, t_node *node, int size);
+
+/* utils_get_min */
+int		get_min_a(t_stack *stack);
+int		get_min_b(t_stack *stack);
+void	get_min_values(t_stack *stack, t_node *node, int size);
+
+/* x_print_testing */
+void	print_lists(t_stack stack, int extra);
+void	print_linear(t_stack stack, int extra);
+void	print_test(char *str);
+
+/* OTHER */
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
 
 #endif

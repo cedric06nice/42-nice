@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nodes_remove.c                                     :+:      :+:    :+:   */
+/*   node_remove.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:16:59 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/11 12:54:57 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:49:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	nodes_remove_first(t_node **root)
+void	node_remove_fst(t_node **root)
 {
 	t_node	*tmp;
 
@@ -23,7 +23,7 @@ void	nodes_remove_first(t_node **root)
 	free(tmp);
 }
 
-void	nodes_remove_last(t_node **root)
+void	node_remove_lst(t_node **root)
 {
 	t_node	*tmp;
 	t_node	*prev;
@@ -40,7 +40,7 @@ void	nodes_remove_last(t_node **root)
 	free(tmp);
 }
 
-void	nodes_remove_element(t_node **root, int value)
+void	node_remove_elmt(t_node **root, int value)
 {
 	t_node	*tmp;
 	t_node	*prev;
@@ -64,7 +64,7 @@ void	nodes_remove_element(t_node **root, int value)
 	free(tmp);
 }
 
-void	nodes_delete(t_node **root)
+void	node_delete(t_node **root)
 {
 	t_node	*tmp;
 	t_node	*prev;

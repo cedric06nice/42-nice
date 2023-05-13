@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_rev_rotate.c                                  :+:      :+:    :+:   */
+/*   move_rr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 10:25:18 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/11 12:54:25 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:56:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	rra(t_stack *stack)
 		return ;
 	else
 	{
-		tmp = nodes_get_nth_element(stack->list_a, stack->size_a);
-		nodes_insert_beginning(&stack->list_a, tmp);
-		nodes_remove_last(&stack->list_a);
-		nodes_insert_command(&stack, "rra");
+		tmp = node_get_nth_elmt(stack->list_a, stack->size_a);
+		node_insert_beg(&stack->list_a, tmp);
+		node_remove_lst(&stack->list_a);
+		insert_command(&stack, "rra");
 	}
 }
 
@@ -45,10 +45,10 @@ void	rrb(t_stack *stack)
 		return ;
 	else
 	{
-		tmp = nodes_get_nth_element(stack->list_b, stack->size_b);
-		nodes_insert_beginning(&stack->list_b, tmp);
-		nodes_remove_last(&stack->list_b);
-		nodes_insert_command(&stack, "rrb");
+		tmp = node_get_nth_elmt(stack->list_b, stack->size_b);
+		node_insert_beg(&stack->list_b, tmp);
+		node_remove_lst(&stack->list_b);
+		insert_command(&stack, "rrb");
 	}
 }
 
