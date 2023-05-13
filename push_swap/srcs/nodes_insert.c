@@ -6,11 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:02:13 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 06:28:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/12 09:11:57 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /*
 ** Insert a node at the end of the list (root)
@@ -28,6 +28,7 @@ void	nodes_insert_end(t_node **root, t_node *node)
 		(*root)->x = node->x;
 		(*root)->order = node->order;
 		(*root)->flag = node->flag;
+		(*root)->group = node->group;
 		(*root)->next = NULL;
 		return ;
 	}
@@ -37,6 +38,7 @@ void	nodes_insert_end(t_node **root, t_node *node)
 	new_node->x = node->x;
 	new_node->order = node->order;
 	new_node->flag = node->flag;
+	new_node->group = node->group;
 	new_node->next = NULL;
 	curr = *root;
 	while (curr->next != NULL)
@@ -61,6 +63,7 @@ void	nodes_insert_beginning(t_node **root, t_node *node)
 		(*root)->x = node->x;
 		(*root)->order = node->order;
 		(*root)->flag = node->flag;
+		(*root)->group = node->group;
 		(*root)->next = NULL;
 		return ;
 	}
@@ -70,6 +73,7 @@ void	nodes_insert_beginning(t_node **root, t_node *node)
 		tmp->x = node->x;
 		tmp->order = node->order;
 		tmp->flag = node->flag;
+		tmp->group = node->group;
 		tmp->next = *root;
 		*root = tmp;
 	}

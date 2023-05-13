@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 07:34:13 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 07:07:28 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct s_node
 	int				x;
 	int				order;
 	int				flag;
+	int				group;
+	int				keep;
 	struct s_node	*next;
 }					t_node;
 
@@ -103,7 +105,23 @@ void	nodes_delete(t_node **root);
 int		nodes_count(t_node *root);
 int		nodes_check_duplicate(t_node *root);
 t_node	*nodes_get_nth_element(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
 int		nodes_get_nth_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
+int		nodes_get_nth_x_value(t_node *root, int index);
+int		nodes_get_nth_order_value(t_node *root, int index);
 int		get_nth_flag(t_node *root, int index);
 int		nodes_has_loops(t_node *root);
 
@@ -112,9 +130,9 @@ t_stack	*init(int argc, char **argv);
 
 /* program_print */
 void	print_commands(t_stack stack);
-// void	print_lists(t_stack stack, int extra);
-// void	print_linear(t_stack stack, int extra);
-// void	print_test(char *str);
+void	print_lists(t_stack stack, int extra);
+void	print_linear(t_stack stack, int extra);
+void	print_test(char *str);
 
 /* program_sort_large_utils */
 void	push_a(t_stack *all);
@@ -129,10 +147,10 @@ int		maxi_flag(t_node *stack, int size);
 
 /* program_sort */
 void	sort(t_stack *stack);
-int		find_shortest_route(int min, t_node *node);
+int		find_shortest_route_by_value(int min, t_node *node);
 
 /* push_swap */
-int		nodes_is_sorted(t_node **list, char c);
+int		node_is_sorted(t_node **list, char c);
 void	split_list(t_stack *stack);
 void	merge_list(t_stack *stack);
 void	reduce_commands(t_stack *stack);

@@ -6,11 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 14:38:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 12:08:28 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:54:22 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /*
 ** (push a)

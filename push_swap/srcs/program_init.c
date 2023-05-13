@@ -6,11 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 13:07:25 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/13 07:22:56 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /*
 ** Count number of arguments
@@ -79,6 +79,17 @@ static int	*transform(char **arguments, int i, int count_args)
 	return (list_num);
 }
 
+int	spliter(int size, int nb)
+{
+	if (size > 400)
+		return (nb / 20);
+	if (size > 80)
+		return (nb / 5);
+	if (size > 50)
+		return (nb / 3);
+	return (size);
+}
+
 /*
 ** Load arguments into stack->list_a and assign index number to each node
 */
@@ -106,6 +117,9 @@ static void	load_arguments(t_stack *stack, int	*list_num)
 		new_node->x = list_num[i];
 		new_node->order = index_num;
 		new_node->flag = 0;
+		// new_node->group = 0;
+		new_node->group = spliter(stack->size, list_num[i]);
+		new_node->keep = 0;
 		new_node->next = NULL;
 		nodes_insert_end(&stack->list_a, new_node);
 		free(new_node);
@@ -132,9 +146,20 @@ static void	first_init(t_stack *stack)
 	stack->max = 0;
 	stack->average = 0;
 	stack->index = 1;
+	stack->flag = 0;
 	stack->commands = NULL;
 	stack->error = 0;
 }
+
+// t_node	*find_element_by_order(t_stack *stack, int order)
+// {
+// 	while (stack->list_a)
+// 	{
+// 		if (stack->list_a->order == order)
+// 			return (stack->list_a);
+// 	}
+// 	return (NULL);
+// }
 
 /*
 ** Initialization of stack structure
@@ -155,14 +180,13 @@ t_stack	*init(int argc, char **argv)
 	first_init(stack);
 	if (argc < 2)
 		return (NULL);
-	else
-		if (argc == 2)
-		{
-			if (argv[1][0] == '\0')
-				return (stack->error = 1, stack);
-			arguments = ft_split(argv[1], ' ');
-			stack->size = count_args(arguments) + 1;
-		}
+	else if (argc == 2)
+	{
+		if (argv[1][0] == '\0')
+			return (stack->error = 1, stack);
+		arguments = ft_split(argv[1], ' ');
+		stack->size = count_args(arguments) + 1;
+	}
 	else
 	{
 		i = 1;

@@ -6,11 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:31:40 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/05 08:28:31 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:54:59 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	nodes_count(t_node *root)
 {

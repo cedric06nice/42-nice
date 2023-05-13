@@ -6,13 +6,13 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:37:06 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 19:53:44 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:36:49 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-int	nodes_is_sorted(t_node **list, char sort)
+int	node_is_sorted(t_node **list, char sort)
 {
 	t_node	*lst;
 

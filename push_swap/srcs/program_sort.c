@@ -6,11 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:37:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/07 07:44:20 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:46:02 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	sort_three(t_stack *stack)
 {
@@ -37,7 +37,7 @@ static void	sort_three(t_stack *stack)
 	}
 }
 
-int	find_shortest_route(int min, t_node *node)
+int	find_shortest_route_by_value(int value, t_node *node)
 {
 	int		i;
 	t_node	*tmp;
@@ -46,7 +46,7 @@ int	find_shortest_route(int min, t_node *node)
 	tmp = node;
 	while (tmp)
 	{
-		if (tmp->order == min)
+		if (tmp->order == value)
 			return (i);
 		tmp = tmp->next;
 		i++;
@@ -61,7 +61,7 @@ static void	sort_six(t_stack *stack)
 		get_min_values(stack, stack->list_a, stack->size_a);
 		while (stack->list_a->order != stack->min)
 		{
-			if (find_shortest_route(stack->min, stack->list_a) <= 3)
+			if (find_shortest_route_by_value(stack->min, stack->list_a) <= 3)
 				ra(stack);
 			else
 				rra(stack);
@@ -74,7 +74,7 @@ static void	sort_six(t_stack *stack)
 
 void	sort(t_stack *stack)
 {
-	if (nodes_is_sorted(&stack->list_a, '<') == 0)
+	if (node_is_sorted(&stack->list_a, '<') == 0)
 		exit (0);
 	if (stack->size == 2)
 	{
