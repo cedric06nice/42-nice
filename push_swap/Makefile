@@ -1,22 +1,32 @@
 NAME		= 	push_swap
 
-SRCS		=	./srcs/move_push.c					\
-				./srcs/move_rev_rotate.c			\
-				./srcs/move_rotate.c				\
-				./srcs/move_swap.c					\
-				./srcs/nodes_bubble_sort.c			\
-				./srcs/nodes_get_average.c			\
-				./srcs/nodes_get_max.c				\
-				./srcs/nodes_get_min.c				\
-				./srcs/nodes_insert.c				\
-				./srcs/nodes_remove.c				\
-				./srcs/nodes_utils.c				\
+SRCS		=	./srcs/bubble_sort.c				\
+				./srcs/commands_print.c				\
+				./srcs/commands.c					\
+				./srcs/find_elements.c				\
+				./srcs/get_max.c					\
+				./srcs/get_min.c					\
+				./srcs/init_stack.c					\
+				./srcs/move_p.c						\
+				./srcs/move_r.c						\
+				./srcs/move_rr.c					\
+				./srcs/move_s.c						\
+				./srcs/node_get.c					\
+				./srcs/node_insert.c				\
+				./srcs/node_remove.c				\
+				./srcs/node_set_average.c			\
+				./srcs/node_sort.c					\
+				./srcs/node_utils.c					\
+				./srcs/parse_load.c					\
+				./srcs/parse_transform.c			\
 				./srcs/program_init.c				\
-				./srcs/program_print.c				\
 				./srcs/program_sort_large_utils.c	\
-				./srcs/program_sort_large.c			\
-				./srcs/program_sort.c				\
-				./srcs/push_swap.c
+				./srcs/push_shortest.c				\
+				./srcs/push_swap.c					\
+				./srcs/sort_large.c					\
+				./srcs/sort.c						\
+				./srcs/split_merge.c				\
+				./srcs/x_print_testing.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
 

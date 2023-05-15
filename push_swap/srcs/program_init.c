@@ -6,21 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 15:42:18 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/14 04:48:06 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// t_node	*find_element_by_order(t_stack *stack, int order)
-// {
-// 	while (stack->list_a)
-// 	{
-// 		if (stack->list_a->order == order)
-// 			return (stack->list_a);
-// 	}
-// 	return (NULL);
-// }
 
 /*
 ** Count number of arguments

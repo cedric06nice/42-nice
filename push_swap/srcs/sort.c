@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   program_sort.c                                     :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:37:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/12 16:46:02 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/14 05:16:49 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,6 @@ static void	sort_three(t_stack *stack)
 		ra(stack);
 		sa(stack);
 	}
-}
-
-int	find_shortest_route_by_value(int value, t_node *node)
-{
-	int		i;
-	t_node	*tmp;
-
-	i = 0;
-	tmp = node;
-	while (tmp)
-	{
-		if (tmp->order == value)
-			return (i);
-		tmp = tmp->next;
-		i++;
-	}
-	return (0);
 }
 
 static void	sort_six(t_stack *stack)

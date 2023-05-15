@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 12:52:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:40:28 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	bubble_sort(t_stack *stack)
 	int	n;
 
 	n = 0;
-	arr = (int *)malloc(sizeof(int) * node_count(stack->list_a));
+	arr = ft_calloc(node_count(stack->list_a), sizeof(int));
 	if (!arr)
 		return ;
 	while (stack->list_a)

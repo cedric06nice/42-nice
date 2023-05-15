@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 15:45:26 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:41:33 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,23 @@ void	print_commands(t_stack stack);
 /* commands */
 void	insert_command(t_stack **stack, char *command);
 void	reduce_commands(t_stack *stack);
+
+/* find_elements */
+int		find_element_by_value(t_node *node, int value);
+int		find_element_by_group(t_node *node, int value);
+void	find_first_index_a(t_stack *stack);
+int		find_position_to_insert_in_b(t_stack *stack, int val);
+int		find_closest_in_b(t_stack *stack, int val);
+
+/* get_max */
+int		get_max_a(t_stack *stack);
+int		get_max_b(t_stack *stack);
+void	get_max_values(t_stack *stack, t_node *node, int size);
+
+/* get_min */
+int		get_min_a(t_stack *stack);
+int		get_min_b(t_stack *stack);
+void	get_min_values(t_stack *stack, t_node *node, int size);
 
 /* init_stack */
 void	init_stack(t_stack *stack);
@@ -120,34 +137,23 @@ int		*transform_args(char **arguments, int i, int count_args);
 t_stack	*init(int argc, char **argv);
 
 /* program_sort_large_utils */
-void	push_a(t_stack *all);
-void	finish_sort(t_stack *all);
-void	start_sort(t_stack *all, int i);
+void	index_bottom_list_a(t_stack *stack);
+void	sort_list_a(t_stack *stack);
+
+/* push_shortest */
+int		find_shortest_route_by_value(int min, t_node *node);
+void	b_shortest_route(t_stack *stack, int value);
+void	push_b_shortest(t_stack *stack);
+
+/* sort_large */
 void	sort_large(t_stack *stack);
 
-/* program_sort_large */
-void	push_sort(t_stack *all);
-int		extra_sorting(t_stack *all);
-int		maxi_flag(t_node *stack, int size);
-void	set_order_arguments(t_stack *stack);
-
-/* program_sort */
+/* sort */
 void	sort(t_stack *stack);
-int		find_shortest_route_by_value(int min, t_node *node);
 
-/* push_swap */
+/* split_merge */
 void	split_list(t_stack *stack);
 void	merge_list(t_stack *stack);
-
-/* utils_get_max */
-int		get_max_a(t_stack *stack);
-int		get_max_b(t_stack *stack);
-void	get_max_values(t_stack *stack, t_node *node, int size);
-
-/* utils_get_min */
-int		get_min_a(t_stack *stack);
-int		get_min_b(t_stack *stack);
-void	get_min_values(t_stack *stack, t_node *node, int size);
 
 /* x_print_testing */
 void	print_lists(t_stack stack, int extra);
