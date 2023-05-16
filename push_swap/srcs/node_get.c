@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:51:26 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 15:46:37 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:47:42 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,23 @@ int	node_get_nth_flag(t_node *root, int index)
 	{
 		if (count == index)
 			return (current->flag);
+		count++;
+		current = current->next;
+	}
+	return (INT_MIN);
+}
+
+int	node_get_nth_group(t_node *root, int index)
+{
+	int		count;
+	t_node	*current;
+
+	count = 1;
+	current = root;
+	while (current != NULL)
+	{
+		if (count == index)
+			return (current->group);
 		count++;
 		current = current->next;
 	}

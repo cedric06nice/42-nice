@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:22:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 14:22:49 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:34:12 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 static int	spliter(int size, int nb)
 {
 	if (size > 400)
-		return (nb / (size / 20));
+		return (nb / (size / 15));
 	if (size > 80)
-		return (nb / (size / 5));
+		return (nb / (size / 6));
 	if (size > 50)
+		return (nb / (size / 4));
+	if (size > 20)
 		return (nb / (size / 3));
 	return (size);
 }

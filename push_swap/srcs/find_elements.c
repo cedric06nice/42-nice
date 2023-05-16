@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:30:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/15 12:30:22 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:30:45 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,35 @@ int	find_element_by_value(t_node *node, int value)
 
 /*
 ** Find the element by group in the stack and return the position
-** Returns 0 if the element is not found
+** Returns -1 if the element is not found
 */
-int	find_element_by_group(t_node *node, int value)
+int	find_element_b_by_group(t_stack *stack, int group)
 {
 	t_node	*tmp;
 	int		i;
+	int		j;
 
-	tmp = node;
+	tmp = stack->list_b;
 	i = 0;
 	while (tmp)
 	{
-		if (tmp->group == value)
-			return (i);
+		if (tmp->group == group)
+		{
+			j = i;
+			while (tmp->next && tmp->group == group)
+			{
+				tmp = tmp->next;
+				j++;
+			}
+			if (i <= stack->size_b - j)
+				return (i);
+			else
+				return (j);
+		}
 		tmp = tmp->next;
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 /*
@@ -66,17 +78,15 @@ void	find_first_index_a(t_stack *stack)
 				stack->list_a) < stack->size_a / 2)
 		{
 			while (stack->list_a->order != stack->index)
-				// push_b_shortest(stack);
-				ra(stack);
+				push_b_shortest(stack);
+				// ra(stack);
 			index_bottom_list_a(stack);
 		}
 		else
 		{
 			while (stack->list_a->order != stack->index)
-			{
-				rra(stack);
-				// push_b_shortest(stack);
-			}
+				// rra(stack);
+				push_b_shortest(stack);
 			index_bottom_list_a(stack);
 		}
 	}
@@ -86,14 +96,14 @@ void	find_first_index_a(t_stack *stack)
 ** Find the position to insert in stack and return the index
 ** Returns -1 if not found
 */
-int	find_position_to_insert_in_b(t_stack *stack, int val)
+int	find_position_to_insert_in_b(t_stack *stack, int group)
 {
 	t_node	*tmp;
 
-	if (val < stack->min_b)
-		return (stack->min_b);
-	if (val > stack->max_b)
-		return (stack->max_b);
+	if (group < stack->group_min)
+		return (stack->group_min);
+	if (group > stack->group_max)
+		return (stack->group_max);
 	tmp = stack->list_b;
 	while (tmp)
 	{
@@ -101,38 +111,38 @@ int	find_position_to_insert_in_b(t_stack *stack, int val)
 			return (-1);
 		if (stack->size_b == 2)
 		{
-			if (tmp->order < val)
-				return (tmp->next->order);
-			if (tmp->order > val && val > tmp->next->order)
-				return (tmp->next->order);
+			if (tmp->group <= group)
+				return (tmp->group);
+			if (tmp->group > group && group >= tmp->next->group)
+				return (tmp->next->group);
 		}
 		else
-			return (find_closest_in_b(stack, val));
+			return (find_closest_group_in_b(stack, group));
 		tmp = tmp->next;
 	}
 	return (-1);
 }
 
 /*
-** Find the closest order available, under value and return it
+** Find the closest upper group available and return it
 ** Returns -1 if not found
 */
-int	find_closest_in_b(t_stack *stack, int val)
+int	find_closest_group_in_b(t_stack *stack, int group)
 {
 	t_node	*tmp;
 	int		delta;
 
-	delta = val - 1;
-	while (delta >= stack->min_b)
+	delta = group;
+	while (delta <= stack->group_max)
 	{
 		tmp = stack->list_b;
-		while (tmp->next != NULL)
+		while (tmp)
 		{
-			if (find_element_by_value(tmp, delta) != 0)
+			if (tmp->group == delta)
 				return (delta);
 			tmp = tmp->next;
 		}
-		delta--;
+		delta++;
 	}
 	return (-1);
 }

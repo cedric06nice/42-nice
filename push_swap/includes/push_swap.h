@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/14 13:41:33 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:06:38 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_stack
 	int				min;
 	int				max;
 	int				index;
+	int				group_min;
+	int				group_max;
 	int				flag;
 	t_cmd			*commands;
 	int				error;
@@ -63,20 +65,22 @@ void	reduce_commands(t_stack *stack);
 
 /* find_elements */
 int		find_element_by_value(t_node *node, int value);
-int		find_element_by_group(t_node *node, int value);
+int		find_element_b_by_group(t_stack *stack, int group);
 void	find_first_index_a(t_stack *stack);
 int		find_position_to_insert_in_b(t_stack *stack, int val);
-int		find_closest_in_b(t_stack *stack, int val);
+int		find_closest_group_in_b(t_stack *stack, int val);
 
 /* get_max */
 int		get_max_a(t_stack *stack);
 int		get_max_b(t_stack *stack);
 void	get_max_values(t_stack *stack, t_node *node, int size);
+int		get_max_group_b(t_stack *stack);
 
 /* get_min */
 int		get_min_a(t_stack *stack);
 int		get_min_b(t_stack *stack);
 void	get_min_values(t_stack *stack, t_node *node, int size);
+int		get_min_group_b(t_stack *stack);
 
 /* init_stack */
 void	init_stack(t_stack *stack);
@@ -104,6 +108,7 @@ void	ss(t_stack *stack);
 t_node	*node_get_nth_elmt(t_node *root, int index);
 int		node_get_nth_val(t_node *root, int index);
 int		node_get_nth_flag(t_node *root, int index);
+int		node_get_nth_group(t_node *root, int index);
 
 /* node_insert */
 void	node_insert_end(t_node **root, t_node *node);
@@ -142,7 +147,9 @@ void	sort_list_a(t_stack *stack);
 
 /* push_shortest */
 int		find_shortest_route_by_value(int min, t_node *node);
-void	b_shortest_route(t_stack *stack, int value);
+int		find_shortest_route_by_group(int group, t_node *node);
+void	b_shortest_route_value(t_stack *stack, int value);
+void	b_shortest_route_group(t_stack *stack, int group);
 void	push_b_shortest(t_stack *stack);
 
 /* sort_large */

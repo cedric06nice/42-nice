@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:26:27 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 14:29:10 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:43:54 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init_stack(t_stack *stack)
 	stack->max = 0;
 	stack->average = 0;
 	stack->index = 1;
+	stack->group_min = 0;
+	stack->group_max = 0;
 	stack->flag = 0;
 	stack->commands = NULL;
 	stack->error = 0;

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 14:38:45 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 12:48:47 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:46:11 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	pa(t_stack *stack)
 	stack->size_b--;
 	get_min_b(stack);
 	get_max_b(stack);
+	get_min_group_b(stack);
+	get_max_group_b(stack);
 	insert_command(&stack, "pa");
 }
 
@@ -49,5 +51,7 @@ void	pb(t_stack *stack)
 	stack->size_b++;
 	get_min_b(stack);
 	get_max_b(stack);
+	get_min_group_b(stack);
+	get_max_group_b(stack);
 	insert_command(&stack, "pb");
 }

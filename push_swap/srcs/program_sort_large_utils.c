@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/15 12:31:00 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:26:16 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,19 @@ void	sort_list_a(t_stack *stack)
 	while (stack->index <= stack->size)
 	{
 		if (stack->list_a->order == stack->index)
-		{
-			// print_test("Elem on top of A is index");
-			// print_lists(*stack, 1);
-			// print_test("Elem on top of A is index");
 			index_bottom_list_a(stack);
-		}
 		else if (stack->list_b != NULL && stack->list_b->order == stack->index)
 		{
-			// print_test("Elem on top of B is index");
-			// print_lists(*stack, 1);
-			// print_test("Elem on top of B is index");
 			pa(stack);
 			index_bottom_list_a(stack);
 		}
 		else if (find_element_by_value(stack->list_b, stack->index) != 0)
 		{
-			// print_test("Index is in list B");
-			// print_lists(*stack, 1);
-			// print_test("Index is in list B");
-			b_shortest_route(stack, stack->index);
+			b_shortest_route_value(stack, stack->index);
 			pa(stack);
 			index_bottom_list_a(stack);
 		}
 		else if (find_element_by_value(stack->list_b, stack->index) == 0)
-		{
-			// print_test("Index is not in list B -> push B the shortest way");
-			// print_lists(*stack, 1);
-			// print_test("Index is not in list B -> push B the shortest way");
 			push_b_shortest(stack);
-		}
 	}
 }

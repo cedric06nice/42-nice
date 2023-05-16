@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/14 13:37:18 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:47:33 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,23 @@ void	get_min_values(t_stack *stack, t_node *node, int size)
 		tmp = tmp->next;
 	}
 	stack->min = min;
+}
+
+int	get_min_group_b(t_stack *stack)
+{
+	t_node	*tmp;
+	int		min;
+
+	if (stack->list_b == NULL)
+		return (0);
+	tmp = stack->list_b;
+	min = INT_MAX;
+	while (tmp != NULL)
+	{
+		if (min > tmp->group)
+			min = tmp->group;
+		tmp = tmp->next;
+	}
+	stack->group_min = min;
+	return (min);
 }
