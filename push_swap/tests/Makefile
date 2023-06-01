@@ -1,9 +1,16 @@
 NAME		= 	test
 
 SRCS		=	tests.c								\
+				test_values.c						\
+				../srcs/atoi.c						\
 				../srcs/bubble_sort.c				\
-				../srcs/commands_print.c			\
-				../srcs/commands.c					\
+				../srcs/cmds_add.c					\
+				../srcs/cmds_empty.c				\
+				../srcs/cmds_print.c				\
+				../srcs/cmds_reduce.c				\
+				../srcs/find_a.c					\
+				../srcs/find_best_greater_than.c	\
+				../srcs/find_best_index.c			\
 				../srcs/find_elements.c				\
 				../srcs/get_max.c					\
 				../srcs/get_min.c					\
@@ -21,7 +28,6 @@ SRCS		=	tests.c								\
 				../srcs/parse_load.c				\
 				../srcs/parse_transform.c			\
 				../srcs/program_init.c				\
-				../srcs/program_sort_large_utils.c	\
 				../srcs/push_shortest.c				\
 				../srcs/sort_large.c				\
 				../srcs/sort.c						\

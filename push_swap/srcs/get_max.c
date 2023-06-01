@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:22:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/15 19:47:46 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:14:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,4 @@ void	get_max_values(t_stack *stack, t_node *node, int size)
 		tmp = tmp->next;
 	}
 	stack->max = max;
-}
-
-int	get_max_group_b(t_stack *stack)
-{
-	t_node	*tmp;
-	int		max;
-
-	if (stack->list_b == NULL)
-		return (0);
-	tmp = stack->list_b;
-	max = INT_MIN;
-	while (tmp != NULL)
-	{
-		if (max < tmp->group)
-			max = tmp->group;
-		tmp = tmp->next;
-	}
-	stack->group_max = max;
-	return (max);
 }

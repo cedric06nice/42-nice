@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:06:41 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 15:44:24 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/21 02:48:10 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	*transform_args(char **arguments, int i, int count_args)
 				return (NULL);
 			j = count_j(arguments, i, j);
 		}
-		num = ft_atoi(arguments[i]);
-		if (num > 2147483647 || num < -2147483648)
+		num = ps_atoi(arguments[i]);
+		if (num >= INT_MAX || num <= INT_MIN)
 			return (NULL);
 		list_num[k++] = num;
 		i++;

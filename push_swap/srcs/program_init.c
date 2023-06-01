@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/14 04:48:06 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:27:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ t_stack	*init(int argc, char **argv)
 		i = 1;
 	list_num = transform_args(arguments, i, stack->size);
 	if (list_num == NULL)
-		return (stack->error = 1, stack);
+		return (free(list_num), stack->error = 1, stack);
 	load_arguments(stack, list_num);
+	free(list_num);
 	set_average_values(stack);
 	if (argc == 2)
 		free(arguments);

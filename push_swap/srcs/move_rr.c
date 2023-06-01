@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 10:25:18 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 12:56:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:19:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rra(t_stack *stack)
 		tmp = node_get_nth_elmt(stack->list_a, stack->size_a);
 		node_insert_beg(&stack->list_a, tmp);
 		node_remove_lst(&stack->list_a);
-		insert_command(&stack, "rra");
+		add_command(&stack, "rra");
 	}
 }
 
@@ -48,7 +48,7 @@ void	rrb(t_stack *stack)
 		tmp = node_get_nth_elmt(stack->list_b, stack->size_b);
 		node_insert_beg(&stack->list_b, tmp);
 		node_remove_lst(&stack->list_b);
-		insert_command(&stack, "rrb");
+		add_command(&stack, "rrb");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:02:13 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 12:47:08 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/23 00:37:49 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	set_node(t_node **new_node, t_node *node)
 	(*new_node)->x = node->x;
 	(*new_node)->order = node->order;
 	(*new_node)->flag = node->flag;
-	(*new_node)->group = node->group;
 	(*new_node)->keep = node->keep;
 	(*new_node)->next = NULL;
 }
@@ -30,6 +29,8 @@ void	node_insert_end(t_node **root, t_node *node)
 	t_node	*new_node;
 	t_node	*curr;
 
+	new_node = NULL;
+	curr = NULL;
 	if (*root == NULL)
 	{
 		*root = malloc(sizeof(t_node));
@@ -55,6 +56,7 @@ void	node_insert_beg(t_node **root, t_node *node)
 {
 	t_node	*tmp;
 
+	tmp = NULL;
 	if (node == NULL)
 		return ;
 	if (*root == NULL)
@@ -68,10 +70,11 @@ void	node_insert_beg(t_node **root, t_node *node)
 	else
 	{
 		tmp = malloc(sizeof(t_node));
+		if (tmp == NULL)
+			return ;
 		tmp->x = node->x;
 		tmp->order = node->order;
 		tmp->flag = node->flag;
-		tmp->group = node->group;
 		tmp->next = *root;
 		*root = tmp;
 	}

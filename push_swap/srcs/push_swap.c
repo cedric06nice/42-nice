@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:37:06 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/17 00:25:01 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 21:13:53 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@ int	main(int argc, char **argv)
 	if (stack == NULL || stack->error == 1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		return (free(stack), -1);
+		free(stack);
+		return (-1);
 	}
 	sort(stack);
-	reduce_commands(stack);
+	// reduce_commands(stack);
 	print_commands(*stack);
-	node_delete(&stack->list_a);
 	node_delete(&stack->list_b);
-	return (free(stack), 0);
+	node_delete(&stack->list_a);
+	empty_commands(&stack->commands);
+	free(stack);
+	// system("leaks push_swap");
+	return (0);
 }

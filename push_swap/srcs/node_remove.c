@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:16:59 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/13 12:49:31 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/05/27 06:43:02 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	node_remove_lst(t_node **root)
 	if (*root == NULL)
 		return ;
 	tmp = *root;
+	// if (tmp->next == NULL)
+	// {
+	// 	free(tmp);
+	// 	*root = NULL;
+	// 	return ;
+	// }
 	while (tmp->next != NULL)
 	{
 		prev = tmp;
@@ -55,11 +61,13 @@ void	node_remove_elmt(t_node **root, int value)
 		return ;
 	}
 	tmp = *root;
-	while (tmp->x != value)
+	while (tmp != NULL && tmp->x != value)
 	{
 		prev = tmp;
 		tmp = tmp->next;
 	}
+	if (tmp == NULL)
+		return ;
 	prev->next = tmp->next;
 	free(tmp);
 }
@@ -75,6 +83,6 @@ void	node_delete(t_node **root)
 		prev = tmp;
 		tmp = tmp->next;
 		free(prev);
+		*root = NULL;
 	}
-	*root = NULL;
 }
