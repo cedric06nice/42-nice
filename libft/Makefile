@@ -31,7 +31,7 @@ SRCS		=	srcs/ft_gnl/get_next_line.c		\
 				srcs/ft_mem/ft_memcpy.c			\
 				srcs/ft_mem/ft_memmove.c		\
 				srcs/ft_mem/ft_memset.c			\
-				srcs/ft_oth/ft_realloc.c		\
+				srcs/ft_mem/ft_realloc.c		\
 				srcs/ft_oth/ft_intlen.c			\
 				srcs/ft_oth/ft_sort_int_tab.c	\
 				srcs/ft_oth/ft_swap.c			\
