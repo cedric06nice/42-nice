@@ -61,6 +61,9 @@ SRCS		=	srcs/ft_gnl/get_next_line.c		\
 				srcs/ft_str/ft_strlen.c			\
 				srcs/ft_str/ft_strmapi.c		\
 				srcs/ft_str/ft_strncmp.c		\
+				srcs/ft_str/ft_strncpy.c		\
+				srcs/ft_str/ft_strndup.c		\
+				srcs/ft_str/ft_strnlen.c		\
 				srcs/ft_str/ft_strnstr.c		\
 				srcs/ft_str/ft_strrchr.c		\
 				srcs/ft_str/ft_strrev.c			\

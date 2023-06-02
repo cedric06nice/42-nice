@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:08:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/02 17:01:26 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:38:55 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char	*ft_strndup(const char *str, size_t n);
+size_t	ft_strnlen(const char *str, size_t max_len);
 char	*ft_strnstr(const char	*big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strrev(char *str);
