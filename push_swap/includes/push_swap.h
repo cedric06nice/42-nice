@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:29:39 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 12:02:22 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 16:45:17 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ int					node_check_dup(t_node *root);
 int					node_has_loops(t_node *root);
 
 /* parse_load */
+void				add_node(t_stack *stack, int *list_num, int i,
+						int index_num);
 void				load_arguments(t_stack *stack, int *list_num);
 
 /* parse_transform */
@@ -151,8 +153,11 @@ int					*transform_args(char **arguments, int i, int count_args);
 int					*string_to_number(const char *input_string, int *num_count);
 int					*numbers_to_number(int argc, char **argv, int *num_count);
 
+/* program_end */
+void				end_program(char *str);
+
 /* program_init */
-void				init(t_stack *stack, int argc, char **argv);
+void 				init(t_stack *stack, int argc, char **argv);
 
 /* push_shortest */
 int					find_shortest_route_by_value(int min, t_node *node);

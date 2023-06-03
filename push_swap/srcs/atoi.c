@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 02:30:37 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 12:12:51 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:11:23 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,13 @@ static int	is_overflow(int sign, int result, int digit)
 	return (0);
 }
 
-static int	part2(int result, int digit, int sign)
-{
-	if (is_overflow(sign, result, digit))
-	{
-		if (sign == 1)
-			return (INT_MAX);
-		return (INT_MIN);
-	}
-	result = (result * 10) + (sign * digit);
-	return (result);
-}
-
-int	ps_atoi(const char *str)
+int	*ps_atoi(const char *str)
 {
 	int	sign;
 	int	i;
 	int	result;
 	int	digit;
+	int	*final_result;
 
 	sign = 1;
 	i = 0;
@@ -70,11 +59,19 @@ int	ps_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (is_digit(str[i]))
+	if (!is_digit(str[i]))
+		return (NULL);
+	while (str[i])
 	{
 		digit = str[i] - '0';
-		result = part2(result, digit, sign);
+		if (is_overflow(sign, result, digit) || !is_digit(str[i]))
+			return (NULL);
+		result = (result * 10) + (sign * digit);
 		i++;
 	}
-	return (result);
+	final_result = malloc(sizeof(int));
+	if (final_result == NULL)
+		return (NULL);
+	*final_result = result;
+	return (final_result);
 }

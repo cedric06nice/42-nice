@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:22:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 10:36:20 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 16:24:19 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Add new node to the end of list_a
 */
-static void	add_node(t_stack *stack, int *list_num, int i, int index_num)
+void	add_node(t_stack *stack, int *list_num, int i, int index_num)
 {
 	t_node	*new_node;
 

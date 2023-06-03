@@ -25,6 +25,7 @@ SRCS		=	./srcs/atoi.c						\
 				./srcs/node_utils.c					\
 				./srcs/parse_load.c					\
 				./srcs/parse_transform.c			\
+				./srcs/program_end.c				\
 				./srcs/program_init.c				\
 				./srcs/push_shortest.c				\
 				./srcs/push_swap.c					\

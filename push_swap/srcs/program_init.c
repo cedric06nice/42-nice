@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 07:47:20 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 11:01:47 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:05:20 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,21 @@ void	init(t_stack *stack, int argc, char **argv)
 
 	init_stack(stack);
 	if (argc == 2)
+	{
+		if (argv[1][0] == '\0')
+			end_program("Error");
 		list_num = string_to_number(argv[1], &stack->size);
+	}
 	if (argc > 2)
 		list_num = numbers_to_number(argc, argv, &stack->size);
 	if (list_num == NULL)
-		stack->error = 1;
+		end_program("Error");
 	load_arguments(stack, list_num);
 	free(list_num);
 	set_average_values(stack);
 	if (node_check_dup(stack->list_a) == 1)
 	{
 		node_delete(&stack->list_a);
-		stack->error = 1;
+		end_program("Error");
 	}
 }

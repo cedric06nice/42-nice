@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:10:21 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/01 22:54:23 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:04:40 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void	reduce_commands(t_stack *stack)
 	t_cmd	*prev;
 	t_cmd	*next;
 
+	if (stack->size < 7)
+		return ;
 	cmds = stack->commands;
 	while (cmds && cmds->next->next->next->next)
 	{
