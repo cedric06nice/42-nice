@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/01 21:07:52 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:04:07 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,27 @@ int	only_keeps(t_stack *stack)
 
 void	push_b_in_best_a(t_stack *stack)
 {
-	int	best_to_move;
-	int	lista;
-
-	best_to_move = find_best_move(stack);
-	lista = order_to_insert_in_a(stack, best_to_move);
-	while (stack->list_a->order != lista)
+	while (stack->list_a->order != order_to_insert_in_a(stack,
+			find_best_move(stack))
+		|| stack->list_b->order != find_best_move(stack))
 	{
-		if (stack->list_a->order != lista)
+		if (stack->list_a->order != order_to_insert_in_a(stack,
+				find_best_move(stack)))
 		{
-			if (find_shortest_route_by_value(lista,
+			if (find_shortest_route_by_value(order_to_insert_in_a(stack,
+						find_best_move(stack)),
 					stack->list_a) < stack->size_a / 2)
-			{
-				// ft_printf("RA ");
 				ra(stack);
-			}
 			else
-			{
-				// ft_printf("RRA ");
 				rra(stack);
-			}
 		}
-	}
-	while (stack->list_b->order != best_to_move)
-	{
-		if (stack->list_b->order != best_to_move)
+		if (stack->list_b->order != find_best_move(stack))
 		{
-			if (find_shortest_route_by_value(best_to_move,
+			if (find_shortest_route_by_value(find_best_move(stack),
 					stack->list_b) < stack->size_b / 2)
-			{
-				// ft_printf("RB ");
 				rb(stack);
-			}
 			else
-			{
-				// ft_printf("RRB ");
 				rrb(stack);
-			}
 		}
 	}
 	pa(stack);

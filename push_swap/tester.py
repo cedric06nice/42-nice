@@ -63,7 +63,7 @@ def calculate_combination(nb):
 	# Printing max moves and results
 	print(color.BOLD + "👉 MAX = " + str(max_moves) + color.END, end = '')
 	if (max_moves > limit):
-		print(color.RED + "\t❌ Too Much Moves" + color.END)
+		print(color.RED + "\t❌ Too Many Moves" + color.END)
 	else:
 		print(color.GREEN + "\t✅ OK" + color.END)
 	state = True
@@ -109,16 +109,16 @@ def calculate(nb):
 	for x in range(0, 10):
 		nbs = ' '.join([str(random.randint(-2147483648, 2147483647)) for x in range(0, nb)])
 
-		res_cmd = "./push_swap " + nbs + " | ./checker_Mac " + nbs	
+		res_cmd = "./push_swap " + nbs + " | ./checker_Mac " + nbs
 		res_output = os.popen(res_cmd).read()
 		if res_output == "KO\n":
 			print(color.BOLD + f"TEST {x + 1} 👉 \t❌ " + color.RED + "KO" + color.END)
 			wrong_values.append(("./push_swap " + nbs + " | ./checker_Mac " + nbs))
 		else:
 			print(color.BOLD + f"TEST {x + 1} 👉 \t✅ " + color.GREEN + "OK" + color.END)
-		
+
 		moves_cmd = "./push_swap " + nbs + " | wc -l"
-		moves_output = os.popen(moves_cmd).read()	
+		moves_output = os.popen(moves_cmd).read()
 		moves.append(int(moves_output))
 
 	if wrong_values:
@@ -173,7 +173,7 @@ def parsing_check():
 		print(color.GREEN + "✅ OK" + color.END)
 	else:
 		parsing_error()
-	
+
 	res = os.popen('./push_swap 1 2 3').read()
 	print(color.BOLD + './push_swap 1 2 3\t\t\t' + color.END, end = '')
 	if res:
@@ -198,13 +198,13 @@ def parsing_check():
 		print(color.GREEN + "✅ OK" + color.END)
 	else:
 		parsing_error()
-	
+
 	res = os.popen('./push_swap "2147483647 -2147483648"').read()
 	print(color.BOLD + './push_swap "2147483647 -2147483648"\t' + color.END, end = '')
 	if res != "sa\n" and res != "ra\n" and res != "rra\n":
 		parsing_error()
 	else:
-		print(color.GREEN + "✅ OK" + color.END)	
+		print(color.GREEN + "✅ OK" + color.END)
 
 if __name__ == "__main__":
 	if os.path.exists("trace.txt"):
@@ -223,7 +223,7 @@ if __name__ == "__main__":
 	for i in range(3, 6):
 		print(color.BLUE + f"\n>> Testing for all combinations of {i} numbers <<" + color.END)
 		calculate_combination(i)
-	
+
 	print(color.BLUE + f"\n>> Testing 10 times for 100 numbers <<" + color.END)
 	calculate(100)
 

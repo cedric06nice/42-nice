@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:20:13 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/25 16:22:29 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:56:48 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	empty_commands(t_cmd **commands)
 {
-	t_cmd	*tmp;
+	t_cmd	*curr;
+	t_cmd	*next;
 
-	if (commands == NULL || *commands == NULL)
-		return ;
-	while (*commands != NULL)
+	curr = *commands;
+	while (curr != NULL)
 	{
-		tmp = *commands;
-		*commands = (*commands)->next;
-		free(tmp->cmd);
-		free(tmp);
+		next = curr->next;
+		free(curr->cmd);
+		free(curr);
+		curr = next;
 	}
 	*commands = NULL;
 }

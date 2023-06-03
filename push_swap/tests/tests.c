@@ -6,36 +6,42 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 19:11:13 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/31 23:31:20 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:11:24 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	t_stack	*stack;
+	int	num_count;
+	int	*list_num;
 
-	stack = load_test_values();
-	if (find_best_suite_by_index(stack) >= find_best_suite_by_greater_than(stack))
-		set_best_suite_by_index(stack);
-	else
-		set_best_suite_by_greater_than(stack);
-	while (only_keeps(stack) == 0)
+	num_count = 0;
+	list_num = NULL;
+	ft_printf("argc: %d\n", argc);
+	ft_printf("argv[0]: %s\n", argv[0]);
+	ft_printf("argv[1]: %s\n", argv[1]);
+	ft_printf("ps_atoi: %d\n", ps_atoi("123"));
+	if (argc < 2)
 	{
-		if (stack->list_a->keep == 1)
-			ra(stack);
-		else
-			pb(stack);
+		ft_printf("No input provided.\n");
+		return (1);
 	}
-	// print_linear(*stack, 1);
-	print_linear(*stack, 1);
-	// reduce_commands(stack);
-	// print_linear(*stack, 1);
-	// print_commands(*stack);
-	// node_delete(&stack->list_a);
-	// node_delete(&stack->list_b);
-	// empty_commands(&stack->commands);
-	// free(stack);
+	if (argc == 2)
+	{
+		ft_printf("Single input provided.\n");
+		list_num = string_to_number(argv[1], &num_count);
+	}
+	if (argc > 2)
+	{
+		ft_printf("Multiple inputs provided.\n");
+		list_num = numbers_to_number(argc, argv, &num_count);
+	}
+	ft_printf("List of numbers:\n");
+	ft_printf("num_count: %d\n", num_count);
+	for (int i = 0; i < num_count; i++)
+		ft_printf("%d\n", list_num[i]);
+	free(list_num);
 	return (0);
 }

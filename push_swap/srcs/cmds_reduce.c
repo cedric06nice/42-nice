@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:10:21 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/25 16:13:12 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:54:23 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ static void	delete_command(t_cmd **headRef, t_cmd *node)
 	free(curr);
 }
 
+static t_cmd	*new_command(char *cmd)
+{
+	t_cmd	*new;
+
+	new = (t_cmd *)malloc(sizeof(t_cmd));
+	if (new == NULL)
+		return (NULL);
+	new->cmd = (char *)malloc((ft_strlen(cmd) + 1) * sizeof(char));
+	if (new->cmd == NULL)
+		return (NULL);
+	ft_strlcpy(new->cmd, cmd, ft_strlen(cmd) + 1);
+	new->next = NULL;
+	return (new);
+}
+
 static void	insert_new_command(t_cmd **headRef, t_cmd *node, char *new_cmd)
 {
 	t_cmd	*temp;
@@ -45,16 +60,7 @@ static void	insert_new_command(t_cmd **headRef, t_cmd *node, char *new_cmd)
 	t_cmd	*new_node;
 
 	temp = *headRef;
-	new_node = (t_cmd *)malloc(sizeof(t_cmd));
-	if (new_node == NULL)
-		return ;
-	new_node->cmd = (char *)malloc((ft_strlen(new_cmd) + 1) * sizeof(char));
-	if (new_node->cmd == NULL)
-	{
-		free(new_node);
-		return ;
-	}
-	ft_strlcpy(new_node->cmd, new_cmd, ft_strlen(new_cmd) + 1);
+	new_node = new_command(new_cmd);
 	if (temp != NULL && temp == node)
 	{
 		*headRef = new_node;
@@ -110,7 +116,7 @@ void	reduce_commands(t_stack *stack)
 	t_cmd	*next;
 
 	cmds = stack->commands;
-	while (cmds && cmds->next->next->next)
+	while (cmds && cmds->next->next->next->next)
 	{
 		prev = cmds->next->next;
 		next = cmds->next->next->next;

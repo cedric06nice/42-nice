@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 07:28:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/01 21:07:16 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:15:10 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,23 @@ int	find_where_to_insert_in_a(t_stack *stack, int order)
 	return (-1);
 }
 
+static int	find_move_a(t_stack *stack, int order)
+{
+	if (find_where_to_insert_in_a(stack, order) < stack->size_a / 2)
+		return (find_where_to_insert_in_a(stack, order));
+	else
+		return (stack->size_a - find_where_to_insert_in_a(stack, order));
+}
+
+static int	find_move_b(t_stack *stack, int order)
+{
+	if (find_shortest_route_by_value(order, stack->list_b) < stack->size_b / 2)
+		return (find_shortest_route_by_value(order, stack->list_b));
+	else
+		return (stack->size_b - find_shortest_route_by_value(order,
+				stack->list_b));
+}
+
 /*
 ** For each element in stack_b, find the shortest route to insert it in stack_a
 ** Returns the order value of the shortest route
@@ -67,8 +84,6 @@ int	find_best_move(t_stack *stack)
 {
 	t_node	*tmp;
 	int		best;
-	int		move_a;
-	int		move_b;
 	int		moves;
 	int		order_b;
 
@@ -77,17 +92,7 @@ int	find_best_move(t_stack *stack)
 	moves = stack->max;
 	while (tmp)
 	{
-		if (find_where_to_insert_in_a(stack, tmp->order) < stack->size_a / 2)
-			move_a = find_where_to_insert_in_a(stack, tmp->order);
-		else
-			move_a = stack->size_a - find_where_to_insert_in_a(stack,
-					tmp->order);
-		if (find_shortest_route_by_value(tmp->order, stack->list_b) < stack->size_b / 2)
-			move_b = find_shortest_route_by_value(tmp->order, stack->list_b);
-		else
-			move_b = stack->size_b - find_shortest_route_by_value(tmp->order,
-					stack->list_b);
-		moves = move_a + move_b;
+		moves = find_move_a(stack, tmp->order) + find_move_b(stack, tmp->order);
 		if (moves <= best)
 		{
 			best = moves;

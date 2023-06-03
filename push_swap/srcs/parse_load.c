@@ -6,12 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:22:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/23 00:25:56 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 10:36:20 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Add new node to the end of list_a
+*/
 static void	add_node(t_stack *stack, int *list_num, int i, int index_num)
 {
 	t_node	*new_node;

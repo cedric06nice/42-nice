@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:16:59 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/27 06:43:02 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:48:46 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	node_remove_lst(t_node **root)
 	if (*root == NULL)
 		return ;
 	tmp = *root;
-	// if (tmp->next == NULL)
-	// {
-	// 	free(tmp);
-	// 	*root = NULL;
-	// 	return ;
-	// }
+	if (tmp->next == NULL)
+	{
+		free(tmp);
+		*root = NULL;
+		return ;
+	}
 	while (tmp->next != NULL)
 	{
 		prev = tmp;
