@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 02:30:37 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 17:11:23 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:36:21 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int	is_digit(char c)
 
 static int	is_whitespace(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\r' || c == '\f' || c == '\v');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f'
+		|| c == '\v');
 }
 
 static int	is_overflow(int sign, int result, int digit)
@@ -40,23 +40,18 @@ static int	is_overflow(int sign, int result, int digit)
 	return (0);
 }
 
-int	*ps_atoi(const char *str)
+static int	*loop_atoi(char *str, int *sign, int *result)
 {
-	int	sign;
 	int	i;
-	int	result;
 	int	digit;
-	int	*final_result;
 
-	sign = 1;
 	i = 0;
-	result = 0;
 	while (is_whitespace(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			*sign = -1;
 		i++;
 	}
 	if (!is_digit(str[i]))
@@ -64,11 +59,26 @@ int	*ps_atoi(const char *str)
 	while (str[i])
 	{
 		digit = str[i] - '0';
-		if (is_overflow(sign, result, digit) || !is_digit(str[i]))
+		if (is_overflow(*sign, *result, digit) || !is_digit(str[i]))
 			return (NULL);
-		result = (result * 10) + (sign * digit);
+		*result = (*result * 10) + (*sign * digit);
 		i++;
 	}
+	return (result);
+}
+
+int	*ps_atoi(char *str)
+{
+	int	sign;
+	int	result;
+	int	*final_result;
+	int	*res;
+
+	sign = 1;
+	result = 0;
+	res = loop_atoi(str, &sign, &result);
+	if (res == NULL)
+		return (NULL);
 	final_result = malloc(sizeof(int));
 	if (final_result == NULL)
 		return (NULL);

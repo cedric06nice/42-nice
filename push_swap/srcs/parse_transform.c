@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:06:41 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 17:01:18 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 14:57:32 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,48 +15,48 @@
 #include <stdlib.h>
 #include <string.h>
 
+static int	*convert_tokens_to_numbers(char **tokens, int num_count)
+{
+	int	*numbers;
+	int	*result_ptr;
+	int	i;
+
+	numbers = malloc(num_count * sizeof(int));
+	if (numbers == NULL)
+		return (NULL);
+	i = 0;
+	while (i < num_count)
+	{
+		result_ptr = ps_atoi(tokens[i]);
+		if (result_ptr == NULL)
+			return (free(numbers), NULL);
+		numbers[i] = *result_ptr;
+		free(result_ptr);
+		i++;
+	}
+	return (numbers);
+}
+
 /*
 ** Transform string into list of numbers
 ** Return value must be freed by caller
 */
 int	*string_to_number(const char *input_string, int *num_count)
 {
-	char	*input_copy;
+	char	**tokens;
 	int		*numbers;
-	char	*token_start;
-	char	*token_end;
-	int		*result_ptr;
 
-	input_copy = ft_strndup(input_string, ft_strlen(input_string));
-	numbers = NULL;
-	*num_count = 0;
-	token_start = input_copy;
-	token_end = ft_strchr(input_copy, ' ');
-	while (token_start != NULL)
+	tokens = tokenize_string(input_string, num_count);
+	if (tokens == NULL)
+		return (NULL);
+	numbers = convert_tokens_to_numbers(tokens, *num_count);
+	if (numbers == NULL)
 	{
-		if (token_end != NULL)
-			*token_end = '\0';
-		(*num_count)++;
-		result_ptr = ps_atoi(token_start);
-		if (result_ptr == NULL)
-		{
-			if (numbers != NULL)
-				free(numbers);
-			if (input_copy != NULL)
-				free(input_copy);
-			return (NULL);
-		}
-		numbers = ft_realloc(numbers, (*num_count) * sizeof(int));
-		numbers[*num_count - 1] = *result_ptr;
-		free(result_ptr);
-		token_start = NULL;
-		if (token_end != NULL)
-		{
-			token_start = token_end + 1;
-			token_end = ft_strchr(token_start, ' ');
-		}
+		free_tokens(tokens, *num_count);
+		return (NULL);
 	}
-	return (free(input_copy), free(token_start), free(token_end), numbers);
+	free_tokens(tokens, *num_count);
+	return (numbers);
 }
 
 /*
