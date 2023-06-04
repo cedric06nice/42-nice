@@ -6,14 +6,11 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:06:41 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/04 14:57:32 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:12:16 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 static int	*convert_tokens_to_numbers(char **tokens, int num_count)
 {

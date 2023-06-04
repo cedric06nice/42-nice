@@ -6,12 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:16:59 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/01 22:48:46 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:05:40 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Remove first element of the list
+*/
 void	node_remove_fst(t_node **root)
 {
 	t_node	*tmp;
@@ -23,6 +26,9 @@ void	node_remove_fst(t_node **root)
 	free(tmp);
 }
 
+/*
+** Remove last element of the list
+*/
 void	node_remove_lst(t_node **root)
 {
 	t_node	*tmp;
@@ -46,6 +52,9 @@ void	node_remove_lst(t_node **root)
 	free(tmp);
 }
 
+/*
+** Remove element with specific value
+*/
 void	node_remove_elmt(t_node **root, int value)
 {
 	t_node	*tmp;
@@ -72,6 +81,9 @@ void	node_remove_elmt(t_node **root, int value)
 	free(tmp);
 }
 
+/*
+** Delete all nodes
+*/
 void	node_delete(t_node **root)
 {
 	t_node	*tmp;

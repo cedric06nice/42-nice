@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:22:05 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 16:24:19 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:08:26 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Add new node to the end of list_a
 */
-void	add_node(t_stack *stack, int *list_num, int i, int index_num)
+void	add_node(t_stack *stack, int *list_num, int i, int idx_num)
 {
 	t_node	*new_node;
 
@@ -23,7 +23,7 @@ void	add_node(t_stack *stack, int *list_num, int i, int index_num)
 	if (new_node == NULL)
 		stack->error = 1;
 	new_node->x = list_num[i];
-	new_node->order = index_num;
+	new_node->order = idx_num;
 	new_node->flag = 0;
 	new_node->keep = 0;
 	new_node->next = NULL;

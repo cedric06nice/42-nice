@@ -1,7 +1,6 @@
 NAME		= 	push_swap
 
 SRCS		=	./srcs/atoi.c						\
-				./srcs/bubble_sort.c				\
 				./srcs/cmds_add.c					\
 				./srcs/cmds_empty.c					\
 				./srcs/cmds_print.c					\
@@ -32,8 +31,7 @@ SRCS		=	./srcs/atoi.c						\
 				./srcs/push_swap.c					\
 				./srcs/sort_large.c					\
 				./srcs/sort.c						\
-				./srcs/split_merge.c				\
-				./srcs/x_print_testing.c
+				# ./srcs/x_print_testing.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
 

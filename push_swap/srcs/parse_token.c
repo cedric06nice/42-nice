@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 14:56:09 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/04 15:00:21 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:11:09 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static char	**realloc_tokens(char **tokens, int num_count)
 	return (tokens);
 }
 
+/*
+** Free all tokens
+*/
 void	free_tokens(char **tokens, int num_count)
 {
 	int	i;
@@ -38,14 +41,17 @@ void	free_tokens(char **tokens, int num_count)
 	free(tokens);
 }
 
-char	**tokenize_string(const char *input_string, int *num_count)
+/*
+** Tokenize the input string and return an array of tokens
+*/
+char	**tokenize_string(const char *input_str, int *num_count)
 {
 	char	*input_copy;
 	char	**tokens;
 	char	*token_start;
 	char	*token_end;
 
-	input_copy = ft_strndup(input_string, ft_strlen(input_string));
+	input_copy = ft_strndup(input_str, ft_strlen(input_str));
 	tokens = NULL;
 	token_start = input_copy;
 	*num_count = 0;

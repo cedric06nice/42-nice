@@ -3,7 +3,6 @@ NAME		= 	test
 SRCS		=	tests.c								\
 				test_values.c						\
 				../srcs/atoi.c						\
-				../srcs/bubble_sort.c				\
 				../srcs/cmds_add.c					\
 				../srcs/cmds_empty.c				\
 				../srcs/cmds_print.c				\
@@ -33,7 +32,6 @@ SRCS		=	tests.c								\
 				../srcs/push_shortest.c				\
 				../srcs/sort_large.c				\
 				../srcs/sort.c						\
-				../srcs/split_merge.c				\
 				../srcs/x_print_testing.c
 
 

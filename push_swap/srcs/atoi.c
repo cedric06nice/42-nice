@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 02:30:37 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 21:36:21 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:53:55 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ static int	*loop_atoi(char *str, int *sign, int *result)
 	return (result);
 }
 
+/*
+** Converts a string to an int.
+** Returns NULL if the string is not a valid int.
+*/
 int	*ps_atoi(char *str)
 {
 	int	sign;

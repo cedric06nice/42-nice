@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 07:28:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/05/19 08:40:24 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:00:20 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	reset_keep(t_stack *stack)
 	}
 }
 
-static int	second_part_gt(t_node *node,
-							int index,
-							int size,
-							int count)
+static int	second_part_gt(t_node *node, int index, int size, int count)
 {
 	while (size-- > 0)
 	{

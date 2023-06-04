@@ -6,12 +6,15 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/01 22:04:07 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:31:57 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Return the best move to do
+*/
 int	only_keeps(t_stack *stack)
 {
 	t_node	*tmp;
@@ -26,25 +29,29 @@ int	only_keeps(t_stack *stack)
 	return (1);
 }
 
+/*
+** Push in stack_b the best move to do
+*/
 void	push_b_in_best_a(t_stack *stack)
 {
-	while (stack->list_a->order != order_to_insert_in_a(stack,
-			find_best_move(stack))
-		|| stack->list_b->order != find_best_move(stack))
+	int	trgt_ord;
+	int	bst_mov;
+
+	trgt_ord = order_to_insert_in_a(stack, find_best_move(stack));
+	bst_mov = find_best_move(stack);
+	while (stack->list_a->order != trgt_ord || stack->list_b->order != bst_mov)
 	{
-		if (stack->list_a->order != order_to_insert_in_a(stack,
-				find_best_move(stack)))
+		if (stack->list_a->order != trgt_ord)
 		{
-			if (find_shortest_route_by_value(order_to_insert_in_a(stack,
-						find_best_move(stack)),
+			if (find_shortest_route_by_value(trgt_ord,
 					stack->list_a) < stack->size_a / 2)
 				ra(stack);
 			else
 				rra(stack);
 		}
-		if (stack->list_b->order != find_best_move(stack))
+		if (stack->list_b->order != bst_mov)
 		{
-			if (find_shortest_route_by_value(find_best_move(stack),
+			if (find_shortest_route_by_value(bst_mov,
 					stack->list_b) < stack->size_b / 2)
 				rb(stack);
 			else

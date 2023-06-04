@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:37:57 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/03 19:05:03 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:18:31 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	sort_three(t_stack *stack)
 {
-	int		min;
-	int		max;
+	int	min;
+	int	max;
 
 	min = get_min_a(stack);
 	max = get_max_a(stack);
@@ -52,13 +52,18 @@ static void	sort_six(t_stack *stack)
 		pb(stack);
 	}
 	sort_three(stack);
-	merge_list(stack);
+	while (stack->size_b > 0)
+		pa(stack);
 }
 
+/*
+** Sort the stack, choosing the best sorting method
+** depending on the size of the stack
+*/
 void	sort(t_stack *stack)
 {
 	if (node_is_sorted(&stack->list_a, '<') == 0)
-		exit (0);
+		exit(0);
 	if (stack->size == 2)
 	{
 		if (stack->list_a->order > stack->list_a->next->order)
