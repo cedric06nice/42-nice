@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:35:25 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/04 16:31:57 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:33:14 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	sort_large(t_stack *stack)
 	while (stack->list_a->order != stack->min_a)
 	{
 		if (find_shortest_route_by_value(stack->min_a,
-				stack->list_a) < stack->size_b / 2)
+				stack->list_a) < stack->size_a / 2)
 			ra(stack);
 		else
 			rra(stack);
