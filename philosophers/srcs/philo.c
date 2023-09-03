@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:17:00 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/08/27 15:16:17 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/09/03 11:01:11 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ static void	*death_thread(t_list *all, t_philo *p)
 		pthread_mutex_unlock(&p->mtx_last_meal);
 		if (chrono() - p->common->start_time
 			- last_meal >= p->common->time_to_die
-			|| eat_count == p->common->nb_philos * p->common->times_must_eat)
+			|| eat_count >= p->common->nb_philos * p->common->times_must_eat)
 		{
 			pthread_mutex_lock(&p->common->mtx_stop);
 			p->common->stop = 1;
 			pthread_mutex_unlock(&p->common->mtx_stop);
-			if (eat_count != p->common->nb_philos * p->common->times_must_eat)
+			if (eat_count <= p->common->nb_philos * p->common->times_must_eat)
 				print_log(all, "died", 0);
 			return (NULL);
 		}
