@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:32:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/08/27 15:21:20 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/09/07 21:02:29 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,21 @@ void	print_log(t_list *all, const char *str, useconds_t sec)
 	t_philo		*philo;
 	useconds_t	elapsed_time;
 	int			stop;
-	long		times_eaten;
+	long		e;
 
 	philo = all->content;
 	pthread_mutex_lock(&philo->common->mtx_stop);
 	stop = philo->common->stop;
 	pthread_mutex_unlock(&philo->common->mtx_stop);
 	pthread_mutex_lock(&philo->common->mtx_times_eaten);
-	times_eaten = philo->common->times_eaten;
+	e = philo->common->times_eaten;
 	pthread_mutex_unlock(&philo->common->mtx_times_eaten);
 	elapsed_time = chrono() - philo->common->start_time;
-	if (philo->common->nb_philos * philo->common->times_must_eat != times_eaten
-		&& (!stop || ft_strcmp(str, "died") == 0))
+	if (!eat_enough(e, philo->common->nb_philos, philo->common->times_must_eat)
+		&& (!stop || !ft_strcmp(str, "died")))
 		print_terminal(elapsed_time, philo, str);
-	if (philo->common->nb_philos * philo->common->times_must_eat != times_eaten
-		&& (!stop || ft_strcmp(str, "died") == 0))
+	if (!eat_enough(e, philo->common->nb_philos, philo->common->times_must_eat)
+		&& (!stop || !ft_strcmp(str, "died")))
 		pause_time(sec);
 	if (ft_strcmp(str, "is eating") == 0)
 	{

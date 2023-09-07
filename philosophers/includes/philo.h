@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:13:24 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/08/26 22:27:11 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:27:50 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef struct s_philo
 	t_data				*common;
 	pthread_mutex_t		mtx_fork;
 }						t_philo;
+
+/* dies */
+int						eat_enough(long eaten, long nb_philos, long must_eat);
+void					end_dies(t_list *all, t_philo *p, long eaten);
 
 /* ft_lists */
 t_list					*ft_lstnew(void *content);

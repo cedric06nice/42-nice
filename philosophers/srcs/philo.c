@@ -6,7 +6,7 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:17:00 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/09/03 11:01:11 by cpugnair         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:45:38 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,27 +69,27 @@ static void	*philo_thread(void *all)
 */
 static void	*death_thread(t_list *all, t_philo *p)
 {
-	long	eat_count;
+	long	eaten;
 	long	last_meal;
 
 	while (6)
 	{
 		p = all->content;
 		pthread_mutex_lock(&p->common->mtx_times_eaten);
-		eat_count = p->common->times_eaten;
+		eaten = p->common->times_eaten;
 		pthread_mutex_unlock(&p->common->mtx_times_eaten);
 		pthread_mutex_lock(&p->mtx_last_meal);
 		last_meal = p->last_meal;
 		pthread_mutex_unlock(&p->mtx_last_meal);
 		if (chrono() - p->common->start_time
 			- last_meal >= p->common->time_to_die
-			|| eat_count >= p->common->nb_philos * p->common->times_must_eat)
+			|| (p->common->times_must_eat != -1 && eat_enough(eaten,
+					p->common->nb_philos, p->common->times_must_eat) == 1))
 		{
 			pthread_mutex_lock(&p->common->mtx_stop);
 			p->common->stop = 1;
 			pthread_mutex_unlock(&p->common->mtx_stop);
-			if (eat_count <= p->common->nb_philos * p->common->times_must_eat)
-				print_log(all, "died", 0);
+			end_dies(all, p, eaten);
 			return (NULL);
 		}
 		all = all->next;

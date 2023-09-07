@@ -1,9 +1,10 @@
 NAME		= 	philo
 
-SRCS		=	./srcs/ft_lists.c		\
-				./srcs/print.c			\
+SRCS		=	./srcs/dies.c			\
+				./srcs/ft_lists.c		\
 				./srcs/main.c 			\
 				./srcs/philo.c			\
+				./srcs/print.c			\
 				./srcs/utils.c
 
 OBJS 		=	$(SRCS:%.c=%.o)
