@@ -1,0 +1,68 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build every project
+        run: make
+
+      - name: so_long bonus (macOS only)
+        if: runner.os == 'macOS'
+        run: make -C so_long bonus
+
+      - name: push_swap sorts correctly within 42's limits
+        run: |
+          python3 .github/scripts/check_push_swap.py push_swap/push_swap 3 3
+          python3 .github/scripts/check_push_swap.py push_swap/push_swap 5 12
+          python3 .github/scripts/check_push_swap.py push_swap/push_swap 100 700
+          python3 .github/scripts/check_push_swap.py push_swap/push_swap 500 7000 5
+
+      - name: push_swap rejects bad input
+        run: |
+          for args in "1 2 a" "1 1" "2147483648"; do
+            if ./push_swap/push_swap $args 2>&1 | grep -q Error; then echo "OK: [$args] rejected"; else echo "KO: [$args]"; exit 1; fi
+          done
+
+      - name: philosophers runs and stops
+        run: |
+          out=$(./philosophers/philo 5 800 200 200 7 | tail -1)
+          echo "$out"; [ "$out" = "All philosophers ate 7 times" ]
+          died=$(./philosophers/philo 4 310 200 100 | grep -c died)
+          echo "deaths: $died"; [ "$died" = "1" ]
+
+      - name: minitalk sends a message
+        run: |
+          ./minitalk/server > server.log & pid=$!
+          sleep 1
+          ./minitalk/client $pid "Hello from CI"
+          sleep 1; kill $pid
+          grep -q "Hello from CI" server.log
+
+  norm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install norminette
+      - name: norminette (42's coding standard)
+        run: |
+          norminette libft ft_printf/ft_*.c ft_printf/*.h get_next_line/get_next_line* \
+            minitalk/srcs minitalk/includes so_long/srcs so_long/includes \
+            push_swap/srcs push_swap/includes philosophers/srcs philosophers/includes \
+            | tee norm.log | grep -v 'OK!' || true
+          ! grep -q 'Error' norm.log
