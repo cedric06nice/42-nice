@@ -35,7 +35,10 @@ LIBFT_PATH	=	../libft
 LIBFT		=	../libft/libft.a
 
 LIBMLX_PATH	=	./libmlx
-LIBMLX_REPO	=	https://github.com/cedric06nice/minilibx_macos.git
+LIBMLX_REPO	=	https://github.com/cedric06nice/minilibx_opengl.git
+LIBMLX_REF	=	180712b
+# Build MiniLibX for the native architecture (its Makefile forces x86_64).
+LIBMLX_CFLAGS	=	"-O2 -DSTRINGPUTX11 -DGL_SILENCE_DEPRECATION -Wno-deprecated-non-prototype"
 LIBMLX		=	./libmlx/libmlx.a $(LIBMLX_FLAGS)
 
 INCLUDES	=	-I $(HEADERS) -I $(LIBFT_PATH)/includes -I $(LIBMLX_PATH)
@@ -59,19 +62,20 @@ all			:	$(NAME)
 
 # MiniLibX (macOS, OpenGL) is fetched on first build, not stored in this repo.
 $(LIBMLX_PATH)	:
-				@git clone --quiet --depth 1 $(LIBMLX_REPO) $(LIBMLX_PATH)
+				@git clone --quiet $(LIBMLX_REPO) $(LIBMLX_PATH)
+				@git -C $(LIBMLX_PATH) checkout --quiet $(LIBMLX_REF)
 
 $(OBJS) $(OBJS_BONUS)	:	| $(LIBMLX_PATH)
 
 $(NAME)		: 	$(OBJS)
 				@$(MAKE) -C $(LIBFT_PATH)
-				@$(MAKE) -C $(LIBMLX_PATH)
+				@$(MAKE) -C $(LIBMLX_PATH) CFLAGS=$(LIBMLX_CFLAGS)
 				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(OBJS) $(LIBFT) $(LIBMLX) -o $(NAME)
 				@echo ${BLUE} "> 📚 Compilation finished - $(NAME)" ${END}
 
 bonus		: 	$(OBJS_BONUS)
 				@$(MAKE) -C $(LIBFT_PATH)
-				@$(MAKE) -C $(LIBMLX_PATH)
+				@$(MAKE) -C $(LIBMLX_PATH) CFLAGS=$(LIBMLX_CFLAGS)
 				@$(CC) $(CFLAGS) $(ARCH_FLAG) $(OBJS_BONUS) $(LIBFT) $(LIBMLX) -o $(NAME)
 				@echo ${BLUE} "> 📚 Compilation finished - $(NAME)" ${END}
 
