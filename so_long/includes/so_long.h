@@ -13,7 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <fcntl.h>
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include "../libmlx/mlx.h"
 
 /* States */

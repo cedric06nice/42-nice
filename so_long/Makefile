@@ -27,17 +27,18 @@ HEADERS		= 	./includes
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
-ARCH_FLAG	=	-arch x86_64
+ARCH_FLAG	=	
 LIBMLX_FLAGS=	-framework OpenGL -framework AppKit
 RM			=	rm -f
 
-LIBFT_PATH	=	./libft
-LIBFT		=	./libft/libft.a
+LIBFT_PATH	=	../libft
+LIBFT		=	../libft/libft.a
 
 LIBMLX_PATH	=	./libmlx
+LIBMLX_REPO	=	https://github.com/cedric06nice/minilibx_macos.git
 LIBMLX		=	./libmlx/libmlx.a $(LIBMLX_FLAGS)
 
-INCLUDES	=	-I $(HEADERS) -I $(LIBFT_PATH) -I $(LIBMLX_PATH)
+INCLUDES	=	-I $(HEADERS) -I $(LIBFT_PATH)/includes -I $(LIBMLX_PATH)
 
 RED			=	"\033[1;31m"
 BLUE		=	"\033[1;34m"
@@ -56,6 +57,12 @@ END			=	"\033[0m"
 
 all			:	$(NAME)
 
+# MiniLibX (macOS, OpenGL) is fetched on first build, not stored in this repo.
+$(LIBMLX_PATH)	:
+				@git clone --quiet --depth 1 $(LIBMLX_REPO) $(LIBMLX_PATH)
+
+$(OBJS) $(OBJS_BONUS)	:	| $(LIBMLX_PATH)
+
 $(NAME)		: 	$(OBJS)
 				@$(MAKE) -C $(LIBFT_PATH)
 				@$(MAKE) -C $(LIBMLX_PATH)
@@ -70,7 +77,7 @@ bonus		: 	$(OBJS_BONUS)
 
 clean		:
 				@$(MAKE) clean -C $(LIBFT_PATH)
-				@$(MAKE) clean -C $(LIBMLX_PATH)
+				@if [ -d $(LIBMLX_PATH) ]; then $(MAKE) clean -C $(LIBMLX_PATH); fi
 				@$(RM) $(OBJS) $(OBJS_BONUS)
 				@echo ${PURPLE} "> 🧹 *.o files removed - $(NAME)" ${END}
 

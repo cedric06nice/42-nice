@@ -52,7 +52,7 @@ void	sent_text(char *str, int pid)
 	char_to_bin('\0', pid);
 }
 
-void	recieved(int sig)
+void	received(int sig)
 {
 	static int	sent;
 
@@ -73,8 +73,8 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	ft_printf("%sClient's PID: %d%s\n", RED, getpid(), END);
-	signal(SIGUSR1, recieved);
-	signal(SIGUSR2, recieved);
+	signal(SIGUSR1, received);
+	signal(SIGUSR2, received);
 	sent_text(av[2], ft_atoi(av[1]));
 	return (0);
 }

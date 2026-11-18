@@ -1,49 +1,38 @@
-[![Build](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/42Paris/minilibx-linux/actions/workflows/ci.yml)
+# so_long
 
-This is the MinilibX, a simple X-Window (X11R6) programming API
-in C, designed for students, suitable for X-beginners.
+A small top-down 2D game in C: collect every key on the map, then reach the open door. Built with MiniLibX, 42's minimal graphics library over OpenGL.
 
-Contents
+Part of my training at [42 Nice](https://42nice.fr). Score: 120/100 (with bonus).
 
- - source code in C to create the mlx library
- - man pages (in man/ directory)
- - a test program (in test/ directory) is built with the library
- - a public include file mlx.h
- - a tiny configure script to generate an appropriate Makefile.gen
+## Build and play (macOS)
 
-Requirements for Linux
-
- - MinilibX only support TrueColor visual type (8,15,16,24 or 32 bits depth)
- - gcc
- - make
- - X11 include files (package xorg)
- - XShm extension must be present (package libxext-dev)
- - Utility functions from BSD systems - development files (package libbsd-dev)
- - **e.g. _sudo apt-get install gcc make xorg libxext-dev libbsd-dev_ (Debian/Ubuntu)**
-
-Requirements for MacOS
- - [Xquartz](https://www.xquartz.org/)
-
-```bash
-➜  ~ Brew install Xquartz
-➜  ~ reboot
-➜  ~ xeyes # run an hello world X11 app
+```sh
+make            # downloads MiniLibX on the first build
+./so_long maps/1.ber
+make bonus && ./so_long maps/b1.ber
 ```
 
-MlX Color Opacity / Transparency / Alpha (32 bits depth)
- - 0xFF (fully transparent) or 0x00 (fully opaque)
+Move with W A S D. Quit with Esc or the window's close button.
 
-Compile MinilibX
+## Maps
 
- - run ./configure or make
-   both will make a few tests, create Makefile.gen
-   and then automatically run make on this generated Makefile.gen .
-   libmlx.a and libmlx_$(HOSTTYPE).a are created.
-   test/mlx-test binary is also created.
+Maps are text files (`.ber`): `1` wall, `0` floor, `P` player, `C` key to collect, `E` exit.
 
-Install MinilibX
+```
+1111111111111
+10010000000C1
+1000011111001
+1P0011E000001
+1111111111111
+```
 
- - no installation script is provided. You may want to install
-     - libmlx.a and/or libmlx_$(HOSTTYPE).a in /usr/X11/lib or /usr/local/lib
-     - mlx.h in /usr/X11/include or /usr/local/include
-     - man/man3/mlx*.1 in /usr/X11/man/man3 or /usr/local/man/man3
+Before the game starts, every map is checked: rectangular, closed by walls, exactly one player and one exit, at least one key, and a path from the player to every key and to the exit. The path check is a recursive flood fill (backtracking) over a copy of the map.
+
+## Bonus
+
+- The move counter is shown in the game window.
+- The player sprite turns to face the direction of travel.
+
+---
+
+Cedric Pugnaire · Software Developer · [cedric06nice.com](https://cedric06nice.com) · [CV](https://cedric06nice.com/cv) · [All my 42 projects](../README.md)

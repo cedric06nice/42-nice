@@ -39,13 +39,13 @@ HEADERS		= 	./includes
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -g
-ARCH_FLAG	=	-arch x86_64
+ARCH_FLAG	=	
 RM			=	rm -f
 
-LIBFT_PATH	=	./libft
-LIBFT		=	./libft/libft.a
+LIBFT_PATH	=	../libft
+LIBFT		=	../libft/libft.a
 
-INCLUDES	= 	-I $(HEADERS) -I $(LIBFT_PATH)
+INCLUDES	= 	-I $(HEADERS) -I $(LIBFT_PATH)/includes
 
 RED			=	"\033[1;31m"
 BLUE		=	"\033[1;34m"

@@ -14,7 +14,7 @@
 # define MINITALK_BONUS_H
 # include <signal.h>
 # include <stdio.h>
-# include "../libft/includes/libft.h"
+# include "libft.h"
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"

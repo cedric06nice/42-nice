@@ -13,7 +13,7 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 # include <fcntl.h>
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include "mlx.h"
 
 /* States */

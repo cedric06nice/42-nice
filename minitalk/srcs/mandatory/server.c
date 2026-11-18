@@ -23,7 +23,7 @@ void	extended_action(char *c, int *received, int *client_pid, int *bit)
 	ft_printf("%c", *c);
 	if (*c == '\0')
 	{
-		ft_printf("\n%s%d signals recieved from client PID: %d%s\n",
+		ft_printf("\n%s%d signals received from client PID: %d%s\n",
 			GREEN, *received, *client_pid, END);
 		*received = 0;
 		*c = 0;

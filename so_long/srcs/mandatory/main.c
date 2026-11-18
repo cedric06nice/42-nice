@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	load_graphics(mlx);
 	mlx_loop_hook(mlx->mlx_ptr, draw_graphics, mlx);
 	mlx_key_hook(mlx->win_ptr, keyboard_key_pressed, mlx);
-	mlx_hook(mlx->win_ptr, 17, 0, close_window, &mlx);
+	mlx_hook(mlx->win_ptr, 17, 0, close_window, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	return (EXIT_SUCCESS);
 }

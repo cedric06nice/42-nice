@@ -1,6 +1,6 @@
 NAME = 			libftprintf.a
 
-HEADERS = 		ft_printf.h
+HEADERS = 		.
 
 PRINTF_PATH =	.
 SRCS_PRINTF =	ft_printf.c				\
@@ -67,7 +67,7 @@ OBJS_PRINTF =	$(LIB_PF:.c=.o)
 
 CC =			gcc
 CFLAGS =		-Wall -Wextra -Werror
-ARCH_FLAG =		-arch x86_64
+ARCH_FLAG =		
 AR =			ar
 ARFLAGS =		rcs
 
