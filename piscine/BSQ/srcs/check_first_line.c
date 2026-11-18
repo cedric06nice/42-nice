@@ -1,0 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_first_line.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/01 11:06:04 by elombard          #+#    #+#             */
+/*   Updated: 2022/08/03 18:13:17 by cpugnair         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "bsq.h"
+
+/*
+**	Check if the string is numeric
+*/
+int	ft_str_is_numeric(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/*
+** Check if the first line of the file is valid.
+** If it is, the board info is set (full, obstacle, empty, y).
+*/
+int	check_first_line(char **board, t_board_info *board_info)
+{
+	char			c;
+	unsigned int	i;
+	unsigned int	size;
+
+	size = ft_strlen(board[0]);
+	if (size < 4)
+		return (0);
+	i = size - 1;
+	board_info->full = board[0][i--];
+	board_info->obstacle = board[0][i--];
+	board_info->empty = board[0][i--];
+	board_info->y = 0;
+	i = 0;
+	while (i < size - 3)
+	{
+		c = board[0][i];
+		if (c < '0' || c > '9')
+			return (0);
+		board_info->y = board_info->y * 10 + (c - '0');
+		i++;
+	}
+	return (1);
+}
+
+/*
+** Check if all characters are different
+*/
+int	check_info_chars(t_board_info *info)
+{
+	return (info->empty != info->obstacle
+		&& info->empty != info->full
+		&& info->obstacle != info->full);
+}
