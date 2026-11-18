@@ -13,35 +13,13 @@
 #include "../includes/philo.h"
 
 /*
-** This function returns the color by Philosoher's id
-** to diferenciate them in the terminal.
-*/
-static char	*print_color(int color)
-{
-	if (color % 7 == 1)
-		return ("\033[0;31m");
-	else if (color % 7 == 2)
-		return ("\033[0;32m");
-	else if (color % 7 == 3)
-		return ("\033[0;33m");
-	else if (color % 7 == 4)
-		return ("\033[0;34m");
-	else if (color % 7 == 5)
-		return ("\033[0;35m");
-	else if (color % 7 == 6)
-		return ("\033[0;36m");
-	else
-		return ("\033[0;37m");
-}
-
-/*
-** This function prints safely the log in the terminal in color.
+** This function prints one log line, in the subject's format:
+** "<timestamp_in_ms> <philosopher_number> <action>".
 */
 static void	print_terminal(useconds_t time, t_philo *philo, const char *str)
 {
 	pthread_mutex_lock(&philo->common->mtx_print);
-	printf("%s%08u %03d %s\033[0m\n", print_color(philo->id), time, philo->id,
-		str);
+	printf("%u %d %s\n", time, philo->id, str);
 	pthread_mutex_unlock(&philo->common->mtx_print);
 }
 

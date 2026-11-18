@@ -13,6 +13,30 @@
 #include "../includes/philo.h"
 
 /*
+** Every argument must be a plain positive integer that fits in an int:
+** digits only (an optional leading '+'), no sign, letters or spaces.
+*/
+static int	valid_arguments(int argc, char **argv)
+{
+	char	*digits;
+	int		len;
+
+	while (--argc > 0)
+	{
+		digits = argv[argc];
+		if (*digits == '+')
+			digits++;
+		len = 0;
+		while (digits[len] >= '0' && digits[len] <= '9')
+			len++;
+		if (len == 0 || digits[len] != '\0' || len > 10
+			|| (len == 10 && ft_strcmp(digits, "2147483647") > 0))
+			return (0);
+	}
+	return (1);
+}
+
+/*
 ** This function parses the arguments passed to the program.
 ** If argument 5 is not passed, it is set to -1.
 */
@@ -69,13 +93,15 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 		return (print_usage());
+	if (!valid_arguments(argc, argv))
+		return (print_error("arguments must be positive integers"));
 	data = parse_arguments(argv);
-	if (data.nb_philos <= 0 || data.time_to_die < 0
-		|| data.time_to_eat < 0 || data.time_to_sleep < 0
-		|| data.times_must_eat < -1)
-		return (exit_program(NULL, "these numbers are not allowed"));
+	if (data.nb_philos <= 0 || data.time_to_die <= 0
+		|| data.time_to_eat <= 0 || data.time_to_sleep <= 0
+		|| data.times_must_eat == 0)
+		return (print_error("these numbers are not allowed"));
 	if (data.nb_philos > 200)
-		return (exit_program(NULL, "no more than 200 philosophers"));
+		return (print_error("no more than 200 philosophers"));
 	data.stop = 0;
 	data.times_eaten = 0;
 	data.start_time = chrono();

@@ -75,5 +75,6 @@ int						ft_atoi(const char *nptr);
 int						ft_strcmp(const char *s1, const char *s2);
 useconds_t				chrono(void);
 int						pause_time(useconds_t time_in_ms);
+useconds_t				think_time(t_philo *philo);
 
 #endif

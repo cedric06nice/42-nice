@@ -14,13 +14,27 @@
 
 /*
 ** This function run all the different actions the philosophers must do.
+** Forks are always taken lowest id first: the last philosopher reaches for
+** fork 1 before his own, which breaks the circular wait (no deadlock).
 */
 static void	philo_all(t_list *all, t_philo *philo, t_philo *philo_next)
 {
-	print_log(all, "is thinking", 0);
-	pthread_mutex_lock(&philo->mtx_fork);
+	t_philo		*first;
+	t_philo		*second;
+	useconds_t	think;
+
+	think = think_time(philo);
+	first = philo;
+	second = philo_next;
+	if (philo_next->id < philo->id)
+	{
+		first = philo_next;
+		second = philo;
+	}
+	print_log(all, "is thinking", think);
+	pthread_mutex_lock(&first->mtx_fork);
 	print_log(all, "has taken a fork", 0);
-	pthread_mutex_lock(&philo_next->mtx_fork);
+	pthread_mutex_lock(&second->mtx_fork);
 	print_log(all, "has taken a fork", 0);
 	pthread_mutex_lock(&philo->mtx_last_meal);
 	philo->last_meal = chrono() - philo->common->start_time;

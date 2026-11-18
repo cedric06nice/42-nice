@@ -88,3 +88,20 @@ int	pause_time(useconds_t time_in_ms)
 	}
 	return (0);
 }
+
+/*
+** With an odd number of philosophers, after his first meal each philosopher
+** thinks long enough to let both neighbours eat first, so nobody starves.
+*/
+useconds_t	think_time(t_philo *philo)
+{
+	useconds_t	last_meal;
+
+	pthread_mutex_lock(&philo->mtx_last_meal);
+	last_meal = philo->last_meal;
+	pthread_mutex_unlock(&philo->mtx_last_meal);
+	if (last_meal == 0 || philo->common->nb_philos % 2 == 0
+		|| philo->common->time_to_eat * 2 <= philo->common->time_to_sleep)
+		return (0);
+	return (philo->common->time_to_eat * 2 - philo->common->time_to_sleep);
+}
