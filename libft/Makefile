@@ -80,7 +80,6 @@ CFLAGS 		=	-Wall -Wextra -Werror
 AR			=	ar
 ARFLAGS		=	rcs
 # compile for M1 Mac
-CFLAGS		+= 	-arch x86_64
 
 RED			=	"\033[1;31m"
 BLUE		=	"\033[1;34m"

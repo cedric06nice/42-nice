@@ -20,7 +20,10 @@ static void	end_token(char **token_start, char **token_end)
 
 static char	**realloc_tokens(char **tokens, int num_count)
 {
-	tokens = realloc(tokens, num_count * sizeof(char *));
+	tokens = ft_realloc(tokens, (num_count - 1) * sizeof(char *),
+			num_count * sizeof(char *));
+	if (tokens == NULL)
+		return (NULL);
 	tokens[num_count - 1] = NULL;
 	return (tokens);
 }

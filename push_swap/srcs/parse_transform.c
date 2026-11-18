@@ -75,7 +75,8 @@ int	*numbers_to_number(int argc, char **argv, int *num_count)
 		if (result_ptr == NULL)
 			return (free(numbers), NULL);
 		(*num_count)++;
-		numbers = ft_realloc(numbers, (*num_count) * sizeof(int));
+		numbers = ft_realloc(numbers, (*num_count - 1) * sizeof(int),
+				(*num_count) * sizeof(int));
 		numbers[*num_count - 1] = *result_ptr;
 		free(result_ptr);
 		i++;

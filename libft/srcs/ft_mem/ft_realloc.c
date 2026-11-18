@@ -6,45 +6,38 @@
 /*   By: cpugnair <cpugnair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:58:31 by cpugnair          #+#    #+#             */
-/*   Updated: 2023/06/02 16:59:39 by cpugnair         ###   ########.fr       */
+/*   Updated: 2026/11/18 18:00:00 by cpugnair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**	Reallocates a memory block.
-**	- If size is 0, the memory block pointed to by ptr is freed.
-**	- If ptr is NULL, the function behaves like malloc().
-**	- Otherwise, the function behaves like malloc() with the following
-**		differences:
-**		- The contents of the memory block are copied to the new memory block,
-**			up to the lesser of the new and old sizes.
-**		- If the new size is larger than the old size, the added memory is not
-**			initialized.
-**		- If ptr is not NULL, it must have been returned by a previous call to
-**			malloc(), calloc() or realloc(). Otherwise, or if the memory block
-**			has been freed with free() or realloc(), the behavior is undefined.
+**	Reallocates a memory block of old_size bytes to new_size bytes.
+**	- If new_size is 0, ptr is freed and NULL is returned.
+**	- If ptr is NULL, behaves like malloc(new_size).
+**	- Otherwise copies the lesser of old_size and new_size bytes to a new
+**		block, frees ptr and returns the new block. On failure, ptr is left
+**		untouched and NULL is returned.
+**	Unlike realloc(3), the caller passes old_size: libft cannot read the
+**	size of a malloc'd block, and copying new_size bytes would read past it.
 */
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
 	void	*new_ptr;
 
-	if (size == 0)
+	if (new_size == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	else if (ptr == NULL)
-		return (malloc(size));
-	else
-	{
-		new_ptr = malloc(size);
-		if (new_ptr != NULL)
-		{
-			ft_memcpy(new_ptr, ptr, size);
-			free(ptr);
-		}
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL || ptr == NULL)
 		return (new_ptr);
-	}
+	if (old_size < new_size)
+		ft_memcpy(new_ptr, ptr, old_size);
+	else
+		ft_memcpy(new_ptr, ptr, new_size);
+	free(ptr);
+	return (new_ptr);
 }
